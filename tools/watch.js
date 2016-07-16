@@ -66,3 +66,5 @@ schedule.scheduleJob('*/10 * * * *', function() {
         check(infos);
     });
 });
+
+console.log(`started at ${new Date()}`);
