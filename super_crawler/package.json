@@ -1,0 +1,29 @@
+{
+  "name": "super_crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqp-rpc": "0.0.8",
+    "cheerio": "^0.20.0",
+    "consign": "^0.1.2",
+    "iconv-lite": "^0.4.13",
+    "jsdom": "^9.4.1",
+    "json-path-processor": "^0.2.3",
+    "lodash": "^4.13.0",
+    "node-horseman": "^3.1.1",
+    "phantom": "^2.1.11",
+    "qs": "^6.2.0",
+    "shelljs": "^0.7.0",
+    "superagent": "^1.8.3",
+    "superagent-proxy": "^1.0.1",
+    "urijs": "^1.18.0",
+    "webworker": "^0.8.4"
+  },
+  "devDependencies": {}
+}

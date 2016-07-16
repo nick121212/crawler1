@@ -1,0 +1,25 @@
+{
+  "name": "splider",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqp-rpc": "0.0.8",
+    "amqplib": "^0.4.1",
+    "bluebird": "^3.3.5",
+    "cheerio": "^0.20.0",
+    "elasticsearch": "^11.0.0",
+    "lodash": "^4.8.2",
+    "rabbit.js": "^0.4.4",
+    "robots-parser": "^1.0.0",
+    "simplecrawler": "^0.6.2",
+    "webworker": "^0.8.4",
+    "webworker-threads": "^0.7.2"
+  },
+  "devDependencies": {}
+}

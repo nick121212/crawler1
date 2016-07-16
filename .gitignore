@@ -1,0 +1,6 @@
+/core/node_modules/*
+/super_crawler/node_modules/*
+/tools/node_modules/*
+
+!/super_crawler/node_modules/phantom/
+!/super_crawler/node_modules/phantomjs-prebuilt/
