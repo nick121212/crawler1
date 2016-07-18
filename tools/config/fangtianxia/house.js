@@ -2,9 +2,12 @@ module.exports = (core) => {
     return (config) => {
         config.pages.house = {
             key: "house",
-            rule: {"regexp": /[a-z|A-Z|1-9]+\.fang\.com\/house\/\d+\/housedetail\.htm$/.toString(), scope: "i"},
+            rule: {
+                "regexp": /[a-z|A-Z|1-9]+\.fang\.com\/house\/\d+\/housedetail\.htm$/.toString(),
+                scope: "i"
+            },
             fieldKey: "name",
-            test: false,
+            test: true,
             area: {
                 none: {
                     data: [
@@ -19,11 +22,17 @@ module.exports = (core) => {
                     dealStrategy: "jsdom",
                     data: [
                         // 城市
-                        core.utils.data_builder.normal("city", [{eq: [1]}]),
+                        core.utils.data_builder.normal("city", [{
+                            eq: [1]
+                        }]),
                         // 地区
-                        core.utils.data_builder.normal("area", [{eq: [2]}]),
+                        core.utils.data_builder.normal("area", [{
+                            eq: [2]
+                        }]),
                         // 版块
-                        core.utils.data_builder.normal("plate", [{eq: [3]}]),
+                        core.utils.data_builder.normal("plate", [{
+                            eq: [3]
+                        }]),
                     ]
                 },
                 // 基本信息
@@ -70,17 +79,41 @@ module.exports = (core) => {
                         // 车位数
                         core.utils.data_builder.normal("parkingAmount", [".lineheight:eq(5)"], ["strong", "br"]),
                         // 产权年限
-                        core.utils.data_builder.normal("propertyAge", [".lineheight:eq(7)", {contents: []}, {eq: [36]}]),
+                        core.utils.data_builder.normal("propertyAge", [".lineheight:eq(7)", {
+                            contents: []
+                        }, {
+                            eq: [36]
+                        }]),
                         // 工程进度
-                        core.utils.data_builder.normal("jobProgress", [".lineheight:eq(7)", {contents: []}, {eq: [32]}]),
+                        core.utils.data_builder.normal("jobProgress", [".lineheight:eq(7)", {
+                            contents: []
+                        }, {
+                            eq: [32]
+                        }]),
                         // 占地面积
-                        core.utils.data_builder.normal("floorArea", [".lineheight:eq(7)", {contents: []}, {eq: [2]}]),
+                        core.utils.data_builder.normal("floorArea", [".lineheight:eq(7)", {
+                            contents: []
+                        }, {
+                            eq: [2]
+                        }]),
                         // 建筑面积
-                        core.utils.data_builder.normal("areaAmount", [".lineheight:eq(7)", {contents: []}, {eq: [6]}]),
+                        core.utils.data_builder.normal("areaAmount", [".lineheight:eq(7)", {
+                            contents: []
+                        }, {
+                            eq: [6]
+                        }]),
                         // 开工时间
-                        core.utils.data_builder.normal("startTime", [".lineheight:eq(7)", {contents: []}, {eq: [10]}]),
+                        core.utils.data_builder.normal("startTime", [".lineheight:eq(7)", {
+                            contents: []
+                        }, {
+                            eq: [10]
+                        }]),
                         // 竣工时间
-                        core.utils.data_builder.normal("completingTime", [".lineheight:eq(7)", {contents: []}, {eq: [14]}])
+                        core.utils.data_builder.normal("completingTime", [".lineheight:eq(7)", {
+                            contents: []
+                        }, {
+                            eq: [14]
+                        }])
                     ]
                 }
             },
