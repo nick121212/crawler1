@@ -34,8 +34,8 @@ class Downloader {
             let ip = ips.random();
             let proxy = `http://${ip.host}:${ip.port}`;
 
-            // 10s超时，不允许跳转，加上代理
-            req.proxy(proxy).timeout(10000).redirects(0);
+            // 5s超时，不允许跳转，加上代理
+            req.proxy(proxy).timeout(5000).redirects(0);
         } catch (e) {
             defer.reject(e);
         }

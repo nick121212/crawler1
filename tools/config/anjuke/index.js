@@ -29,7 +29,7 @@ module.exports = (core) => {
     // -----------------页面配置------------------
     core.config.anjuke.community(config);
     core.config.anjuke.house(config);
-    core.config.anjuke.house_base(config);
+    // core.config.anjuke.house_base(config);
 
     return config;
 };

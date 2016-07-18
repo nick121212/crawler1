@@ -26,7 +26,7 @@ module.exports = exports = (core) => {
 
     // -----------------页面配置------------------
     core.config.fangtianxia.house(config);
-    core.config.fangtianxia.house_base(config);
+    // core.config.fangtianxia.house_base(config);
 
     return config;
 };
