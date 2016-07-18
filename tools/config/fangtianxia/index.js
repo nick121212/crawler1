@@ -10,7 +10,7 @@ module.exports = exports = (core) => {
         scope: "i"
     }, "newhouse.sh.fang.com", "esf.sh.fang.com"]);
 
-    config.setBaseInfo(500, "phantom");
+    config.setBaseInfo(500, "phantom1");
 
     // ---白名单---
     // 匹配楼盘列表页

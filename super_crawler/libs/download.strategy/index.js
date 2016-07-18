@@ -8,6 +8,7 @@ class Downloader {
 
         this.register(phantom.key, phantom);
         this.register(superagent.key, superagent);
+        this.register(phantom1.key, phantom1);
     }
 
     register(key, instance) {
