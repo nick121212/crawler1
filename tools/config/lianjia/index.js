@@ -5,9 +5,10 @@
 let _ = require("lodash");
 
 module.exports = exports = (core) => {
-    let config = new core.utils.builder("lianjia", "sh.lianjia.com", ["sh.fang.lianjia.com"]);
+    let config = new core.utils.builder("lianjia", "lianjia.com", ["sh.fang.lianjia.com", "sh.lianjia.com"]);
 
-    config.setBaseInfo(500, "superagent");
+    config.setBaseInfo(1000, "superagent");
+    config.robotsHost = "lianjia.com";
     // 黑名单
     config.addBlackPath("^\/list\/search");
     config.addBlackPath("^\/list\/[a-f|h-o|q-z]{1,5}[1-9]{1,2}\/{0,1}$");

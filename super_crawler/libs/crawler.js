@@ -28,11 +28,13 @@ class Crawler extends EventEmitter {
         this.host = settings.host;
         this.key = settings.key;
         this.cluster = settings.cluster || false;
-        this.discover = new Discover(settings);
+
         this.queue = new Queue(settings, new QueueStoreOfEs(this.key));
+        this.discover = new Discover(settings, this.queue);
         // setTimeout(() => {
         new Deal(settings, this.queue.queueStore);
         // }, 10);
+        this.robotsHost = settings.robotsHost;
         this.isStart = false;
         this.downloader = settings.downloader || "superagent";
         this.interval = settings.interval || 500;
@@ -154,6 +156,7 @@ class Crawler extends EventEmitter {
         if (!this.host) {
             throw new Error("host不能为空！");
         }
+        let robotsTxtUrl = uri(this.robotsHost).pathname("/robots.txt");
 
         this.isStart = true;
         !this.cluster && this.queue.queueStore.addUrlsToEsUrls([{
@@ -163,7 +166,12 @@ class Crawler extends EventEmitter {
             path: this.initialPath,
             depth: 1
         }], this.key);
-        this.doLoop();
+        this.discover.getRobotsTxt(robotsTxtUrl).then(() => {
+            this.doLoop();
+        }, (err) => {
+            console.error(err);
+            this.doLoop();
+        });
     }
 }
 

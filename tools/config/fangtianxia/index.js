@@ -10,7 +10,8 @@ module.exports = exports = (core) => {
         scope: "i"
     }, "newhouse.sh.fang.com", "esf.sh.fang.com"]);
 
-    config.setBaseInfo(1000, "phantom1");
+    config.setBaseInfo(3000, "phantom1");
+    config.robotsHost = "fang.com";
 
     // ---白名单---
     // 匹配楼盘列表页

@@ -2,6 +2,8 @@
 
 let EventEmitter = require("events").EventEmitter;
 let uri = require("urijs");
+let robotsTxtParser = require("robots-parser");
+let downloaderStategy = require("./download.strategy");
 
 // 正则，用来匹配页面中的地址
 let discoverRegex = [
@@ -63,7 +65,7 @@ class DiscoverLinks extends EventEmitter {
      *   blackPathList     {array} 不用爬的路径
      *   whitePathList     {array} 路径白名单
      */
-    constructor(settings) {
+    constructor(settings, queue) {
             super();
 
             this.parseHTMLComments = settings.parseHTMLComments || false;
@@ -72,6 +74,9 @@ class DiscoverLinks extends EventEmitter {
             this.blackPathList = settings.blackPathList || [];
             this.whitePathList = settings.whitePathList || [];
             this.whitePathList.push(/^\/$/ig);
+            this.userAgent = settings.userAgent || "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36";
+            this._robotsTxts = [];
+            this.queue = queue;
         }
         /**
          * 判断协议是否支持
@@ -189,6 +194,10 @@ class DiscoverLinks extends EventEmitter {
                     return list;
                 }
 
+                if (!this.urlIsAllowed(URL)) {
+                    return list;
+                }
+
                 // Does the item already exist in the list?
                 if (list.reduce(function(prev, current) {
                         return prev || current === URL.toString();
@@ -224,6 +233,31 @@ class DiscoverLinks extends EventEmitter {
             .trim();
     }
 
+    getRobotsTxt(robotsTxtUrl) {
+        let defer = Promise.defer();
+
+        if (robotsTxtUrl) {
+            robotsTxtUrl = this.queue.processURL(robotsTxtUrl.href());
+            robotsTxtUrl = this.queue.queueStore.getQueueItemInfo(robotsTxtUrl.protocol, robotsTxtUrl.host, robotsTxtUrl.port, robotsTxtUrl.path, robotsTxtUrl.depth);
+            downloaderStategy.start("superagent", robotsTxtUrl.url).then((results) => {
+                this._robotsTxts.push(robotsTxtParser(robotsTxtUrl.url, results.responseBody));
+                defer.resolve();
+            }).catch((err) => {
+                if (err.status === 301 && err.response.headers.location) {
+                    let redirectTarget = uri(err.response.headers.location)
+                        .absoluteTo(robotsTxtUrl.url)
+                        .normalize();
+                    this.getRobotsTxt(redirectTarget).then(defer.resolve, defer.reject);
+                } else {
+                    defer.reject(err);
+                }
+            });
+        } else {
+            defer.resolve();
+        }
+        return defer.promise;
+    }
+
     /**
      * 判断链接是否合法
      * @param parsedURL {String} 链接
@@ -232,11 +266,11 @@ class DiscoverLinks extends EventEmitter {
     urlIsAllowed(parsedURL) {
         if (typeof parsedURL === "object") {
             parsedURL = {
-                protocol: parsedURL.protocol,
-                hostname: parsedURL.host,
-                port: parsedURL.port.toString(),
-                path: parsedURL.uriPath,
-                query: parsedURL.path.split("?")[1]
+                protocol: parsedURL.protocol(),
+                hostname: parsedURL.host(),
+                port: parsedURL.port().toString(),
+                path: parsedURL.path(),
+                query: parsedURL.query()
             };
         }
 
@@ -246,13 +280,15 @@ class DiscoverLinks extends EventEmitter {
         // The punycode module sometimes chokes on really weird domain
         // names. Catching those errors to prevent crawler from crashing
         try {
-            allowed = this._robotsTxts.reduce(function(result, robots) {
-                let allowed = robots.isAllowed(formattedURL, crawler.userAgent);
+            allowed = this._robotsTxts.reduce((result, robots) => {
+                let allowed = robots.isAllowed(formattedURL, this.userAgent);
                 return result !== undefined ? result : allowed;
             }, undefined);
         } catch (error) {
             // URL will be avoided
         }
+
+        allowed !== undefined && console.log(`${formattedURL} is ${allowed === undefined?"allow":"disallow"}`);
 
         return allowed === undefined ? true : allowed;
     }

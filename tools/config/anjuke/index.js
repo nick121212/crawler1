@@ -5,9 +5,10 @@
 let _ = require("lodash");
 
 module.exports = (core) => {
-    let config = new core.utils.builder("anjuke", "shanghai.anjuke.com", ["sh.fang.anjuke.com"]);
+    let config = new core.utils.builder("anjuke", "anjuke.com", ["sh.fang.anjuke.com"]);
 
-    config.setBaseInfo(500, "phantom1");
+    config.setBaseInfo(1000, "phantom1");
+    config.robotsHost = "anjuke.com";
 
     // 白名单
     // 匹配新房列表
