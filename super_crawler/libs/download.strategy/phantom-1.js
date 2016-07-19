@@ -16,8 +16,8 @@ class Downloader {
             loadImages: false,
             javascriptEnabled: false,
             ignoreSSLErrors: true,
-            proxy: `http://${ip.host}:${ip.port}`,
-            proxyType: "none"
+            proxy: `${ip.host}:${ip.port}`,
+            proxyType: "http"
         });
 
         horseman
