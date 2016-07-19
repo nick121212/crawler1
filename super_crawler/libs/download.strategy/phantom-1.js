@@ -15,13 +15,11 @@ class Downloader {
         const horseman = new Horseman({
             loadImages: false,
             javascriptEnabled: false,
-            ignoreSSLErrors: true,
-            proxy: `${ip.host}:${ip.port}`,
-            proxyType: "http"
+            ignoreSSLErrors: true
         });
 
         horseman
-        // .setProxy(ip.host, ip.port)
+            .setProxy(ip.host, ip.port)
             .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36")
             .open(uri.toString())
             .html()
