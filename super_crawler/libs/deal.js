@@ -58,6 +58,8 @@ class DealHtml extends EventEmitter {
                     if (!result.rule.test) {
                         if (result.rule.fieldKey && result.result[result.rule.fieldKey]) {
                             promises.push(this.queueStore.addCompleteData(queueItem, result.result, this.key, result.rule.key, result.rule.fieldKey));
+                        } else {
+                            promises.push(this.queueStore.addCompleteData(queueItem, result.result, this.key, result.rule.key, "url"));
                         }
                     } else {
                         console.log(result.result);

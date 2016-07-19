@@ -107,7 +107,10 @@ class Crawler extends EventEmitter {
                     }, this);
 
                     // 把搜索到的地址存入到es
-                    return this.queue.queueStore.addUrlsToEsUrls(urls, this.key);
+                    if (urls.length) {
+                        return this.queue.queueStore.addUrlsToEsUrls(urls, this.key);
+                    }
+                    return null;
                 }).then(() => {
                     next(msg);
                 }).catch((err) => {

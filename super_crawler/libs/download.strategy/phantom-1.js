@@ -16,7 +16,7 @@ class Downloader {
             loadImages: false,
             javascriptEnabled: false,
             ignoreSSLErrors: true,
-            proxy: `${ip.host}:${ip.port}`,
+            proxy: `http://${ip.host}:${ip.port}`,
             proxyType: "none"
         });
 

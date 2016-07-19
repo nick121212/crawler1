@@ -55,34 +55,53 @@ let suffixs = [
     "css"
 ];
 
+// Matching MIME-types will be allowed to fetch further than max depth
+let whitelistedMimeTypes = [
+    /^text\/(css|javascript|ecmascript)/i,
+    /^application\/javascript/i,
+    /^application\/x-font/i,
+    /^application\/font/i,
+    /^image\//i,
+    /^font\//i
+];
+
 class DiscoverLinks extends EventEmitter {
     /**
      * 构造函数
-     * @params settings  {object} 
+     * @param settings  {object}
      *   parseHTMLComments {boolean} 是否需要搜索comments中的url
      *   parseScriptTags   {boolean} 是否需要搜索标签中的url
      *   allowedProtocols  {array} 允许的协议的列表
      *   blackPathList     {array} 不用爬的路径
      *   whitePathList     {array} 路径白名单
+     *   userAgent         {string} ua
+     *   _robotsTxts       {Object} 机器人应答信息
+     *   fetchWhitelistedMimeTypesBelowMaxDepth {Boolean}
+     *   maxDepth          {number} 最大深度
+     * @param queue        {Object} 
      */
     constructor(settings, queue) {
-            super();
+        super();
 
-            this.parseHTMLComments = settings.parseHTMLComments || false;
-            this.parseScriptTags = settings.parseScriptTags || false;
-            this.allowedProtocols = settings.allowedProtocols || ["http"];
-            this.blackPathList = settings.blackPathList || [];
-            this.whitePathList = settings.whitePathList || [];
-            this.whitePathList.push(/^\/$/ig);
-            this.userAgent = settings.userAgent || "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36";
-            this._robotsTxts = [];
-            this.queue = queue;
-        }
-        /**
-         * 判断协议是否支持
-         * @param URL {string} 链接地址
-         * @returns boolean
-         */
+        this.parseHTMLComments = settings.parseHTMLComments || false;
+        this.parseScriptTags = settings.parseScriptTags || false;
+        this.allowedProtocols = settings.allowedProtocols || ["http"];
+        this.blackPathList = settings.blackPathList || [];
+        this.whitePathList = settings.whitePathList || [];
+        this.whitePathList.push(/^\/$/ig);
+        this.userAgent = settings.userAgent || "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36";
+        this._robotsTxts = [];
+        this.fetchWhitelistedMimeTypesBelowMaxDepth = settings.fetchWhitelistedMimeTypesBelowMaxDepth || false;
+        this.maxDepth = settings.maxDepth || 0;
+        this.ignoreRobots = settings.ignoreRobots || true;
+        this.queue = queue;
+    }
+
+    /**
+     * 判断协议是否支持
+     * @param URL {string} 链接地址
+     * @returns boolean
+     */
     protocolSupported(URL) {
         let protocol;
 
@@ -117,43 +136,35 @@ class DiscoverLinks extends EventEmitter {
      * @returns boolean
      */
     pathSUpported(path) {
-            let result;
-            let check = (list) => {
-                let res =
-                    list.some(function(value) {
-                        if (value.constructor === RegExp) {
-                            return value.test(path);
-                        } else if (value.constructor === Function) {
-                            return value(path);
-                        } else if (value.constructor === String) {
-                            return value === path;
-                        }
-                    });
+        let result;
+        let check = (list) => {
+            let res =
+                list.some(function(value) {
+                    if (value.constructor === RegExp) {
+                        return value.test(path);
+                    } else if (value.constructor === Function) {
+                        return value(path);
+                    } else if (value.constructor === String) {
+                        return value === path;
+                    }
+                });
 
+            return res;
+        };
+        // 判断不在在黑名单里面么
+        result = !check(this.blackPathList);
+        // 是否在白名单里面
+        result && (result = check(this.whitePathList));
 
+        return result;
+    }
 
-                return res;
-            };
-
-            // if (path.length > 5) {
-            //     if (path.indexOf("housedetail") >= 0) {
-            //         console.log(path);
-            //     }
-            // }
-
-            // 判断不在在黑名单里面么
-            result = !check(this.blackPathList);
-            // 是否在白名单里面
-            result && (result = check(this.whitePathList));
-
-            return result;
-        }
-        /**
-         * 去掉一些没用的URL
-         * @param urlMatch {array} 链接数组
-         * @param queueItem {object}
-         * @returns {arrray}
-         */
+    /**
+     * 去掉一些没用的URL
+     * @param urlMatch {array} 链接数组
+     * @param queueItem {object}
+     * @returns {arrray}
+     */
     cleanExpandResources(urlMatch, queueItem) {
         if (!urlMatch) {
             return [];
@@ -167,38 +178,34 @@ class DiscoverLinks extends EventEmitter {
                     URL = uri(URL)
                         .absoluteTo(queueItem.url || "")
                         .normalize();
-
-                    // URL = URL.toString();
                 } catch (e) {
-                    // But if URI.js couldn't parse it - nobody can!
                     return list;
                 }
 
-                // If we hit an empty item, don't return it
+                // url是否为空
                 if (!URL.toString().length) {
                     return list;
                 }
-
-                // If we don't support the protocol in question
+                // 判断协议是否支持
                 if (!this.protocolSupported(URL.toString())) {
                     return list;
                 }
-
+                // maxDepth是否符合
+                if (!this.depthAllowed(queueItem)) {
+                    return list;
+                }
                 // 后缀名是否支持
                 if (!this.extendSupported(URL.suffix())) {
                     return list;
                 }
-
                 // 路径是否需要爬
                 if (!this.pathSUpported(URL.path())) {
                     return list;
                 }
-
-                if (!this.urlIsAllowed(URL)) {
+                if (!this.ignoreRobots && !this.urlIsAllowed(URL)) {
                     return list;
                 }
-
-                // Does the item already exist in the list?
+                // url是否已经存在列表中
                 if (list.reduce(function(prev, current) {
                         return prev || current === URL.toString();
                     }, false)) {
@@ -233,6 +240,10 @@ class DiscoverLinks extends EventEmitter {
             .trim();
     }
 
+    /**
+     * 获取机器人应答信息
+     * @param robotsTxtUrl
+     */
     getRobotsTxt(robotsTxtUrl) {
         let defer = Promise.defer();
 
@@ -256,6 +267,28 @@ class DiscoverLinks extends EventEmitter {
             defer.resolve();
         }
         return defer.promise;
+    }
+
+    /**
+     * 深度是否允许爬取
+     * @param queueItem
+     * @returns {boolean|*}
+     */
+    depthAllowed(queueItem) {
+        let belowMaxDepth = this.fetchWhitelistedMimeTypesBelowMaxDepth;
+
+        if (typeof belowMaxDepth === "boolean") {
+            belowMaxDepth = belowMaxDepth === false ? 0 : Infinity;
+        }
+
+        let whitelistedDepth = queueItem.depth - belowMaxDepth;
+
+        return this.maxDepth === 0 ||
+            queueItem.depth <= this.maxDepth ||
+            whitelistedDepth <= this.maxDepth &&
+            this.whitelistedMimeTypes.some(function(mimeCheck) {
+                return mimeCheck.test(queueItem.stateData.contentType);
+            });
     }
 
     /**
@@ -288,7 +321,7 @@ class DiscoverLinks extends EventEmitter {
             // URL will be avoided
         }
 
-        allowed !== undefined && console.log(`${formattedURL} is ${allowed === undefined?"allow":"disallow"}`);
+        allowed !== undefined && console.log(`${formattedURL} is ${allowed === undefined ? "allow" : "disallow"}`);
 
         return allowed === undefined ? true : allowed;
     }
@@ -317,7 +350,6 @@ class DiscoverLinks extends EventEmitter {
             resourceText = resourceText.replace(/<script(.*?)>([\s\S]*?)<\/script>/gi, "");
         }
 
-        // Rough scan for URLs
         return discoverRegex
             .reduce((list, regex) => {
                 let resources = typeof regex === "function" ?
@@ -337,4 +369,4 @@ class DiscoverLinks extends EventEmitter {
     }
 }
 
-module.exports = exports = DiscoverLinks;
+module.exports = DiscoverLinks;
