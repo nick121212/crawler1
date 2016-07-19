@@ -7,7 +7,7 @@ module.exports = (core) => {
                 scope: "i"
             },
             fieldKey: "name",
-            test: true,
+            test: false,
             area: {
                 none: {
                     data: [
