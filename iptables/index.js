@@ -20,7 +20,7 @@ let download = (ipInfo)=> {
 
     let req = request.get("http://dfgjxc.fang.com/house/2426717359/housedetail.htm");
     let proxy = `http://${ipInfo.host}:${ipInfo.port}`;
-    req.proxy(proxy).timeout(9000).end((err, res) => {
+    req.proxy(proxy).timeout(2000).end((err, res) => {
         if (err) {
             return defer.reject(err);
         }
