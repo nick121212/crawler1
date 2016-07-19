@@ -7,33 +7,36 @@ class Downloader {
     }
 
     start(uri) {
-        let ip = ips.random(),
-            defer = Promise.defer(),
+        let ipInfo = ips.random(),
+            horseman = new Horseman({
+                timeout: 3000,
+                loadImages: false,
+                switchToNewTab: true,
+                ignoreSSLErrors: true,
+                javascriptEnabled: false,
+                proxy: `http://${ipInfo.host}:${ipInfo.port}`,
+                proxyType: `http`
+            }),
             result = {
                 urls: []
-            };
-        const horseman = new Horseman({
-            loadImages: false,
-            javascriptEnabled: false,
-            ignoreSSLErrors: true
-        });
+            },
+            resources = [];
 
-        console.log(`${ip.host}:${ip.port}`);
-
-        horseman
-            .setProxy(ip.host, ip.port)
+        return horseman
             .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36")
+            .on("resourceReceived", (res) => {
+                resources[res.url] = res;
+            })
             .open(uri.toString())
             .html()
-            .then((body) => {
+            .then(body => {
                 result.responseBody = body;
-                return horseman.close();
+                result.res = resources[uri.toString()] || null;
             })
+            .close()
             .then(() => {
-                defer.resolve(result);
-            }).catch(defer.reject);
-
-        return defer.promise;
+                return result;
+            });
     }
 }
 

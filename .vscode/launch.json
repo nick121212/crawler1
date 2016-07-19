@@ -7,7 +7,7 @@
         "program": "${workspaceRoot}/super_crawler/index.js",
         "stopOnEntry": false,
         "args": [],
-        "cwd": "${workspaceRoot}/super_crawler",
+        "cwd": "${workspaceRoot}/super_crawler/",
         "preLaunchTask": null,
         "runtimeExecutable": null,
         "runtimeArgs": [

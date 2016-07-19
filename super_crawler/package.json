@@ -21,6 +21,7 @@
     "robots-parser": "^1.0.0",
     "shelljs": "^0.7.0",
     "superagent": "^1.8.3",
+    "superagent-charset": "^1.1.1",
     "superagent-proxy": "^1.0.1",
     "urijs": "^1.18.0"
   },

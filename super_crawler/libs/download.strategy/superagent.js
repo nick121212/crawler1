@@ -1,6 +1,6 @@
 let request = require("superagent");
 let requestProxy = require("superagent-proxy")(request);
-
+let superagent_charset = require("superagent-charset")(request);
 let ips = require("./ips");
 
 class Downloader {
@@ -19,7 +19,7 @@ class Downloader {
             let proxy = `http://${ip.host}:${ip.port}`;
 
             // 5s超时，不允许跳转，加上代理
-            req.proxy(proxy).timeout(5000).redirects(0).end((err, res) => {
+            req.charset("utf8").proxy(proxy).timeout(5000).redirects(0).end((err, res) => {
                 if (err) {
                     console.log("error URI:", uri.toString());
                     return defer.reject(err);
