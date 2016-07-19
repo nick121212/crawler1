@@ -2,13 +2,11 @@
  * Created by NICK on 16/7/1.
  */
 
-let _ = require("lodash");
-
 module.exports = exports = (core) => {
     let config = new core.utils.builder("fangtianxia", "fang.com", [{
         regexp: "^[a-z|A-Z|1-9]+\.fang\.com",
         scope: "i"
-    }, "newhouse.sh.fang.com", "esf.sh.fang.com"]);
+    }, "newhouse.sh.fang.com"]);
 
     config.setBaseInfo(3000, "phantom1");
     config.robotsHost = "fang.com";

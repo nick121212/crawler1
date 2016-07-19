@@ -1,4 +1,4 @@
 /core/node_modules/*
 /super_crawler/node_modules/*
 /tools/node_modules/*
-/iptables/
+/iptables/node_modules/*
