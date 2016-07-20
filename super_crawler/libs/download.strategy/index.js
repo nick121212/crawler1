@@ -5,6 +5,7 @@ let superagent = require("./superagent");
 class Downloader {
     constructor() {
         this.downloaders = {};
+        this.errCount = 0;
 
         this.register(phantom.key, phantom);
         this.register(superagent.key, superagent);
@@ -30,8 +31,10 @@ class Downloader {
         let promise = intance.start(uri, settings, this.ipInfo);
 
         promise.catch(err => {
-            if (this.result && this.msg && err.res && err.res.status !== null) {
+            this.errCount++;
+            if (this.result && this.msg && this.errCount > 10) {
                 this.result.ch.act(this.msg);
+                this.errCount = 0;
             }
             return err;
         });

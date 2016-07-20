@@ -36,11 +36,7 @@ class Crawler extends EventEmitter {
         this.interval = settings.interval || 500;
         this.lastTime = Date.now();
         this.proxySettings = settings.proxySettings || {};
-
-        setTimeout(() => {
-            new Deal(settings, this.queue.queueStore);
-        }, 10);
-
+        new Deal(settings, this.queue.queueStore);
         this.proxySettings.useProxy && this.doInitDownloader();
     }
 
