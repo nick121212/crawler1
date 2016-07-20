@@ -45,7 +45,7 @@ module.exports = (core) => {
                         // 建筑类型
                         core.utils.data_builder.normal("buildingType", ["tr:eq(1) td:eq(0)"], ["strong"]),
                         // 装修情况
-                        core.utils.data_builder.normal("decorationStandard", ["tr:eq(1) td:eq(1)"], ["strong"]),
+                        core.utils.data_builder.normal("decorationStandard", ["tr:eq(1) td:eq(1)"], ["strong", "span"]),
                         // 环线
                         core.utils.data_builder.normal("lines", ["tr:eq(2) td:eq(0)"], ["strong"]),
                         // 容积率
