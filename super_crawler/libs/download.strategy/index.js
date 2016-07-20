@@ -17,6 +17,7 @@ class Downloader {
         this.msg = msg;
         try {
             this.ipInfo = JSON.parse(msg.content.toString());
+            this.errCount = 0;
         } catch (e) {
             result.ch.ack(msg);
         }
@@ -33,8 +34,9 @@ class Downloader {
         promise.catch(err => {
             this.errCount++;
             if (this.result && this.msg && this.errCount > 10) {
+                this.msg = null;
+                this.ipInfo = null;
                 this.result.ch.act(this.msg);
-                this.errCount = 0;
             }
             return err;
         });

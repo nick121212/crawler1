@@ -10,7 +10,6 @@ let from1 = 0,
 let search = (from1, size = 20) => {
     return core.elastic.search({
         index: "ips",
-        type: "kuaidaili",
         from: from1,
         size: size,
         fields: ["ips", "url"]
@@ -84,7 +83,7 @@ let searchCallback = (results) => {
 
 let ipInfos = require("./ip.json");
 
-core.q.getQueue("crawler.ips", {}).then((result)=> {
+core.q.getQueue("crawler.ips", {}).then((result) => {
     qresult = result;
     Promise.all([
         // 绑定queue到exchange
@@ -92,9 +91,9 @@ core.q.getQueue("crawler.ips", {}).then((result)=> {
         // 每次消费1条queue
         result.ch.prefetch(1)
     ]).then(() => {
-        _.each(ipInfos, (ipInfo)=> {
-            qresult.ch.publish("amq.topic", `${qresult.q.queue}`, new Buffer(JSON.stringify(ipInfo)));
-        });
-        // search(from1, size).then(searchCallback, console.error);
+        // _.each(ipInfos, (ipInfo)=> {
+        //     qresult.ch.publish("amq.topic", `${qresult.q.queue}`, new Buffer(JSON.stringify(ipInfo)));
+        // });
+        search(from1, size).then(searchCallback, console.error);
     });
 });
