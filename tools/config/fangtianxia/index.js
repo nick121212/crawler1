@@ -12,7 +12,7 @@ module.exports = exports = (core) => {
     config.robotsHost = "fang.com";
     config.proxySettings = {
         useProxy: true,
-        timeout: 10000
+        timeout: 20000
     };
     // ---白名单---
     // 匹配楼盘列表页
