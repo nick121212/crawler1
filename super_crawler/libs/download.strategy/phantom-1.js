@@ -19,7 +19,7 @@ class Downloader {
             result = {},
             resources = [];
 
-        if (settings.useProxy && ipInfo.port && ipInfo.port) {
+        if (settings.useProxy && ipInfo && ipInfo.port && ipInfo.port) {
             horsemanSetting.proxy = `http://${ipInfo.host}:${ipInfo.port}`;
             horsemanSetting.proxyType = "http";
         }

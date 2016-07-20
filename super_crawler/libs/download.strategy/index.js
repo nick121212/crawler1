@@ -35,9 +35,9 @@ class Downloader {
         promise.catch(err => {
             errCount++;
             if (this.result && this.msg && errCount > 4) {
-                this.msg = null;
                 this.ipInfo = null;
                 this.result.ch.ack(this.msg);
+                this.msg = null;
             }
             return err;
         });

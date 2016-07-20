@@ -15,7 +15,7 @@ class Downloader {
         try {
             let req = request.get(uri.toString());
 
-            if (settings.useProxy && ipInfo.port && ipInfo.port) {
+            if (settings.useProxy && ipInfo && ipInfo.port && ipInfo.port) {
                 req.proxy(`http://${ipInfo.host}:${ipInfo.port}`);
             }
             // 5s超时，不允许跳转
