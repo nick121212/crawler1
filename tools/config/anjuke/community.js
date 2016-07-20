@@ -2,7 +2,10 @@ module.exports = (core) => {
     return (config) => {
         config.pages.community = {
             key: "community",
-            rule: {"regexp": /\/community\/view\//.toString(), scope: "i"},
+            rule: {
+                "regexp": /\/community\/view\//.toString(),
+                scope: "i"
+            },
             fieldKey: "name",
             test: false,
             area: {
@@ -19,9 +22,13 @@ module.exports = (core) => {
                     dealStrategy: "jsdom",
                     data: [
                         // 城市
-                        core.utils.data_builder.normal("city", [{eq: [1]}]),
-                        // 城市
-                        core.utils.data_builder.normal("area", [{eq: [2]}])
+                        core.utils.data_builder.normal("city", [{
+                            eq: [1]
+                        }]),
+                        // 地区
+                        core.utils.data_builder.normal("area", [{
+                            eq: [2]
+                        }])
                     ]
                 },
                 // 基本信息
@@ -33,7 +40,7 @@ module.exports = (core) => {
                         core.utils.data_builder.normal("name", [".comm-cont h1"]),
                         // 均价
                         core.utils.data_builder.normal("averagePrice", [".mag-b2 em"]),
-                        // 均价
+                        // 均价单位
                         core.utils.data_builder.normal("averagePriceUnit", [".mag-b2 span"]),
                         // 标签
                         core.utils.data_builder.array("tags", [".comm-mark a"], [], [

@@ -28,17 +28,20 @@ class Crawler extends EventEmitter {
         this.host = settings.host;
         this.key = settings.key;
         this.cluster = settings.cluster || false;
-
         this.queue = new Queue(settings, new QueueStoreOfEs(this.key));
         this.discover = new Discover(settings, this.queue);
-        // setTimeout(() => {
-        new Deal(settings, this.queue.queueStore);
-        // }, 10);
         this.robotsHost = settings.robotsHost;
         this.isStart = false;
         this.downloader = settings.downloader || "superagent";
         this.interval = settings.interval || 500;
         this.lastTime = Date.now();
+        this.proxySettings = settings.proxySettings || {};
+
+        setTimeout(() => {
+            new Deal(settings, this.queue.queueStore);
+        }, 10);
+
+        this.proxySettings.useProxy && this.doInitDownloader();
     }
 
     /**
@@ -55,7 +58,7 @@ class Crawler extends EventEmitter {
         try {
             this.lastTime = Date.now();
             // 开始下载页面
-            downloaderStategy.start(this.downloader, uri(URL).normalize()).then((result) => {
+            downloaderStategy.start(this.downloader, uri(URL).normalize(), this.proxySettings || {}).then((result) => {
                 result.urls = this.discover.discoverResources(result.responseBody, queueItem);
                 result.res && (queueItem.stateData = result.res.headers);
                 // 页面查找到的链接存储到es中去
@@ -97,15 +100,9 @@ class Crawler extends EventEmitter {
                 // 请求页面
                 this.fetchQueueItem(queueItem).then((data) => {
                     data.urls.map((url) => {
-                        // if (url.indexOf("housedetail") >= 0) {
-                        //     console.log(url);
-                        // }
                         url = this.queue.queueURL(decodeURIComponent(url), queueItem);
-                        if (url) {
-                            urls.push(url);
-                        }
+                        url && urls.push(url);
                     }, this);
-
                     // 把搜索到的地址存入到es
                     if (urls.length) {
                         return this.queue.queueStore.addUrlsToEsUrls(urls, this.key);
@@ -115,7 +112,8 @@ class Crawler extends EventEmitter {
                     next(msg);
                 }).catch((err) => {
                     console.error(err.status, err.message);
-                    if (err.message == "fail" || err.status === 404 || err.status === 302 || err.status === 400) {
+                    // err.message == "fail" || 
+                    if (err.status === 404 || err.status === 302 || err.status === 400) {
                         return next(msg);
                     }
                     next(msg, true);
@@ -132,8 +130,6 @@ class Crawler extends EventEmitter {
      * 循环获取链接
      */
     doLoop() {
-        let urls = [];
-
         // 建立请求队列
         core.q.getQueue(`crawler.urls.${this.key}`, {}).then((result) => {
             Promise.all([
@@ -152,6 +148,24 @@ class Crawler extends EventEmitter {
         });
     }
 
+    doInitDownloader() {
+        core.q.getQueue(`crawler.ips`, {}).then((result) => {
+            Promise.all([
+                // 绑定queue到exchange
+                result.ch.bindQueue(result.q.queue, "amq.topic", `${result.q.queue}`),
+                // 每次消费1条queue
+                result.ch.prefetch(1)
+            ]).then(() => {
+                // 添加消费监听
+                result.ch.consume(result.q.queue, (msg) => {
+                    downloaderStategy.setQueueInfo(result, msg);
+                }, {
+                    noAck: false
+                });
+            });
+        });
+    }
+
     /**
      * 开始爬取数据
      */
@@ -160,22 +174,22 @@ class Crawler extends EventEmitter {
             throw new Error("host不能为空！");
         }
         let robotsTxtUrl = uri(this.robotsHost).pathname("/robots.txt");
-
-        this.isStart = true;
-        !this.cluster && this.queue.queueStore.addUrlsToEsUrls([{
+        this.queue.queueStore.addUrlsToEsUrls([{
             protocol: this.initialProtocol,
             host: this.host,
             port: this.initialPort,
             path: this.initialPath,
             depth: 1
         }], this.key);
+        // 获得机器人信息
         this.discover.getRobotsTxt(robotsTxtUrl).then(() => {
             this.doLoop();
         }, (err) => {
             console.error(err);
             this.doLoop();
         });
+        this.isStart = true;
     }
 }
 
-module.exports = exports = Crawler;
+module.exports = Crawler;

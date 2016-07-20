@@ -11,14 +11,29 @@ class Downloader {
         this.register(phantom1.key, phantom1);
     }
 
+    setQueueInfo(result, msg) {
+        this.result = result;
+        this.msg = msg;
+        try {
+            this.ipInfo = JSON.parse(msg.content.toString());
+        } catch (e) {
+            result.ch.ack(msg);
+        }
+    }
+
     register(key, instance) {
         this.downloaders[key] = instance;
     }
 
-    start(key, uri) {
+    start(key, uri, settings) {
         let intance = this.downloaders[key] || superagent;
 
-        return intance.start(uri);
+        return intance.start(uri, settings, this.ipInfo).catch(err => {
+            if (this.result && this.msg) {
+                this.result.ch.reject(this.msg);
+            }
+            return err;
+        });
     }
 }
 

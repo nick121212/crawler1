@@ -9,6 +9,9 @@ module.exports = exports = (core) => {
 
     config.setBaseInfo(1000, "superagent");
     config.robotsHost = "lianjia.com";
+    config.proxySettings = {
+        useProxy: false
+    };
     // 黑名单
     config.addBlackPath("^\/list\/search");
     config.addBlackPath("^\/list\/[a-f|h-o|q-z]{1,5}[1-9]{1,2}\/{0,1}$");

@@ -405,4 +405,4 @@ class QueueStoreOfES {
     }
 }
 
-module.exports = exports = QueueStoreOfES;
+module.exports = QueueStoreOfES;

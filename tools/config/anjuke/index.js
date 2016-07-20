@@ -9,7 +9,9 @@ module.exports = (core) => {
 
     config.setBaseInfo(1000, "phantom1");
     config.robotsHost = "anjuke.com";
-
+    config.proxySettings = {
+        useProxy: false
+    };
     // 白名单
     // 匹配新房列表
     config.addWhitePath(/^\/loupan\/all\/p\d*/);

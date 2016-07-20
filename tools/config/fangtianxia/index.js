@@ -10,7 +10,9 @@ module.exports = exports = (core) => {
 
     config.setBaseInfo(3000, "phantom1");
     config.robotsHost = "fang.com";
-
+    config.proxySettings = {
+        useProxy: true
+    };
     // ---白名单---
     // 匹配楼盘列表页
     config.addWhitePath(/^\/house\/s(\/*)$/);
