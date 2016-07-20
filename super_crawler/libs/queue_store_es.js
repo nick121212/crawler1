@@ -161,7 +161,7 @@ class QueueStoreOfES {
             type: type,
             id: data[idField],
             body: data,
-            versionType: "force"
+            consistency: "one"
         }).then(() => {
             defer.resolve(data);
         }, (err) => {

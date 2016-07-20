@@ -1,8 +1,11 @@
 module.exports = (core) => {
     return (config) => {
         config.pages.community = {
-            key: "community",
-            rule: {"regexp": /\/xiaoqu\/(.*?)(.html)$/.toString(), scope: "i"},
+            key: "crawler.community",
+            rule: {
+                "regexp": /\/xiaoqu\/(.*?)(.html)$/.toString(),
+                scope: "i"
+            },
             fieldKey: "name",
             test: false,
             area: {
@@ -19,9 +22,13 @@ module.exports = (core) => {
                     dealStrategy: "jsdom",
                     data: [
                         // 城市
-                        core.utils.data_builder.normal("city", [{eq: [1]}]),
+                        core.utils.data_builder.normal("city", [{
+                            eq: [1]
+                        }]),
                         // 地区
-                        core.utils.data_builder.normal("area", [{eq: [2]}]),
+                        core.utils.data_builder.normal("area", [{
+                            eq: [2]
+                        }]),
                     ]
                 },
                 priceInfo: {
@@ -39,9 +46,13 @@ module.exports = (core) => {
                     dealStrategy: "jsdom",
                     data: [
                         // 经度
-                        core.utils.data_builder.normal("latitude", [], [], {attr: ["latitude"]}),
+                        core.utils.data_builder.normal("latitude", [], [], {
+                            attr: ["latitude"]
+                        }),
                         // 纬度
-                        core.utils.data_builder.normal("longitude", [], [], {attr: ["longitude"]})
+                        core.utils.data_builder.normal("longitude", [], [], {
+                            attr: ["longitude"]
+                        })
                     ]
                 },
                 // 基本信息

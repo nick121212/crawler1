@@ -1,0 +1,78 @@
+{
+    "template-crawler": {
+        "template": "crawler*",
+        "settings": {
+            "index.number_of_shards": 5,
+            "number_of_replicas": 1
+        },
+        "mappings": {
+            "_default_": {
+                "properties": {
+                    "dynamic": true
+                }
+            },
+            "lianjia": {
+                "_source": {
+                    "compress": true
+                },
+                "_ttl": {
+                    "enabled": true,
+                    "default": "10d"
+                },
+                "_all": {
+                    "enabled": false
+                },
+                "properties": {
+                    "@fields": {
+                        "dynamic": true,
+                        "properties": {
+                            "completingTime": {
+                                "type": "string",
+                                "index": "no_analyzed"
+                            },
+                            "deliveryTime": {
+                                "type": "string",
+                                "index": "no_analyzed"
+                            },
+                            "prevTrade": {
+                                "type": "string",
+                                "index": "no_analyzed"
+                            }
+                        }
+                    }
+                }
+            },
+            "fangtianxia": {
+                "_source": {
+                    "compress": true
+                },
+                "_ttl": {
+                    "enabled": true,
+                    "default": "10d"
+                },
+                "_all": {
+                    "enabled": false
+                },
+                "properties": {
+                    "@fields": {
+                        "dynamic": true,
+                        "properties": {
+                            "completingTime": {
+                                "type": "string",
+                                "index": "no_analyzed"
+                            },
+                            "deliveryTime": {
+                                "type": "string",
+                                "index": "no_analyzed"
+                            },
+                            "prevTrade": {
+                                "type": "string",
+                                "index": "no_analyzed"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

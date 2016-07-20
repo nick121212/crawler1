@@ -1,9 +1,9 @@
 module.exports = (core) => {
     return (config) => {
         config.pages.room = {
-            key: "room",
+            key: "crawler.room",
             rule: {
-                "regexp": /\/ershoufang\/(.*?)(\.html)$/.toString(),
+                regexp: /\/ershoufang\/(.*?)(\.html)$/.toString(),
                 scope: "i"
             },
             fieldKey: "name",

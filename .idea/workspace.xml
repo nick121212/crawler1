@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="" />
+    <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" afterPath="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/community.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/community.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/house.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/house.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/fangtianxia/house.js" afterPath="$PROJECT_DIR$/tools/config/fangtianxia/house.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/lianjia/community.js" afterPath="$PROJECT_DIR$/tools/config/lianjia/community.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/lianjia/community_room.js" afterPath="$PROJECT_DIR$/tools/config/lianjia/community_room.js" />
+    </list>
     <ignored path="crawler.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +38,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deal.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="deal.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/super_crawler/libs/deal.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="82">
@@ -41,11 +48,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="crawler.template.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/crawler.template.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-300">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="queue_store_es.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/super_crawler/libs/queue_store_es.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-3038">
-              <caret line="165" column="21" selection-start-line="165" selection-start-column="21" selection-end-line="165" selection-end-column="21" />
+              <caret line="167" column="21" selection-start-line="167" selection-start-column="21" selection-end-line="167" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -56,16 +73,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
               <caret line="480" column="3" selection-start-line="480" selection-start-column="3" selection-end-line="480" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iptables/node_modules/superagent-charset/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -225,24 +232,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="super_crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -343,7 +332,7 @@
       <updated>1468893505710</updated>
       <workItem from="1468893507902" duration="9099000" />
       <workItem from="1468916378593" duration="1095000" />
-      <workItem from="1468988252548" duration="5656000" />
+      <workItem from="1468988252548" duration="5836000" />
     </task>
     <task id="LOCAL-00001" summary="dfdf">
       <created>1468915216094</created>
@@ -356,7 +345,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15850000" />
+    <option name="totallyTimeSpent" value="16030000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -368,7 +357,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47945204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22739726" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -702,7 +691,7 @@
     <entry file="file://$PROJECT_DIR$/super_crawler/libs/queue_store_es.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3038">
-          <caret line="165" column="21" selection-start-line="165" selection-start-column="21" selection-end-line="165" selection-end-column="21" />
+          <caret line="167" column="21" selection-start-line="167" selection-start-column="21" selection-end-line="167" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -711,6 +700,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="82">
           <caret line="61" column="64" selection-start-line="61" selection-start-column="64" selection-end-line="61" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawler.template.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-300">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

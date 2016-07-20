@@ -1,7 +1,7 @@
 module.exports = (core) => {
     return (config) => {
         config.pages.house = {
-            key: "house",
+            key: "house-1",
             rule: {
                 "regexp": /[a-z|A-Z|1-9]+\.fang\.com\/house\/\d+\/housedetail\.htm$/.toString(),
                 scope: "i"

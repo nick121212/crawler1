@@ -1,8 +1,11 @@
 module.exports = (core) => {
     return (config) => {
         config.pages.house = {
-            key: "house",
-            rule: {"regexp": /\/loupan\/canshu-\d*\.html/.toString(), scope: "i"},
+            key: "crawler.house",
+            rule: {
+                "regexp": /\/loupan\/canshu-\d*\.html/.toString(),
+                scope: "i"
+            },
             fieldKey: "name",
             test: false,
             area: {
@@ -11,13 +14,21 @@ module.exports = (core) => {
                     dealStrategy: "jsdom",
                     data: [
                         // 省市
-                        core.utils.data_builder.normal("province", [{eq: [0]}]),
+                        core.utils.data_builder.normal("province", [{
+                            eq: [0]
+                        }]),
                         // 城市
-                        core.utils.data_builder.normal("city", [{eq: [1]}]),
+                        core.utils.data_builder.normal("city", [{
+                            eq: [1]
+                        }]),
                         // 城市
-                        core.utils.data_builder.normal("area", [{eq: [2]}]),
+                        core.utils.data_builder.normal("area", [{
+                            eq: [2]
+                        }]),
                         // 版块
-                        core.utils.data_builder.normal("plate", [{eq: [3]}]),
+                        core.utils.data_builder.normal("plate", [{
+                            eq: [3]
+                        }]),
                     ]
                 },
                 // 基本信息

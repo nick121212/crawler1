@@ -1,7 +1,7 @@
 module.exports = (core) => {
     return (config) => {
         config.pages.community = {
-            key: "community",
+            key: "crawler.community",
             rule: {
                 "regexp": /\/community\/view\//.toString(),
                 scope: "i"
