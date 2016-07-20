@@ -8,7 +8,7 @@ module.exports = exports = (core) => {
         scope: "i"
     }, "newhouse.sh.fang.com"]);
 
-    config.setBaseInfo(1000, "superagent");
+    config.setBaseInfo(1500, "superagent");
     config.robotsHost = "fang.com";
     config.proxySettings = {
         useProxy: true,

@@ -33,7 +33,7 @@ class Downloader {
         let promise = intance.start(uri, settings, this.ipInfo);
 
         promise.catch(err => {
-            errCount++;
+            !err.timeout && errCount++;
             if (this.result && this.msg && errCount > 4) {
                 this.ipInfo = null;
                 this.result.ch.ack(this.msg);

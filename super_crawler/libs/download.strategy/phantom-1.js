@@ -40,7 +40,7 @@ class Downloader {
             .then(() => {
                 defer.resolve(result);
             }).catch(err => {
-                err.res = resources[uri.toString()] || null;
+                err.response = resources[uri.toString()] || null;
 
                 defer.reject(err);
             });
