@@ -31,7 +31,7 @@ class Downloader {
 
         promise.catch(err => {
             if (this.result && this.msg && err.res && err.res.status !== null) {
-                this.result.ch.reject(this.msg);
+                this.result.ch.act(this.msg);
             }
             return err;
         });
