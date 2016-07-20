@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/deal.js" afterPath="$PROJECT_DIR$/super_crawler/libs/deal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" afterPath="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" />
-    </list>
+    <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="" />
     <ignored path="crawler.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -346,7 +343,7 @@
       <updated>1468893505710</updated>
       <workItem from="1468893507902" duration="9099000" />
       <workItem from="1468916378593" duration="1095000" />
-      <workItem from="1468988252548" duration="5339000" />
+      <workItem from="1468988252548" duration="5656000" />
     </task>
     <task id="LOCAL-00001" summary="dfdf">
       <created>1468915216094</created>
@@ -359,7 +356,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15533000" />
+    <option name="totallyTimeSpent" value="15850000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />

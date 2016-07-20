@@ -160,7 +160,8 @@ class QueueStoreOfES {
             index: index || this.es_index,
             type: type,
             id: data[idField],
-            body: data
+            body: data,
+            versionType: "force"
         }).then(() => {
             defer.resolve(data);
         }, (err) => {
