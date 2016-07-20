@@ -163,8 +163,8 @@ class QueueStoreOfES {
             body: data
         }).then(() => {
             defer.resolve(data);
-        }, () => {
-            defer.resolve();
+        }, (err) => {
+            defer.reject(err);
         });
 
         return defer.promise;

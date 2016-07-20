@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="" />
+    <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/deal.js" afterPath="$PROJECT_DIR$/super_crawler/libs/deal.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" afterPath="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" />
+    </list>
     <ignored path="crawler.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,11 +24,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iptables/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="94" column="102" selection-start-line="94" selection-start-column="102" selection-end-line="94" selection-end-column="102" />
+            <state relative-caret-position="217">
+              <caret line="95" column="14" selection-start-line="93" selection-start-column="8" selection-end-line="95" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deal.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/super_crawler/libs/deal.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="82">
+              <caret line="61" column="64" selection-start-line="61" selection-start-column="64" selection-end-line="61" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -34,8 +47,8 @@
       <file leaf-file-name="queue_store_es.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/super_crawler/libs/queue_store_es.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="352" column="109" selection-start-line="352" selection-start-column="12" selection-end-line="352" selection-end-column="109" />
+            <state relative-caret-position="-3038">
+              <caret line="165" column="21" selection-start-line="165" selection-start-column="21" selection-end-line="165" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -61,16 +74,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/config/xicidaili/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="28" selection-start-line="21" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ips.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/super_crawler/libs/download.strategy/ips.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -85,7 +88,7 @@
         <entry file="file://$PROJECT_DIR$/super_crawler/libs/crawler.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
-              <caret line="110" column="44" selection-start-line="110" selection-start-column="23" selection-end-line="110" selection-end-column="44" />
+              <caret line="111" column="44" selection-start-line="110" selection-start-column="23" selection-end-line="110" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -107,8 +110,7 @@
             <state relative-caret-position="277">
               <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
               <folding>
-                <marker date="1468998117000" expanded="true" signature="1069:1130" ph="{...}" />
-                <marker date="1468998117000" expanded="true" signature="1069:1163" ph="{...}" />
+                <marker date="1468999251000" expanded="true" signature="1096:1111" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -118,7 +120,7 @@
         <entry file="file://$PROJECT_DIR$/super_crawler/libs/download.strategy/superagent.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="23" column="32" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="172" />
+              <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -150,11 +152,12 @@
         <option value="$PROJECT_DIR$/iptables/1468991991426-1" />
         <option value="$PROJECT_DIR$/super_crawler/libs/download.strategy/phantom-1.js" />
         <option value="$PROJECT_DIR$/super_crawler/libs/download.strategy/superagent.js" />
-        <option value="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" />
         <option value="$PROJECT_DIR$/super_crawler/libs/crawler.js" />
         <option value="$PROJECT_DIR$/super_crawler/libs/download.strategy/index.js" />
         <option value="$PROJECT_DIR$/iptables/ip.json" />
         <option value="$PROJECT_DIR$/iptables/index.js" />
+        <option value="$PROJECT_DIR$/super_crawler/libs/deal.js" />
+        <option value="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" />
       </list>
     </option>
   </component>
@@ -221,7 +224,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="iptables" />
+              <option name="myItemId" value="super_crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="super_crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -325,7 +346,7 @@
       <updated>1468893505710</updated>
       <workItem from="1468893507902" duration="9099000" />
       <workItem from="1468916378593" duration="1095000" />
-      <workItem from="1468988252548" duration="5275000" />
+      <workItem from="1468988252548" duration="5339000" />
     </task>
     <task id="LOCAL-00001" summary="dfdf">
       <created>1468915216094</created>
@@ -338,11 +359,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15469000" />
+    <option name="totallyTimeSpent" value="15533000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -350,7 +371,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47945204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47945204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -465,7 +486,7 @@
         <state relative-caret-position="165">
           <caret line="11" column="33" selection-start-line="10" selection-start-column="4" selection-end-line="11" selection-end-column="35" />
           <folding>
-            <marker date="1468989383000" expanded="true" signature="229:243" ph="[...]" />
+            <marker date="1468999658000" expanded="true" signature="229:243" ph="[...]" />
           </folding>
         </state>
       </provider>
@@ -562,7 +583,7 @@
         <state relative-caret-position="210">
           <caret line="14" column="6" selection-start-line="10" selection-start-column="4" selection-end-line="11" selection-end-column="35" />
           <folding>
-            <marker date="1468989383000" expanded="true" signature="229:243" ph="[...]" />
+            <marker date="1468999658000" expanded="true" signature="229:243" ph="[...]" />
           </folding>
         </state>
       </provider>
@@ -642,15 +663,7 @@
     <entry file="file://$PROJECT_DIR$/super_crawler/libs/download.strategy/superagent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="23" column="32" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="172" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/super_crawler/libs/queue_store_es.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="352" column="109" selection-start-line="352" selection-start-column="12" selection-end-line="352" selection-end-column="109" />
+          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -658,7 +671,7 @@
     <entry file="file://$PROJECT_DIR$/super_crawler/libs/crawler.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="110" column="44" selection-start-line="110" selection-start-column="23" selection-end-line="110" selection-end-column="44" />
+          <caret line="111" column="44" selection-start-line="110" selection-start-column="23" selection-end-line="110" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -668,8 +681,7 @@
         <state relative-caret-position="277">
           <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
           <folding>
-            <marker date="1468998117000" expanded="true" signature="1069:1130" ph="{...}" />
-            <marker date="1468998117000" expanded="true" signature="1069:1163" ph="{...}" />
+            <marker date="1468999251000" expanded="true" signature="1096:1111" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -684,8 +696,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/iptables/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="94" column="102" selection-start-line="94" selection-start-column="102" selection-end-line="94" selection-end-column="102" />
+        <state relative-caret-position="217">
+          <caret line="95" column="14" selection-start-line="93" selection-start-column="8" selection-end-line="95" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/super_crawler/libs/queue_store_es.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3038">
+          <caret line="165" column="21" selection-start-line="165" selection-start-column="21" selection-end-line="165" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/super_crawler/libs/deal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="61" column="64" selection-start-line="61" selection-start-column="64" selection-end-line="61" selection-end-column="64" />
           <folding />
         </state>
       </provider>

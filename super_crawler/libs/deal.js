@@ -118,4 +118,4 @@ class DealHtml extends EventEmitter {
     }
 }
 
-module.exports = exports = DealHtml;
+module.exports = DealHtml;
