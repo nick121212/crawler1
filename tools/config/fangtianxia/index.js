@@ -8,10 +8,11 @@ module.exports = exports = (core) => {
         scope: "i"
     }, "newhouse.sh.fang.com"]);
 
-    config.setBaseInfo(3000, "phantom1");
+    config.setBaseInfo(1000, "superagent");
     config.robotsHost = "fang.com";
     config.proxySettings = {
-        useProxy: true
+        useProxy: true,
+        timeout: 10000
     };
     // ---白名单---
     // 匹配楼盘列表页
