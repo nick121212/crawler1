@@ -8,16 +8,15 @@ class Downloader {
 
     start(uri, settings = {}, ipInfo = {}) {
         let horseman,
+            defer = Promise.defer(),
             horsemanSetting = {
-                timeout: 3000,
+                timeout: settings.timeout || 5000,
                 loadImages: false,
                 switchToNewTab: true,
                 ignoreSSLErrors: true,
                 javascriptEnabled: false
             },
-            result = {
-                urls: []
-            },
+            result = {},
             resources = [];
 
         if (settings.useProxy && ipInfo.port && ipInfo.port) {
@@ -26,7 +25,7 @@ class Downloader {
         }
 
         horseman = new Horseman(horsemanSetting);
-        return horseman
+        horseman
             .userAgent(settings.ua || "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36")
             .on("resourceReceived", (res) => {
                 resources[res.url] = res;
@@ -39,8 +38,14 @@ class Downloader {
             })
             .close()
             .then(() => {
-                return result;
+                defer.resolve(result);
+            }).catch(err => {
+                err.res = resources[uri.toString()] || null;
+
+                defer.reject(err);
             });
+
+        return defer.promise;
     }
 }
 

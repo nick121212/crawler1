@@ -342,6 +342,8 @@ class DiscoverLinks extends EventEmitter {
             queueItem.protocol = "http";
         }
 
+        resourceText = resourceText || "";
+
         if (!this.parseHTMLComments) {
             resourceText = resourceText.replace(/<!--([\s\S]+?)-->/g, "");
         }

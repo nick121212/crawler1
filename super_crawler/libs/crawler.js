@@ -111,7 +111,7 @@ class Crawler extends EventEmitter {
                 }).then(() => {
                     next(msg);
                 }).catch((err) => {
-                    console.error(err.status, err.message);
+                    console.error(err.status, err);
                     // err.message == "fail" || 
                     if (err.status === 404 || err.status === 302 || err.status === 400) {
                         return next(msg);
@@ -148,6 +148,9 @@ class Crawler extends EventEmitter {
         });
     }
 
+    /**
+     * 初始化代理ip的quque
+     */
     doInitDownloader() {
         core.q.getQueue(`crawler.ips`, {}).then((result) => {
             Promise.all([

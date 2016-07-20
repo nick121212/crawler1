@@ -82,6 +82,7 @@ let searchCallback = (results) => {
     }
 };
 
+let ipInfos = require("./ip.json");
 
 core.q.getQueue("crawler.ips", {}).then((result)=> {
     qresult = result;
@@ -91,6 +92,9 @@ core.q.getQueue("crawler.ips", {}).then((result)=> {
         // 每次消费1条queue
         result.ch.prefetch(1)
     ]).then(() => {
-        search(from1, size).then(searchCallback, console.error);
+        _.each(ipInfos, (ipInfo)=> {
+            qresult.ch.publish("amq.topic", `${qresult.q.queue}`, new Buffer(JSON.stringify(ipInfo)));
+        });
+        // search(from1, size).then(searchCallback, console.error);
     });
 });

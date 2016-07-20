@@ -27,13 +27,16 @@ class Downloader {
 
     start(key, uri, settings) {
         let intance = this.downloaders[key] || superagent;
+        let promise = intance.start(uri, settings, this.ipInfo);
 
-        return intance.start(uri, settings, this.ipInfo).catch(err => {
-            if (this.result && this.msg) {
+        promise.catch(err => {
+            if (this.result && this.msg && err.res && err.res.status !== null) {
                 this.result.ch.reject(this.msg);
             }
             return err;
         });
+
+        return promise;
     }
 }
 
