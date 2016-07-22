@@ -6,6 +6,21 @@
             "number_of_replicas": 1
         },
         "mappings": {
+            "lianjia": {
+                "properties": {
+                    "pictures": {
+                        "type": "nested",
+                        "properties": {
+                            "title": {
+                                "type": "string"
+                            },
+                            "url": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
             "_default_": {
                 "_source": {
                     "enabled": false
