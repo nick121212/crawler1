@@ -26,7 +26,7 @@ module.exports = (core) => {
                         // 楼盘二手房图片
                         core.utils.data_builder.array("pictures", ["li"], [], [
                             core.utils.data_builder.normal("title", ["img"], [], {
-                                attr: ["title"]
+                                attr: ["img-title"]
                             }),
                             core.utils.data_builder.normal("url", ["img"], [], {
                                 attr: ["src"]

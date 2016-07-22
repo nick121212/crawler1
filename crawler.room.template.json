@@ -1,108 +1,106 @@
 {
-    "test": {
-        "template": "crawler.room",
-        "settings": {
-            "index.number_of_shards": 5,
-            "number_of_replicas": 1
-        },
-        "mappings": {
-            "_default_": {
-                "_source": {
-                    "enabled": false
+    "template": "crawler.room",
+    "settings": {
+        "index.number_of_shards": 5,
+        "number_of_replicas": 1
+    },
+    "mappings": {
+        "_default_": {
+            "_source": {
+                "enabled": false
+            },
+            "properties": {
+                "feature": {
+                    "tpye": "string"
                 },
-                "properties": {
-                    "feature": {
-                        "tpye": "string"
-                    },
-                    "isOnly": {
-                        "tpye": "string"
-                    },
-                    "position": {
-                        "tpye": "string"
-                    },
-                    "floorRoomScale": {
-                        "tpye": "string"
-                    },
-                    "monthPayment": {
-                        "tpye": "string"
-                    },
-                    "prevTrade": {
-                        "tpye": "string"
-                    },
-                    "yearLimit": {
-                        "tpye": "string"
-                    },
-                    "area": {
-                        "tpye": "string"
-                    },
-                    "sellingPoint": {
-                        "tpye": "string"
-                    },
-                    "toward": {
-                        "tpye": "string"
-                    },
-                    "completionTime": {
-                        "tpye": "string"
-                    },
-                    "onSellTime": {
-                        "tpye": "string"
-                    },
-                    "downPayment": {
-                        "tpye": "string"
-                    },
-                    "floorScale": {
-                        "tpye": "string"
-                    },
-                    "decoration": {
-                        "type": "string"
-                    },
-                    "floor": {
-                        "type": "string"
-                    },
-                    "propertyType": {
-                        "type": "string"
-                    },
-                    "layout": {
-                        "type": "string"
-                    },
-                    "roomNumber": {
-                        "type": "string"
-                    },
-                    "buildingName": {
-                        "type": "string"
-                    },
-                    "hasDegree": {
-                        "type": "string"
-                    },
-                    "sumPrice": {
-                        "type": "string"
-                    },
-                    "price": {
-                        "type": "string"
-                    },
-                    "community": {
-                        "type": "string"
-                    },
-                    "address": {
-                        "type": "string"
-                    },
-                    "pictures": {
-                        "type": "nested",
-                        "properties": {
-                            "title": {
-                                "type": "string"
-                            },
-                            "url": {
-                                "type": "string"
-                            }
+                "isOnly": {
+                    "tpye": "string"
+                },
+                "position": {
+                    "tpye": "string"
+                },
+                "floorRoomScale": {
+                    "tpye": "string"
+                },
+                "monthPayment": {
+                    "tpye": "string"
+                },
+                "prevTrade": {
+                    "tpye": "string"
+                },
+                "yearLimit": {
+                    "tpye": "string"
+                },
+                "area": {
+                    "tpye": "string"
+                },
+                "sellingPoint": {
+                    "tpye": "string"
+                },
+                "toward": {
+                    "tpye": "string"
+                },
+                "completionTime": {
+                    "tpye": "string"
+                },
+                "onSellTime": {
+                    "tpye": "string"
+                },
+                "downPayment": {
+                    "tpye": "string"
+                },
+                "floorScale": {
+                    "tpye": "string"
+                },
+                "decoration": {
+                    "type": "string"
+                },
+                "floor": {
+                    "type": "string"
+                },
+                "propertyType": {
+                    "type": "string"
+                },
+                "layout": {
+                    "type": "string"
+                },
+                "roomNumber": {
+                    "type": "string"
+                },
+                "buildingName": {
+                    "type": "string"
+                },
+                "hasDegree": {
+                    "type": "string"
+                },
+                "sumPrice": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "community": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "pictures": {
+                    "type": "nested",
+                    "properties": {
+                        "title": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string"
                         }
-                    },
-                    "introduction": {
-                        "type": "string"
-                    },
-                    "tags": {
-                        "type": "object"
                     }
+                },
+                "introduction": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "object"
                 }
             }
         }
