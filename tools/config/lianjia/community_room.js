@@ -25,10 +25,10 @@ module.exports = (core) => {
                     data: [
                         // 楼盘二手房图片
                         core.utils.data_builder.array("pictures", ["li"], [], [
-                            core.utils.data_builder.normal("imageTitle", ["img"], [], {
+                            core.utils.data_builder.normal("title", ["img"], [], {
                                 attr: ["title"]
                             }),
-                            core.utils.data_builder.normal("imageUrl", ["img"], [], {
+                            core.utils.data_builder.normal("url", ["img"], [], {
                                 attr: ["src"]
                             })
                         ])

@@ -17,18 +17,49 @@ module.exports = (core) => {
                         core.utils.data_builder.normal("address", [".adr"])
                     ]
                 },
+                pictures: {
+                    selector: ".album-box .smart-img",
+                    dealStrategy: "jsdom",
+                    data: [
+                        // 图片
+                        core.utils.data_builder.array("pictures", ["li"], [], [
+                            core.utils.data_builder.normal("title", ["img"], [], {
+                                attr: ["title"]
+                            }),
+                            core.utils.data_builder.normal("url", ["img"], [], {
+                                attr: ["src"]
+                            })
+                        ])
+                    ]
+                },
                 position: {
                     selector: ".intro .container .fl a",
                     dealStrategy: "jsdom",
                     data: [
                         // 城市
-                        core.utils.data_builder.normal("city", [{
-                            eq: [1]
-                        }]),
-                        // 地区
-                        core.utils.data_builder.normal("area", [{
-                            eq: [2]
-                        }]),
+                        // core.utils.data_builder.normal("city", [{eq: [1]}]),
+                        core.utils.data_builder.combine(core.utils.data_builder.normal("city", [{eq: [1]}]), {
+                            formats: [
+                                {str: []},
+                                {
+                                    replace: {
+                                        regexp: /小区/.toString(),
+                                        scope: "i",
+                                        repStr: ""
+                                    }
+                                }]
+                        }),
+                        core.utils.data_builder.combine(core.utils.data_builder.normal("area", [{eq: [2]}]), {
+                            formats: [
+                                {str: []},
+                                {
+                                    replace: {
+                                        regexp: /小区/.toString(),
+                                        scope: "i",
+                                        repStr: ""
+                                    }
+                                }]
+                        })
                     ]
                 },
                 priceInfo: {
@@ -41,18 +72,21 @@ module.exports = (core) => {
                         core.utils.data_builder.normal("averagePrice", [".p"], ["img"])
                     ]
                 },
-                jwd: {
+                geoInfo: {
                     selector: ".zone-map.js_content",
                     dealStrategy: "jsdom",
                     data: [
-                        // 经度
-                        core.utils.data_builder.normal("latitude", [], [], {
-                            attr: ["latitude"]
-                        }),
-                        // 纬度
-                        core.utils.data_builder.normal("longitude", [], [], {
-                            attr: ["longitude"]
-                        })
+                        // 位置信息
+                        core.utils.data_builder.object("geoBaidu", [
+                            // 经度
+                            core.utils.data_builder.normal("lat", [], [], {
+                                attr: ["latitude"]
+                            }),
+                            // 纬度
+                            core.utils.data_builder.normal("lon", [], [], {
+                                attr: ["longitude"]
+                            })
+                        ])
                     ]
                 },
                 // 基本信息

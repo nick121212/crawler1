@@ -33,9 +33,12 @@ module.exports = (core) => {
                 },
                 // 基本信息
                 baseInfo: {
-                    selector: ".can-container .can-item:eq(0) .can-border .list",
+                    selector: ".can-container .can-item:eq(0) .can-border .list li",
                     dealStrategy: "jsdom",
                     data: [
+                        // core.utils.data_builder.array("switchs", [], [], [
+                        //     core.utils.data_builder.switchs(".name",[])
+                        // ]),
                         // 小区名称
                         core.utils.data_builder.normal("name", ["li:eq(0) .des"], ["i"]),
                         // 楼盘特点标签

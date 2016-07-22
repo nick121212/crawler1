@@ -2,7 +2,8 @@ let phantom = require("./phantom");
 let phantom1 = require("./phantom-1");
 let superagent = require("./superagent");
 
-let errCount = 0;
+let errCount = 0,
+    timeoutCount = 0;
 
 class Downloader {
     constructor() {
@@ -18,7 +19,11 @@ class Downloader {
         this.msg = msg;
         try {
             this.ipInfo = JSON.parse(msg.content.toString());
-            errCount = 0;
+            if (errCount > 4) {
+                errCount = 0;
+                timeoutCount = 0;
+            }
+            timeoutCount > 4 && (timeoutCount = 0);
         } catch (e) {
             result.ch.ack(msg);
         }
@@ -34,7 +39,8 @@ class Downloader {
 
         promise.catch(err => {
             !err.timeout && errCount++;
-            if (this.result && this.msg && errCount > 4) {
+            err.timeout && timeoutCount++;
+            if (this.result && this.msg && (errCount > 4 || timeoutCount > 4)) {
                 this.ipInfo = null;
                 this.result.ch.ack(this.msg);
                 this.msg = null;

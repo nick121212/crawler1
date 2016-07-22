@@ -10,25 +10,25 @@ class Strategy {
      * 注册默认的解析策略
      */
     constructor() {
-        this.key = "queryString";
+        this.key = "qs";
     }
 
     /**
-     * 数组类型,直接返回空数组
-     * @returns Array
+     * 处理数据，获取querystring中键值
+     * @returns {String}
      */
-    doDeal(results, data) {
-        if (!results) {
+    doDeal(result, data) {
+        if (!result) {
             return null;
         }
         let noSparse, jData;
 
-        if (typeof results === "string") {
-            results.indexOf("?") >= 0 && (results = results.substr(results.indexOf("?") + 1));
-            results.indexOf("#") >= 0 && (results = results.substr(results.indexOf("#") + 1));
+        if (typeof result === "string") {
+            result.indexOf("?") >= 0 && (result = result.substr(result.indexOf("?") + 1));
+            result.indexOf("#") >= 0 && (result = result.substr(result.indexOf("#") + 1));
         }
 
-        noSparse = qs.parse(results);
+        noSparse = qs.parse(result);
         jData = jpp(noSparse);
 
         return jData.get.apply(jData, data.dataLaraParams || []).value();

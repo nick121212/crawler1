@@ -5,12 +5,14 @@
 let _ = require("lodash");
 
 module.exports = exports = (core) => {
-    let config = new core.utils.builder("lianjia", "lianjia.com", ["sh.fang.lianjia.com", "sh.lianjia.com"]);
+    let config = new core.utils.builder("lianjia", "www.lianjia.com", ["sh.fang.lianjia.com", "sh.lianjia.com"]);
 
     config.setBaseInfo(1000, "superagent");
-    config.robotsHost = "lianjia.com";
+    config.initDomain = "sh.lianjia.com";
     config.proxySettings = {
-        useProxy: false
+        useProxy: false,
+        charset: "utf-8",
+        timeout: 5000
     };
     // 黑名单
     config.addBlackPath("^\/list\/search");
@@ -28,7 +30,7 @@ module.exports = exports = (core) => {
     config.addWhitePath("^\/ershoufang\/(.*?)(\.html)$");
     // config.addWhitePath("^\/detail\/");
     // config.addWhitePath("^\/detail\/d[1-9]{1,}");
-    config.addWhitePath("^\/list(\/*)$");
+    // config.addWhitePath("^\/list(\/*)$");
     config.addWhitePath("^\/xiaoqu\/(.*?)(\.html)$");
     config.addWhitePath("^\/xiaoqu(\/*)$");
     config.addWhitePath("^\/xiaoqu\/d[1-9]{1,}");

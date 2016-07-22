@@ -12,9 +12,7 @@ class Downloader {
             horsemanSetting = {
                 timeout: settings.timeout || 5000,
                 loadImages: false,
-                switchToNewTab: true,
-                ignoreSSLErrors: true,
-                javascriptEnabled: false
+                ignoreSSLErrors: true
             },
             result = {},
             resources = [];
@@ -39,7 +37,8 @@ class Downloader {
             .close()
             .then(() => {
                 defer.resolve(result);
-            }).catch(err => {
+            })
+            .catch(err => {
                 err.response = resources[uri.toString()] || null;
 
                 defer.reject(err);

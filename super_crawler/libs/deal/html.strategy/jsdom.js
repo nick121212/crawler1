@@ -1,13 +1,11 @@
 let jsdom = require("jsdom");
 let _ = require("lodash");
-let typeStrategy = require("../data.strategy");
 let fs = require("fs");
 let jquery = fs.readFileSync(`${__dirname}/jquery.js`, "utf-8");
 
 class CheerDealStrategy {
     constructor() {
         this.key = "jsdom";
-        this.root = null;
     }
 
     /**
@@ -43,7 +41,7 @@ class CheerDealStrategy {
      */
     doDeal(queueItem, data, $, index) {
         let defer = Promise.defer();
-        let $sel, result;
+        let $sel, result, len = 0;
 
         // 载入当前的cheerio根节点
         this.load(queueItem, $).then(($) => {
@@ -53,30 +51,21 @@ class CheerDealStrategy {
             }
             // 查找当前的dom
             $sel = this.doFindSelector($sel || $, data.selector);
+            $sel && (len = $sel.length);
 
-            if ($sel && $sel.length) {
-                if (data.methodInfo) {
-                    $sel = this.doRemoveEle($sel, data.removeSelector);
-                    if (data.methodInfo["each"]) {
-                        result = this.doCallEachMethod($sel, result);
-                    } else {
-                        result = this.doCallMethod($sel, data.methodInfo);
-                    }
-                }
-                // resolve
-                defer.resolve({
-                    result: typeStrategy.doDeal(result, data),
-                    data: data,
-                    $: $sel,
-                    index: index
-                });
-            } else {
-                defer.resolve({
-                    data: data,
-                    $: $sel,
-                    index: index
-                });
+            if (len && data.methodInfo) {
+                $sel = this.doRemoveEle($sel, data.removeSelector);
+                result = this.doCallMethod($sel, data.methodInfo);
             }
+
+            defer.resolve({
+                result: result,
+                data: data,
+                $cur: $sel,
+                $parent: $,
+                len: len,
+                index: index
+            });
         }, defer.reject);
 
         return defer.promise;
@@ -125,23 +114,6 @@ class CheerDealStrategy {
         });
 
         return $sel;
-    }
-
-    /**
-     * 调用方法
-     * @param $   {Object} cheerio对象
-     * @param method {String} 调用的方法名称
-     * @param params {Array} 调用的方法参数
-     * @returns {*}
-     */
-    doCallEachMethod($, results) {
-        results = results || [];
-
-        $.each(() => {
-            results.push({});
-        });
-
-        return results;
     }
 
     /**

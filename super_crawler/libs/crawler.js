@@ -36,8 +36,10 @@ class Crawler extends EventEmitter {
         this.interval = settings.interval || 500;
         this.lastTime = Date.now();
         this.proxySettings = settings.proxySettings || {};
-        new Deal(settings, this.queue.queueStore);
+        this.initDomain = settings.initDomain || {};
         this.proxySettings.useProxy && this.doInitDownloader();
+        this.deal = new Deal(settings, this.queue.queueStore.addCompleteData.bind(this.queue.queueStore));
+        this.doInitHtmlDeal();
     }
 
     /**
@@ -59,9 +61,10 @@ class Crawler extends EventEmitter {
                 result.res && (queueItem.stateData = result.res.headers);
                 // 页面查找到的链接存储到es中去
                 return this.queue.queueStore.addCompleteQueueItem(queueItem, result.responseBody, this.key).then(nextQueue.bind(this, result), (err) => {
-                    if (err.status === 404) {
-                        err.status = 405;
-                    }
+                    // if (err.status === 404) {
+                    //     err.status = 405;
+                    // }
+                    err.status = null;
                     defer.reject(err);
                 });
             }).then(() => {
@@ -109,7 +112,7 @@ class Crawler extends EventEmitter {
                 }).catch((err) => {
                     console.error(err.status, err);
                     // err.message == "fail" || 
-                    if (err.status === 404 || err.status === 302 || err.status === 400 || err.timeout) {
+                    if (err.status === 404 || err.status === 302 || err.status === 400) {
                         return next(msg);
                     }
                     next(msg, true);
@@ -166,16 +169,53 @@ class Crawler extends EventEmitter {
     }
 
     /**
+     * 初始化html处理部分的queue
+     */
+    doInitHtmlDeal() {
+        core.q.getQueue(`crawler.deals.${this.key}`, {}).then((result) => {
+            Promise.all([
+                // 绑定queue到exchange
+                result.ch.bindQueue(result.q.queue, "amq.topic", `${result.q.queue}.bodys`),
+                // 每次消费1条queue
+                result.ch.prefetch(1)
+            ]).then(() => {
+                // 开始消费
+                result.ch.consume(result.q.queue, (msg) => {
+                    let queueItem;
+                    try {
+                        queueItem = JSON.parse(msg.content.toString());
+                    } catch (e) {
+                        result.ch.reject(msg);
+                    }
+                    try {
+                        if (queueItem) {
+                            this.deal.consumeQueue(queueItem).then(() => {
+                                result.ch.ack(msg);
+                            }, (err) => {
+                                console.log(err);
+                                result.ch.reject(msg);
+                            });
+                        }
+                    } catch (e) {
+                        console.log(e);
+                        result.ch.reject(msg);
+                    }
+                });
+            }, console.error);
+        });
+    }
+
+    /**
      * 开始爬取数据
      */
     doStart() {
         if (!this.host) {
             throw new Error("host不能为空！");
         }
-        let robotsTxtUrl = uri(this.robotsHost).pathname("/robots.txt");
+        let robotsTxtUrl = uri(this.host).pathname("/robots.txt");
         this.queue.queueStore.addUrlsToEsUrls([{
             protocol: this.initialProtocol,
-            host: this.host,
+            host: this.initDomain || this.host,
             port: this.initialPort,
             path: this.initialPath,
             depth: 1

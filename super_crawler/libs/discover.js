@@ -248,7 +248,7 @@ class DiscoverLinks extends EventEmitter {
         let defer = Promise.defer();
 
         if (robotsTxtUrl) {
-            robotsTxtUrl = this.queue.processURL(robotsTxtUrl.href());
+            robotsTxtUrl = this.queue.processURL(robotsTxtUrl.toString());
             robotsTxtUrl = this.queue.queueStore.getQueueItemInfo(robotsTxtUrl.protocol, robotsTxtUrl.host, robotsTxtUrl.port, robotsTxtUrl.path, robotsTxtUrl.depth);
             downloaderStategy.start("superagent", robotsTxtUrl.url).then((results) => {
                 this._robotsTxts.push(robotsTxtParser(robotsTxtUrl.url, results.responseBody));

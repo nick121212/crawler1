@@ -2,7 +2,6 @@
 CREATE TABLE IF NOT EXISTS `xiwa_redstar_community` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `createDate` DATETIME NULL,
-  `layoutIds` INT(11) NULL COMMENT '户型ID',
   `name` VARCHAR(255) NULL COMMENT '小区名',
   `aliasName` VARCHAR(64) NULL COMMENT '小区别名',
   `source` VARCHAR(64) NULL COMMENT '来源（链家，房天下，搜房等）',
@@ -41,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `xiwa_redstar_community` (
   `letterRate` DECIMAL(10,4) NULL COMMENT '出租率',
   `zipCode` VARCHAR(6) NULL COMMENT '邮编',
   `areaAmount` INT NULL COMMENT '总建筑面积',
-  `floorAmount` INT NULL COMMENT '总占地面积',
+  `buildingFloorAmount` INT NULL COMMENT '总占地面积',
   `buildingAmount` INT NULL COMMENT '总栋数',
   `roomAmount` INT NULL COMMENT '总房屋数',
   `parkingAmount` INT NULL COMMENT '停车位数量',
@@ -49,187 +48,11 @@ CREATE TABLE IF NOT EXISTS `xiwa_redstar_community` (
   `parkingRate` DECIMAL(10,4) NULL COMMENT '停车位比例',
   `averagePrice` INT NULL COMMENT '均价',
   `averagePriceUnit` VARCHAR(10) NULL COMMENT '均价单位',
-  `pictures` VARCHAR(1024) NULL COMMENT '图片',
+  --`pictures` VARCHAR(1024) NULL COMMENT '图片',
   `introduction` VARCHAR(1024) NULL COMMENT '小区简介',
   `tags` VARCHAR(1024) NULL COMMENT '小区标签',
   `serialnumber` VARCHAR(128) NULL COMMENT '序列号',
   `buildingTime` VARCHAR(128) NULL COMMENT '建造年代',
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-
--- 图片
-CREATE TABLE IF NOT EXISTS `xiwa_redstar_picture` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `createDate` DATETIME NULL,
-  `type` INT NULL COMMENT '类型，楼盘，二手房，小区',
-  `url` VARCHAR(255) NULL COMMENT '图片URL',
-  `tag` VARCHAR(255) NULL COMMENT 'TAG'
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-
--- 户型（楼盘和小区都存一起）
-CREATE TABLE IF NOT EXISTS `xiwa_redstar_community_layout` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `createDate` DATETIME NULL,
-  `type` INT NULL COMMENT '类型，楼盘，小区',
-  `name` VARCHAR(255) NULL COMMENT '户型名称',
-  `communityId` INT NULL COMMENT '小区ID/楼盘ID',
-  `communityName` VARCHAR(45) NULL,
-  `picture` VARCHAR(1024) NULL COMMENT '户型图',
-  `type` VARCHAR(45) NULL COMMENT '类型',
-  `areaAmount` DECIMAL(10,2) NULL COMMENT '面积',
-  `toward` VARCHAR(45) NULL COMMENT '朝向',
-  `tags` VARCHAR(1024) NULL COMMENT 'tag',
-  `introduction` VARCHAR(1024) NULL COMMENT '介绍',
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-
--- 房源
-CREATE TABLE IF NOT EXISTS `xiwa_redstar_community_room` (
-  `id` INT NOT NULL,
-  `source` VARCHAR(100) NULL COMMENT '房源来源',
-  `communityId` INT NULL COMMENT '小区ID',
-  `borkerIds` VARCHAR(100) NULL COMMENT '经纪人IDS',
-  `hasDegree` BOOLEAN NULL COMMENT '有无学位',
-  `communityName` VARCHAR(64) NULL COMMENT '小区名',
-  `buildingName` VARCHAR(64) NULL COMMENT '楼栋号',
-  `roomNumber` VARCHAR(64) NULL COMMENT '房号',
-  `layoutId` int(11) NULL COMMENT '户型ID',
-  `layoutName` VARCHAR(64) NULL COMMENT '户型名称',
-  `pictures` VARCHAR(1024) NULL COMMENT '照片',
-  `tags` VARCHAR(1024) NULL COMMENT 'tag',
-  `introduction` VARCHAR(1024) NULL COMMENT '介绍',
-  `sumPrice` int(11) NULL COMMENT '总价',
-  `price` int(11) NULL COMMENT '单价',
-  `type` VARCHAR(45) NULL COMMENT '物业类型',
-  `decoration` VARCHAR(45) NULL COMMENT '装修情况',
-  `floor` VARCHAR(45) NULL COMMENT '楼层',
-  `floorScale` VARCHAR(45) NULL COMMENT '楼层比',
-  `toward` VARCHAR(45) NULL COMMENT '朝向',
-  `completionTime` VARCHAR(45) NULL COMMENT '竣工时间',
-  `onSellTime` VARCHAR(45) NULL COMMENT '上架时间',
-  `downPayment` VARCHAR(45) NULL COMMENT '首付',
-  `monthPayment` VARCHAR(45) NULL COMMENT '月供',
-  `prevTrade` VARCHAR(45) NULL COMMENT '上次交易',
-  `yearLimit` VARCHAR(45) NULL COMMENT '房本年限',
-  `area` VARCHAR(45) NULL COMMENT '建筑面积',
-  `sellingPoint` VARCHAR(1024) NULL COMMENT '卖点',
-  `feature` VARCHAR(1024) NULL COMMENT '房源特色',
-  `isOnly` VARCHAR(1024) NULL COMMENT '是否唯一',
-  `position` VARCHAR(1024) NULL COMMENT '位置',
-  `floorScale` VARCHAR(20) NULL COMMENT '梯户比',
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-
-
--- 小区地铁站关系
-
--- 地铁站
-CREATE TABLE IF NOT EXISTS `xiwa_redstar_metro_station` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(64) NULL COMMENT '地铁站名称',
-  `line` VARCHAR(64) NULL COMMENT '线路',
-  `lineName` VARCHAR(64) NULL COMMENT '线路名称',
-  `isTransfer` TINYINT(2) NULL COMMENT '是否是换乘站',
-  `exitDoorAmount` INT NULL COMMENT '出口数量',    
-  `latitudeBaidu` DECIMAL(3,10) NULL COMMENT '纬度，百度',
-  `longitudeBaidu` DECIMAL(3,10) NULL COMMENT '经度，百度',
-  `latitudeGaode` DECIMAL(3,10) NULL COMMENT '纬度，高德',
-  `longitudeGaode` DECIMAL(3,10) NULL COMMENT '经度，高德',  
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-
--- 地铁线路
-CREATE TABLE IF NOT EXISTS `xiwa_redstar_metro` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(64) NULL COMMENT '线路名称',
-  `alias` VARCHAR(64) NULL COMMENT '别名',
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-
-
--- 小区医院关系
-
--- 医院
-CREATE TABLE IF NOT EXISTS `xiwa_redstar_hospital` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(128) NULL COMMENT '医院名称',
-  `address` VARCHAR(255) NULL COMMENT '医院地址',
-  `latitudeBaidu` DECIMAL(3,10) NULL COMMENT '纬度，百度',
-  `longitudeBaidu` DECIMAL(3,10) NULL COMMENT '经度，百度',
-  `latitudeGaode` DECIMAL(3,10) NULL COMMENT '纬度，高德',
-  `longitudeGaode` DECIMAL(3,10) NULL COMMENT '经度，高德',  
-  `category` VARCHAR(128) NULL COMMENT '医院分类',
-  `property` VARCHAR(128) NULL COMMENT '医院性质',
-  `rank` VARCHAR(128) NULL COMMENT '医院排名',
-  `feature` VARCHAR(255) NULL COMMENT '医院特色',
-  `introduce` VARCHAR(255) NULL COMMENT '医院简介',
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-
--- 小区银行关系
-
-
--- 银行
-CREATE TABLE IF NOT EXISTS `xiwa_redstar_bank` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(128) NULL COMMENT '银行名称',
-  `code` VARCHAR(128) NULL COMMENT '银行代码',
-  `alias` VARCHAR(128) NULL COMMENT 'alias'  
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-
-
--- 银行营业网点
-CREATE TABLE IF NOT EXISTS `xiwa_redstar_bank_node` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(128) NULL COMMENT '银行名称',
-  `code` VARCHAR(128) NULL COMMENT '银行代码',
-  `branchName` VARCHAR(128) NULL COMMENT '分行名称',
-  `address` VARCHAR(255) NULL COMMENT '银行地址',
-  `latitudeBaidu` DECIMAL(3,10) NULL COMMENT '纬度，百度',
-  `longitudeBaidu` DECIMAL(3,10) NULL COMMENT '经度，百度',
-  `latitudeGaode` DECIMAL(3,10) NULL COMMENT '纬度，高德',
-  `longitudeGaode` DECIMAL(3,10) NULL COMMENT '经度，高德',      
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-
-
-
--- 小区学校关系
-
-
--- 学校
-CREATE TABLE IF NOT EXISTS `xiwa_redstar_school` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(128) NULL COMMENT '学校名称',
-  `address` VARCHAR(255) NULL COMMENT '学校地址',
-  `province` VARCHAR(64) NULL,
-  `provinceCode` VARCHAR(64) NULL,
-  `city` VARCHAR(64) NULL,
-  `cityCode` VARCHAR(64) NULL,
-  `area` VARCHAR(64) NULL,
-  `areaCode` VARCHAR(64) NULL,
-  `shortName` VARCHAR(128) NULL COMMENT '学校简称',
-  `subArea` VARCHAR(64) NULL COMMENT '街道区域',
-  `feature` VARCHAR(255) NULL COMMENT '学校特色',
-  `type` VARCHAR(64) NULL COMMENT '学校类型',
-  `level` VARCHAR(64) NULL COMMENT '学校级别',
-  `property` VARCHAR(255) NULL COMMENT '办学性质',
-  `entranceType` VARCHAR(64) NULL COMMENT '升学方式',
-  `tel` VARCHAR(255) NULL COMMENT '学校电话',
-  `rank` VARCHAR(128) NULL COMMENT '学校排名',
-  `quota` VARCHAR(128) NULL COMMENT '名额限制',
-  `brochures` VARCHAR(256) NULL COMMENT '招生简章',
-  `standardFees` VARCHAR(256) NULL COMMENT '收费标准',
-  `schoolGuide` VARCHAR(256) NULL COMMENT '入校指南',
-  `introduce` VARCHAR(255) NULL COMMENT '学校简介',
-  `picture` VARCHAR(255) NULL COMMENT '学校图片',
-  `tags` VARCHAR(255) NULL COMMENT '学校标签',
-  `latitudeBaidu` DECIMAL(3,10) NULL COMMENT '纬度，百度',
-  `longitudeBaidu` DECIMAL(3,10) NULL COMMENT '经度，百度',
-  `latitudeGaode` DECIMAL(3,10) NULL COMMENT '纬度，高德',
-  `longitudeGaode` DECIMAL(3,10) NULL COMMENT '经度，高德',      
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 
@@ -275,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `xiwa_redstar_loupan` (
   `volumeRate` DECIMAL(10,4) NULL COMMENT '容积率',
   `zipCode` VARCHAR(6) NULL COMMENT '邮编',
   `areaAmount` INT NULL COMMENT '总建筑面积',
-  `floorAmount` INT NULL COMMENT '总占地面积',
+  `buildingFloorAmount` INT NULL COMMENT '总占地面积',
   `buildingAmount` INT NULL COMMENT '总栋数',
   `parkingAmount` INT NULL COMMENT '停车位数量',
   `totalHouseholds` INT NULL COMMENT '总户数',
@@ -285,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `xiwa_redstar_loupan` (
   `sellPhone` VARCHAR(100) COMMENT '售楼处电话',
   `averagePrice` INT NULL COMMENT '均价',
   `averagePriceUnit` VARCHAR(10) NULL COMMENT '均价单位',
-  `pictures` VARCHAR(1024) NULL COMMENT '图片',
+  --`pictures` VARCHAR(1024) NULL COMMENT '图片',
   `introduction` VARCHAR(1024) NULL COMMENT '简介',
   `tags` VARCHAR(1024) NULL COMMENT '标签',
   `jobProgress` VARCHAR(120) COMMENT '工程进度（在建，已竣工）可不用',
@@ -343,6 +166,210 @@ CREATE TABLE IF NOT EXISTS `xiwa_redstar_broker` (
   `registerTime` DATETIME NULL COMMENT '注册时间',
   `hobbies` VARCHAR(50) NULL COMMENT '兴趣爱好',
   
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+-- 户型（楼盘和小区都存一起）
+CREATE TABLE IF NOT EXISTS `xiwa_redstar_community_layout` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `createDate` DATETIME NULL,
+  `type` INT NULL COMMENT '类型，楼盘，小区',
+  `name` VARCHAR(255) NULL COMMENT '户型名称',
+  `ownerId` INT NULL COMMENT '小区ID/楼盘ID',
+  `ownerName` VARCHAR(45) NULL COMMENT '小区/楼盘名称',
+  `picture` VARCHAR(1024) NULL COMMENT '户型图',
+  `type` VARCHAR(45) NULL COMMENT '类型',
+  `areaAmount` DECIMAL(10,2) NULL COMMENT '面积',
+  `toward` VARCHAR(45) NULL COMMENT '朝向',
+  `tags` VARCHAR(1024) NULL COMMENT 'tag',
+  `introduction` VARCHAR(1024) NULL COMMENT '介绍',
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+-- 图片
+CREATE TABLE IF NOT EXISTS `xiwa_redstar_picture` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `createDate` DATETIME NULL,
+  `ownerId` INT NULL '所属者ID',
+  `type` INT NULL COMMENT '类型，楼盘，二手房，小区，户型',
+  `url` VARCHAR(255) NULL COMMENT '图片URL',
+  `tag` VARCHAR(255) NULL COMMENT 'TAG'
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+-- 房源
+CREATE TABLE IF NOT EXISTS `xiwa_redstar_community_room` (
+  `id` INT NOT NULL,
+  `source` VARCHAR(100) NULL COMMENT '房源来源',
+  `communityId` INT NULL COMMENT '小区ID',
+  `hasDegree` BOOLEAN NULL COMMENT '有无学位',
+  `communityName` VARCHAR(64) NULL COMMENT '小区名',
+  `buildingName` VARCHAR(64) NULL COMMENT '楼栋号',
+  `roomNumber` VARCHAR(64) NULL COMMENT '房号',
+  `layoutId` int(11) NULL COMMENT '户型ID',
+  `layoutName` VARCHAR(64) NULL COMMENT '户型名称',
+  --`pictures` VARCHAR(1024) NULL COMMENT '照片',
+  `tags` VARCHAR(1024) NULL COMMENT 'tag',
+  `introduction` VARCHAR(1024) NULL COMMENT '介绍',
+  `sumPrice` int(11) NULL COMMENT '总价',
+  `price` int(11) NULL COMMENT '单价',
+  `propertyType` VARCHAR(45) NULL COMMENT '物业类型',
+  `decoration` VARCHAR(45) NULL COMMENT '装修情况',
+  `floor` VARCHAR(45) NULL COMMENT '楼层',
+  `floorScale` VARCHAR(45) NULL COMMENT '楼层比',
+  `toward` VARCHAR(45) NULL COMMENT '朝向',
+  `completionTime` VARCHAR(45) NULL COMMENT '竣工时间',
+  `onSellTime` VARCHAR(45) NULL COMMENT '上架时间',
+  `downPayment` VARCHAR(45) NULL COMMENT '首付',
+  `monthPayment` VARCHAR(45) NULL COMMENT '月供',
+  `prevTrade` VARCHAR(45) NULL COMMENT '上次交易',
+  `yearLimit` VARCHAR(45) NULL COMMENT '房本年限',
+  `area` VARCHAR(45) NULL COMMENT '建筑面积',
+  `sellingPoint` VARCHAR(1024) NULL COMMENT '卖点',
+  `feature` VARCHAR(1024) NULL COMMENT '房源特色',
+  `isOnly` VARCHAR(1024) NULL COMMENT '是否唯一',
+  `position` VARCHAR(1024) NULL COMMENT '位置',
+  `floorRoomScale` VARCHAR(20) NULL COMMENT '梯户比',
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+-- 经纪人和房源关系表
+CREATE TABLE IF NOT EXISTS `xiwa_redstar_community_room_broker` (
+  `id` INT NOT NULL,
+  `roomId` INT NOT NULL COMMENT '房源ID',
+  `brokerId` INT NOT NULL COMMENT '经纪人ID',
+
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+-- 小区地铁站关系
+CREATE TABLE IF NOT EXISTS `xiwa_redstar_community_station` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `communityId` INT NOT NULL COMMENT '小区ID',
+  `stationId` INT NOT NULL COMMENT '地铁站ID',
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+-- 地铁站
+CREATE TABLE IF NOT EXISTS `xiwa_redstar_metro_station` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(64) NULL COMMENT '地铁站名称',
+  `line` VARCHAR(64) NULL COMMENT '线路',
+  `lineName` VARCHAR(64) NULL COMMENT '线路名称',
+  `isTransfer` TINYINT(2) NULL COMMENT '是否是换乘站',
+  `exitDoorAmount` INT NULL COMMENT '出口数量',    
+  `latitudeBaidu` DECIMAL(3,10) NULL COMMENT '纬度，百度',
+  `longitudeBaidu` DECIMAL(3,10) NULL COMMENT '经度，百度',
+  `latitudeGaode` DECIMAL(3,10) NULL COMMENT '纬度，高德',
+  `longitudeGaode` DECIMAL(3,10) NULL COMMENT '经度，高德',  
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+-- 地铁线路
+CREATE TABLE IF NOT EXISTS `xiwa_redstar_metro` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(64) NULL COMMENT '线路名称',
+  `alias` VARCHAR(64) NULL COMMENT '别名',
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+
+-- 小区医院关系
+CREATE TABLE IF NOT EXISTS `xiwa_redstar_community_hospital` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `communityId` INT NOT NULL COMMENT '小区ID',
+  `hospitalId` INT NOT NULL COMMENT '医院ID',
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+-- 医院
+CREATE TABLE IF NOT EXISTS `xiwa_redstar_hospital` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(128) NULL COMMENT '医院名称',
+  `address` VARCHAR(255) NULL COMMENT '医院地址',
+  `latitudeBaidu` DECIMAL(3,10) NULL COMMENT '纬度，百度',
+  `longitudeBaidu` DECIMAL(3,10) NULL COMMENT '经度，百度',
+  `latitudeGaode` DECIMAL(3,10) NULL COMMENT '纬度，高德',
+  `longitudeGaode` DECIMAL(3,10) NULL COMMENT '经度，高德',  
+  `category` VARCHAR(128) NULL COMMENT '医院分类',
+  `property` VARCHAR(128) NULL COMMENT '医院性质',
+  `rank` VARCHAR(128) NULL COMMENT '医院排名',
+  `feature` VARCHAR(255) NULL COMMENT '医院特色',
+  `introduce` VARCHAR(255) NULL COMMENT '医院简介',
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+-- 小区银行关系
+CREATE TABLE IF NOT EXISTS `xiwa_redstar_community_bank` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `communityId` INT NOT NULL COMMENT '小区ID',
+  `bankId` INT NOT NULL COMMENT '银行ID',
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+-- 银行
+CREATE TABLE IF NOT EXISTS `xiwa_redstar_bank` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(128) NULL COMMENT '银行名称',
+  `code` VARCHAR(128) NULL COMMENT '银行代码',
+  `alias` VARCHAR(128) NULL COMMENT 'alias'  
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+-- 银行营业网点
+CREATE TABLE IF NOT EXISTS `xiwa_redstar_bank_node` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(128) NULL COMMENT '银行名称',
+  `code` VARCHAR(128) NULL COMMENT '银行代码',
+  `branchName` VARCHAR(128) NULL COMMENT '分行名称',
+  `address` VARCHAR(255) NULL COMMENT '银行地址',
+  `latitudeBaidu` DECIMAL(3,10) NULL COMMENT '纬度，百度',
+  `longitudeBaidu` DECIMAL(3,10) NULL COMMENT '经度，百度',
+  `latitudeGaode` DECIMAL(3,10) NULL COMMENT '纬度，高德',
+  `longitudeGaode` DECIMAL(3,10) NULL COMMENT '经度，高德',      
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+
+-- 小区学校关系
+CREATE TABLE IF NOT EXISTS `xiwa_redstar_community_school` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `communityId` INT NOT NULL COMMENT '小区ID',
+  `schoolId` INT NOT NULL COMMENT '学校ID',
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+-- 学校
+CREATE TABLE IF NOT EXISTS `xiwa_redstar_school` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(128) NULL COMMENT '学校名称',
+  `address` VARCHAR(255) NULL COMMENT '学校地址',
+  `province` VARCHAR(64) NULL,
+  `provinceCode` VARCHAR(64) NULL,
+  `city` VARCHAR(64) NULL,
+  `cityCode` VARCHAR(64) NULL,
+  `area` VARCHAR(64) NULL,
+  `areaCode` VARCHAR(64) NULL,
+  `shortName` VARCHAR(128) NULL COMMENT '学校简称',
+  `subArea` VARCHAR(64) NULL COMMENT '街道区域',
+  `feature` VARCHAR(255) NULL COMMENT '学校特色',
+  `type` VARCHAR(64) NULL COMMENT '学校类型',
+  `level` VARCHAR(64) NULL COMMENT '学校级别',
+  `property` VARCHAR(255) NULL COMMENT '办学性质',
+  `entranceType` VARCHAR(64) NULL COMMENT '升学方式',
+  `tel` VARCHAR(255) NULL COMMENT '学校电话',
+  `rank` VARCHAR(128) NULL COMMENT '学校排名',
+  `quota` VARCHAR(128) NULL COMMENT '名额限制',
+  `brochures` VARCHAR(256) NULL COMMENT '招生简章',
+  `standardFees` VARCHAR(256) NULL COMMENT '收费标准',
+  `schoolGuide` VARCHAR(256) NULL COMMENT '入校指南',
+  `introduce` VARCHAR(255) NULL COMMENT '学校简介',
+  `picture` VARCHAR(255) NULL COMMENT '学校图片',
+  `tags` VARCHAR(255) NULL COMMENT '学校标签',
+  `latitudeBaidu` DECIMAL(3,10) NULL COMMENT '纬度，百度',
+  `longitudeBaidu` DECIMAL(3,10) NULL COMMENT '经度，百度',
+  `latitudeGaode` DECIMAL(3,10) NULL COMMENT '纬度，高德',
+  `longitudeGaode` DECIMAL(3,10) NULL COMMENT '经度，高德',      
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 

@@ -8,7 +8,7 @@ class Strategy {
      * 构造函数
      */
     constructor() {
-        this.key = "string";
+        this.key = "str";
     }
 
     /**

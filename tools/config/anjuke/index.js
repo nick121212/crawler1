@@ -8,7 +8,7 @@ module.exports = (core) => {
     let config = new core.utils.builder("anjuke", "anjuke.com", ["sh.fang.anjuke.com"]);
 
     config.setBaseInfo(1000, "phantom1");
-    config.robotsHost = "anjuke.com";
+    config.initDomain = "sh.fang.anjuke.com";
     config.proxySettings = {
         useProxy: false
     };

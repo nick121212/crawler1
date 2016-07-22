@@ -7,7 +7,8 @@ class Downloader {
     }
 
     start(uri) {
-        let phInstance, sitepage, ip = ips.random(), result = {
+        let phInstance, sitepage, ip = ips.random(),
+            result = {
                 urls: []
             },
             defer = Promise.defer();
@@ -26,7 +27,7 @@ class Downloader {
             return Promise.all([
                 page.setting("resoureTimeout", 5000),
                 page.setting('javascriptEnabled', false),
-                page.setting('proxy', `${ip.host}:${ip.port}`),
+                page.setting('proxy', `http://${ip.host}:${ip.port}`),
                 page.setting('proxyType', `http`),
                 page.setting("userAgent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36")
             ]);

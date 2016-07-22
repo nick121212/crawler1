@@ -20,10 +20,10 @@ class Downloader {
             }
             // 5s超时，不允许跳转
             req
-                .set("User-Agent", settings.ua || "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36")
+            // .set("User-Agent", settings.ua || "Mozilla/5.0 (Window10; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36")
                 .charset(settings.charset || "gbk")
                 .timeout(settings.timeout || 5000)
-                .redirects(1)
+                // .redirects(0)
                 .end((err, res) => {
                     if (err) {
                         console.log("error URI:", uri.toString());
