@@ -370,11 +370,11 @@ class QueueStoreOfES {
      * @param index     {String}
      */
     addCompleteData(queueItem, data, type, index, keyField = "url") {
-        _.forEach(data, (d, key) => {
-            if (_.isArray(d)) {
-                data[key] = JSON.stringify(d);
-            }
-        });
+        // _.forEach(data, (d, key) => {
+        //     if (_.isArray(d)) {
+        //         data[key] = JSON.stringify(d);
+        //     }
+        // });
 
         if (!data[keyField]) keyField = "url";
 

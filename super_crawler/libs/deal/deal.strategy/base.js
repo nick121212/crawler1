@@ -8,7 +8,13 @@ class Base {
 
         _.each(data, (d) => {
             strategy = this.deals[d["dealStrategy"]] || normalStrategy;
-            promises.push(strategy.doDeal(queueItem, d, curResults, $));
+            if (_.isArray(curResults)) {
+                _.each(curResults, (result, index) => {
+                    promises.push(strategy.doDeal(queueItem, d, result, $, index));
+                });
+            } else {
+                promises.push(strategy.doDeal(queueItem, d, curResults, $));
+            }
         });
 
         return promises;

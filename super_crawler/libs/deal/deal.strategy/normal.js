@@ -22,7 +22,7 @@ class Strategy extends Base {
     doDeal(queueItem, data, results, $) {
         let promise = null;
 
-        results[data.key] = null;
+        results && (results[data.key] = null);
         promise = htmlStrategy.getOne(data.htmlStrategy).doDeal(queueItem, data, $).then((res) => {
             results[data.key] = this.doFormatData(res.result, data.formats);
 

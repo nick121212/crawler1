@@ -2,34 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/crawler.template.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fangchan_schema-1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/super_crawler/libs/data.strategy/array.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/super_crawler/libs/data.strategy/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/super_crawler/libs/data.strategy/object.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/super_crawler/libs/data.strategy/query_string.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/super_crawler/libs/data.strategy/str.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/super_crawler/libs/deal.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/super_crawler/libs/deal.strategy/cheerio.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/super_crawler/libs/deal.strategy/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/super_crawler/libs/deal.strategy/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/super_crawler/libs/deal.strategy/jsdom.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/config/anjuke/house_base.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.vscode/launch.json" afterPath="$PROJECT_DIR$/.vscode/launch.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/config/developer.js" afterPath="$PROJECT_DIR$/core/config/developer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/crawler.js" afterPath="$PROJECT_DIR$/super_crawler/libs/crawler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/discover.js" afterPath="$PROJECT_DIR$/super_crawler/libs/discover.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/download.strategy/index.js" afterPath="$PROJECT_DIR$/super_crawler/libs/download.strategy/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/download.strategy/phantom-1.js" afterPath="$PROJECT_DIR$/super_crawler/libs/download.strategy/phantom-1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/download.strategy/phantom.js" afterPath="$PROJECT_DIR$/super_crawler/libs/download.strategy/phantom.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/download.strategy/superagent.js" afterPath="$PROJECT_DIR$/super_crawler/libs/download.strategy/superagent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/house.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/house.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/index.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/lianjia/community.js" afterPath="$PROJECT_DIR$/tools/config/lianjia/community.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/lianjia/community_room.js" afterPath="$PROJECT_DIR$/tools/config/lianjia/community_room.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/lianjia/index.js" afterPath="$PROJECT_DIR$/tools/config/lianjia/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/utils/data_builder.js" afterPath="$PROJECT_DIR$/tools/utils/data_builder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/deal/deal.strategy/array.js" afterPath="$PROJECT_DIR$/super_crawler/libs/deal/deal.strategy/array.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/deal/deal.strategy/base.js" afterPath="$PROJECT_DIR$/super_crawler/libs/deal/deal.strategy/base.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/deal/deal.strategy/normal.js" afterPath="$PROJECT_DIR$/super_crawler/libs/deal/deal.strategy/normal.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/deal/html.strategy/index.js" afterPath="$PROJECT_DIR$/super_crawler/libs/deal/html.strategy/index.js" />
     </list>
     <ignored path="crawler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -281,46 +257,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjia" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -421,7 +357,7 @@
       <updated>1468893505710</updated>
       <workItem from="1468893507902" duration="9099000" />
       <workItem from="1468916378593" duration="1095000" />
-      <workItem from="1468988252548" duration="14663000" />
+      <workItem from="1468988252548" duration="14931000" />
     </task>
     <task id="LOCAL-00001" summary="dfdf">
       <created>1468915216094</created>
@@ -434,13 +370,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24857000" />
+    <option name="totallyTimeSpent" value="25125000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -767,9 +703,9 @@
         <state relative-caret-position="1665">
           <caret line="112" column="46" selection-start-line="112" selection-start-column="46" selection-end-line="112" selection-end-column="46" />
           <folding>
-            <marker date="1469166847000" expanded="true" signature="376:633" ph="/** 构造函数 ...*/" />
-            <marker date="1469166847000" expanded="true" signature="6630:6716" ph="{...}" />
-            <marker date="1469166847000" expanded="true" signature="6778:6863" ph="{...}" />
+            <marker date="1469167349000" expanded="true" signature="376:633" ph="/** 构造函数 ...*/" />
+            <marker date="1469167349000" expanded="true" signature="6715:6751" ph="{...}" />
+            <marker date="1469167349000" expanded="true" signature="6813:6898" ph="{...}" />
           </folding>
         </state>
       </provider>

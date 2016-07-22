@@ -27,6 +27,7 @@ class Strategy extends Base {
             for (let i = 0; i < res.len; i++) {
                 results[data.key].push({});
             };
+            res.result = results[data.key];
             !res.len && (res.data = null);
 
             return res;
