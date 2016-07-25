@@ -191,6 +191,7 @@ class Crawler extends EventEmitter {
                         if (queueItem) {
                             this.deal.consumeQueue(queueItem).then(() => {
                                 result.ch.ack(msg);
+                                // result.ch.reject(msg);
                             }, (err) => {
                                 console.log(err);
                                 result.ch.reject(msg);

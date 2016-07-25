@@ -2,10 +2,10 @@ module.exports = (core) => {
     return (config) => {
         config.pages.house = {
             key: "crawler.house",
-            rule: {
-                "regexp": /\/loupan\/canshu-\d*\.html/.toString(),
+            rule: [{
+                "regexp": /\/loupan\/canshu-\d*.html/.toString(),
                 scope: "i"
-            },
+            }],
             fieldKey: "name",
             test: false,
             area: {
@@ -36,29 +36,37 @@ module.exports = (core) => {
                     selector: ".can-container .can-item:eq(0) .can-border .list li",
                     dealStrategy: "jsdom",
                     data: [
-                        // core.utils.data_builder.array("switchs", [], [], [
-                        //     core.utils.data_builder.switchs(".name",[])
-                        // ]),
-                        // 小区名称
-                        core.utils.data_builder.normal("name", ["li:eq(0) .des"], ["i"]),
-                        // 楼盘特点标签
-                        core.utils.data_builder.array("tags", ["li:eq(1) .des a"], [], [
-                            core.utils.data_builder.normal("")
-                        ]),
-                        // 参考单价
-                        core.utils.data_builder.normal("price", ["li:eq(2) .des"], [".space"]),
-                        // 楼盘总价
-                        core.utils.data_builder.normal("totalPrice", ["li:eq(3) .des"]),
-                        // 物业类型
-                        core.utils.data_builder.normal("type", ["li:eq(4) .des"]),
-                        // 开发商
-                        core.utils.data_builder.normal("developerName", ["li:eq(5) .des a"]),
-                        // 行政区
-                        core.utils.data_builder.normal("district", ["li:eq(6) .des"]),
-                        // 楼盘地址
-                        core.utils.data_builder.normal("address", ["li:eq(7) .des"], [".space"]),
-                        // 售楼电话
-                        core.utils.data_builder.normal("sellPhone", ["li:eq(8) .des"])
+                        core.utils.data_builder.switchs([], [], [
+                            core.utils.data_builder.cases(".name", [], "楼盘名称", [
+                                core.utils.data_builder.normal("name", [".des"], ["i"])
+                            ]),
+                            core.utils.data_builder.cases(".name", [], "楼盘特点", [
+                                core.utils.data_builder.array("tags", [".des a"], [], [
+                                    core.utils.data_builder.normal("")
+                                ])
+                            ]),
+                            core.utils.data_builder.cases(".name", [], "参考单价", [
+                                core.utils.data_builder.normal("price", [".des"], [".space"])
+                            ]),
+                            core.utils.data_builder.cases(".name", [], "楼盘总价", [
+                                core.utils.data_builder.normal("totalPrice", [".des"])
+                            ]),
+                            core.utils.data_builder.cases(".name", [], "物业类型", [
+                                core.utils.data_builder.normal("type", [".des"])
+                            ]),
+                            core.utils.data_builder.cases(".name", [], "开发商", [
+                                core.utils.data_builder.normal("developerName", [".des"])
+                            ]),
+                            core.utils.data_builder.cases(".name", [], "区域位置", [
+                                core.utils.data_builder.normal("district", [".des"])
+                            ]),
+                            core.utils.data_builder.cases(".name", [], "楼盘地址", [
+                                core.utils.data_builder.normal("address", [".des"], [".space"])
+                            ]),
+                            core.utils.data_builder.cases(".name", [], "售楼处电话", [
+                                core.utils.data_builder.normal("sellPhone", [".des"])
+                            ])
+                        ])
                     ]
                 },
                 sellInfo: {

@@ -68,6 +68,27 @@ module.exports = () => {
                 dealStrategy: "array"
             };
         }
+
+        switchs(selector, removeSelector = [], data = [], htmlStrategy = "jsdom") {
+            return {
+                selector: selector,
+                removeSelector: removeSelector,
+                data: data,
+                htmlStrategy: htmlStrategy,
+                dealStrategy: "switch"
+            };
+        }
+
+        cases(selector, removeSelector = [], match = "", data = [], methodInfo = {text: []}) {
+            return {
+                selector: selector,
+                removeSelector: removeSelector,
+                methodInfo: methodInfo,
+                match: match,
+                data: data,
+                dealStrategy: "case"
+            };
+        }
     }
 
     return new Builder();

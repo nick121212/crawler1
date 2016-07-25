@@ -5,7 +5,7 @@
 let _ = require("lodash");
 let os = require('os');
 
-module.exports = exports = (core)=> {
+module.exports = exports = (core) => {
     /**
      * 获取ip信息
      */
@@ -14,7 +14,7 @@ module.exports = exports = (core)=> {
     _.forEach(os.networkInterfaces(), (network) => {
         _.each(network, (ipInfo) => {
             !ips[ipInfo.family] && (ips[ipInfo.family] = []);
-            ips[ipInfo.family].push(ipInfo.address);
+            ipInfo.address != "127.0.0.1" && ips[ipInfo.family].push(ipInfo.address);
         });
     });
 

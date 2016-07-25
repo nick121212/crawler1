@@ -2,10 +2,10 @@ module.exports = (core) => {
     return (config) => {
         config.pages.community = {
             key: "crawler.community",
-            rule: {
+            rule: [{
                 "regexp": /\/community\/view\//.toString(),
                 scope: "i"
-            },
+            }],
             fieldKey: "name",
             test: false,
             area: {
@@ -45,7 +45,7 @@ module.exports = (core) => {
                         // 标签
                         core.utils.data_builder.array("tags", [".comm-mark a"], [], [
                             core.utils.data_builder.normal("")
-                        ]),
+                        ])
                     ]
                 },
                 overview: {

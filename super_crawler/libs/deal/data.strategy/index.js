@@ -43,7 +43,11 @@ class TypeStrategy {
     doDeal(key, result, params) {
         let strategy = this.formats[key] || strStrategy;
 
-        return strategy.doDeal(result, params);
+        try {
+            return strategy.doDeal(result, params);
+        } catch (e) {
+            return result;
+        }
     }
 }
 

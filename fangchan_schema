@@ -191,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `xiwa_redstar_picture` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `createDate` DATETIME NULL,
   `ownerId` INT NULL '所属者ID',
-  `type` INT NULL COMMENT '类型，楼盘，二手房，小区，户型',
+  `type` INT NULL COMMENT '类型，1:楼盘，2:二手房，3:小区，4:户型',
   `url` VARCHAR(255) NULL COMMENT '图片URL',
   `tag` VARCHAR(255) NULL COMMENT 'TAG'
   PRIMARY KEY (`id`))
@@ -224,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `xiwa_redstar_community_room` (
   `monthPayment` VARCHAR(45) NULL COMMENT '月供',
   `prevTrade` VARCHAR(45) NULL COMMENT '上次交易',
   `yearLimit` VARCHAR(45) NULL COMMENT '房本年限',
-  `area` VARCHAR(45) NULL COMMENT '建筑面积',
+  `areaAmount` VARCHAR(45) NULL COMMENT '建筑面积',
   `sellingPoint` VARCHAR(1024) NULL COMMENT '卖点',
   `feature` VARCHAR(1024) NULL COMMENT '房源特色',
   `isOnly` VARCHAR(1024) NULL COMMENT '是否唯一',

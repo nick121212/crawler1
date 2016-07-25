@@ -12,19 +12,25 @@ class Strategy extends Base {
      */
     constructor() {
         super();
-        this.key = "object";
+        this.key = "case";
     }
 
     /**
-     * 数组的情况下执行
+     * 普通的情况下执行
      * @returns Promise
      */
     doDeal(queueItem, data, results, $, index) {
         let promise = null;
 
-        results[data.key] = {};
+        // results && (results[data.key] = null);
         promise = htmlStrategy.getOne(data.htmlStrategy).doDeal(queueItem, data, $, index).then((res) => {
-            res.result = results[data.key];
+            if (res.result !== res.data.match) {
+                res = null;
+            } else {
+                // res.index = undefined;
+                res.result = results;
+                res.$cur = res.$parent;
+            }
 
             return res;
         });

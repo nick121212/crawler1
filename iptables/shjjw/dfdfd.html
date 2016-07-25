@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta name="description" content="�Ϻ���ס���ͳ��罨������ίԱ��" />
+    <title>�Ϻ���ס���ͳ��罨������ίԱ��-סլ��ҵС��ϸ��</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/zjw2016/css/ETUI.min.css">
+    <link rel="stylesheet" href="/zjw2016/css/style.css">
+    <link rel="stylesheet" href="/zjw2016/css/sh-responsive.css">
+    <link rel="stylesheet" href="/zjw2016/font/iconfont.css">
+    <!--��������ʼ-->
+    <script src="/zjw2016/js/ETUI/jquery-1.8.3.min.js"></script>
+    <script  src="/zjw2016/dynamic/public.js" ></script>
+    <script  src="/zjw2016/js/wuza.js" ></script>
+    <!--����������-->
+</head>
+<body>
+<div id="accessNull"></div>
+<div id="container">
+    <div class="header" id="header">
+        <div id="skip">
+            <a id="accesshelp" title="�´��ڴ������ϰ�����˵��ҳ��" href="shuoming.html" target="_blank">���ϰ�����˵��</a>
+            <a href="javascript:createNodeDiv('mainNav', '�Ѷ�λ����վ����');" title="��ת����վ������">��ת����վ������</a>
+            <a href="javascript:createNodeDiv('main', '�Ѷ�λ����Ҫ��������');" title="��ת����Ҫ��������">��ת����Ҫ��������</a>
+        </div>
+        <script  src="/zjw2016/js/top.js" type="text/javascript" language="javascript"></script>
+    </div>
+    <div class="main container" id="main">
+        <div class="row-fluid">
+            <div class="panel">
+                <div class="panel-inner license">
+                    <!-- Nav tabs -->
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active row-fluid">
+                            <div>
+                                <table class="table detail" id="zjxq">
+                                    <thead>
+                                    <tr>
+                                        <td colspan="2" class="bt">��סС����������</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><strong>С�����ƣ�</strong></td>
+                                        <td><label id="projectname"></label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>С����ַ��</strong></td>
+                                        <td><label id="concretaddr"></label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>�ڹ���ҵ��ҵ��</strong></td>
+                                        <td><label id="companyname"></label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>�������أ�</strong></td>
+                                        <td><label id="distname"></label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>���ڽֵ���</strong></td>
+                                        <td><label id="streetname"></label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>�������ͣ�</strong></td>
+                                        <td><label id="housekind"></label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>��������(ƽ����)��</strong></td>
+                                        <td><label id="totalbuildingarea"></label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>�ռ䱨�޵绰��</strong></td>
+                                        <td><label id="daytel"></label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ҹ�䱨�޵绰��</strong></td>
+                                        <td><label id="nighttel"></label></td>
+                                    </tr>
+                                    </tbody>
+                                    <tr class="tip">
+                                        <td colspan="2">���ݼ����У����Ժ�...</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script  src="/zjw2016/js/bottom.js" type="text/javascript" language="javascript"></script>
+</div>
+</body>
+<script type="text/javascript">
+    $(function(){
+        $("#zjxq").detail({
+            st:"#",url:"/fg/wygl/xq/",pm:getQueryString(),cb:function(th,opts,data){ }
+        });
+    });
+</script>
+<!--start JS -->
+<script src="/zjw2016/js/ETUI/ETUI.min.js"></script>
+<script src="/zjw2016/js/ETUI/tab.js"></script>
+</html>

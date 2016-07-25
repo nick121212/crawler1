@@ -2,7 +2,7 @@ let _ = require("lodash");
 let dataStrategy = require("../data.strategy");
 
 class Base {
-    doDealData(queueItem, data, curResults, $) {
+    doDealData(queueItem, data, curResults, $, index) {
         let promises = [];
         let strategy = null;
 
@@ -10,12 +10,12 @@ class Base {
             strategy = this.deals[d["dealStrategy"]] || normalStrategy;
             if (_.isArray(curResults)) {
                 _.each(curResults, (result, index) => {
-                    promises.push(strategy.doDeal(queueItem, d, result, $, index));
+                    promises.push(strategy.doDeal.call(this, queueItem, d, curResults, $, index));
                 });
             } else {
-                promises.push(strategy.doDeal(queueItem, d, curResults, $));
+                promises.push(strategy.doDeal.call(this, queueItem, d, curResults, $, index));
             }
-        });
+        }, this);
 
         return promises;
     }

@@ -7,7 +7,7 @@
     "mappings": {
         "_default_": {
             "_source": {
-                "enabled": false
+                "enabled": true
             },
             "properties": {
                 "jobProgress": {
@@ -137,23 +137,12 @@
                     "type": "string"
                 },
                 "pictures": {
-                    "type": "nested",
-                    "properties": {
-                        "title": {
-                            "type": "string"
-                        },
-                        "url": {
-                            "type": "string"
-                        }
-                    }
+                    "type": "nested"
                 },
                 "introduction": {
                     "type": "string"
                 },
-                "tags": {
-                    "type": "object"
-                },
-                "serialnumber": {
+                "serialNumber": {
                     "type": "string"
                 },
                 "buildingTime": {

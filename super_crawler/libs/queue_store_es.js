@@ -155,14 +155,18 @@ class QueueStoreOfES {
      */
     indexEsData(data, idField, type, index) {
         let defer = Promise.defer();
-
-        core.elastic.index({
+        let config = {
             index: index || this.es_index,
             type: type,
-            id: data[idField],
             body: data,
             consistency: "one"
-        }).then(() => {
+        };
+
+        if (idField !== "randow") {
+            config["id"] = data[idField];
+        }
+
+        core.elastic.index(config).then(() => {
             defer.resolve(data);
         }, (err) => {
             defer.reject(err);
@@ -376,7 +380,7 @@ class QueueStoreOfES {
         //     }
         // });
 
-        if (!data[keyField]) keyField = "url";
+        if (!data[keyField] && keyField !== "randow") keyField = "url";
 
         return this.indexEsData(_.extend({
             url: queueItem.url,

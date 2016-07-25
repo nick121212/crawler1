@@ -60,7 +60,7 @@ class CheerDealStrategy {
 
             defer.resolve({
                 result: result,
-                data: data,
+                data: _.extend({}, data),
                 $cur: $sel,
                 $parent: $,
                 len: len,

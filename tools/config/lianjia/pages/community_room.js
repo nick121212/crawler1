@@ -2,10 +2,10 @@ module.exports = (core) => {
     return (config) => {
         config.pages.room = {
             key: "crawler.room",
-            rule: {
+            rule: [{
                 regexp: /\/ershoufang\/(.*?)(\.html)$/.toString(),
                 scope: "i"
-            },
+            }],
             fieldKey: "name",
             test: false,
             area: {
@@ -29,7 +29,7 @@ module.exports = (core) => {
                                 attr: ["img-title"]
                             }),
                             core.utils.data_builder.normal("url", ["img"], [], {
-                                attr: ["src"]
+                                attr: ["data-large"]
                             })
                         ])
                     ]

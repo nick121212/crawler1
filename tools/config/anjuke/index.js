@@ -7,10 +7,11 @@ let _ = require("lodash");
 module.exports = (core) => {
     let config = new core.utils.builder("anjuke", "anjuke.com", ["sh.fang.anjuke.com"]);
 
-    config.setBaseInfo(1000, "phantom1");
+    config.setBaseInfo(1000, "superagent");
     config.initDomain = "sh.fang.anjuke.com";
     config.proxySettings = {
-        useProxy: false
+        useProxy: false,
+        charset: "utf-8"
     };
     // 白名单
     // 匹配新房列表
@@ -20,18 +21,31 @@ module.exports = (core) => {
     // 匹配新房参数页面
     config.addWhitePath(/^\/loupan\/canshu-\d*\.html/);
 
-    // 二手房列表
-    config.addWhitePath(/^\/sale\/$/);
-    config.addWhitePath(/^\/sale\/\d*\/$/);
-    // 二手房详情
-    config.addWhitePath(/^\/prop\/view\//);
-    // 小区详情
+    // 匹配新房户型参数页面
+    config.addWhitePath(/^\/loupan\/huxing-\d*\.html/);
+    // 户型分页
+    config.addWhitePath(/^\/loupan\/huxing-\d*\/s/);
+    // 匹配新房相册页面
+    config.addWhitePath(/^\/loupan\/xiangce-\d*/);
+
+    // 小区户型图
+    config.addWhitePath(/^\/community\/photos\/model\/\d*/);
+
+    // 匹配经纪人列表页面
+    config.addWhitePath(/^\/tycoon\//);
+    config.addWhitePath(/^\/tycoon\/p\d*\//);
+    // 匹配经纪人详情
+    config.addWhitePath(/^\/gongsi-jjr-\d*\/(js)*/);
+    // 小区列表页
+    config.addWhitePath(/^\/community\/\d*/);
+    // 小区详情页
     config.addWhitePath(/^\/community\/view\//);
 
-    // -----------------页面配置------------------
-    core.config.anjuke.community(config);
-    core.config.anjuke.house(config);
-    // core.config.anjuke.house_base(config);
+    _.forEach(core.config.anjuke.pages, (page)=> {
+        if (typeof page === "function") {
+            page(config);
+        }
+    });
 
     return config;
 };

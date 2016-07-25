@@ -2,6 +2,7 @@
 
 let _ = require("lodash");
 let dealStrategy = require("./deal.strategy");
+let tools = require("../../utils/tools")();
 
 class DealHtml {
     constructor(settings, saveFunc) {
@@ -10,7 +11,9 @@ class DealHtml {
         this.key = settings.key || "";
         this.saveFunc = saveFunc || function() {};
         _.forEach(this.pages, (page) => {
-            typeof page.rule === "object" && (page.rule = new RegExp(page.rule.regexp.replace(/(^\/)|(\/$)/g, ""), page.rule.scope));
+            page.rule = _.map(page.rule, (rule) => {
+                return new RegExp(tools.replaceRegexp(rule.regexp), rule.scope);
+            });
         });
     }
 
@@ -21,7 +24,9 @@ class DealHtml {
      */
     findRule(url) {
         return _.filter(this.pages, (page, key) => {
-            return page.rule && page.rule.test(url);
+            return _.some(page.rule, (rule) => {
+                return rule.test(url);
+            });
         });
     }
 
@@ -34,6 +39,7 @@ class DealHtml {
             defer = Promise.defer(),
             promises = [];
 
+        // console.log(`deal start ${queueItem.url} at ${new Date()}`);
         if (!rules.length) {
             defer.resolve();
         } else {
@@ -48,6 +54,7 @@ class DealHtml {
                     promises.length = 0;
                     _.each(results, (result) => {
                         if (!result.rule.test) {
+                            result.result = _.extend({}, result.rule.extendData || {}, result.result);
                             if (result.rule.fieldKey && result.result[result.rule.fieldKey]) {
                                 promises.push(this.saveFunc(queueItem, result.result, this.key, result.rule.key, result.rule.fieldKey));
                             } else {

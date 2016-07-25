@@ -1,6 +1,7 @@
 let arrayStrategy = require("./array.js");
 let normalStrategy = require("./normal.js");
 let switchStrategy = require("./switch.js");
+let caseStrategy = require("./case.js");
 let areaStrategy = require("./area.js");
 let objStrategy = require("./object.js");
 let Base = require("./base");
@@ -16,13 +17,15 @@ class TypeStrategy extends Base {
      */
     constructor() {
         super();
-        this.deals = {};
+
         // 注册默认的策略
+        this.deals = {};
         this.register(arrayStrategy.key, arrayStrategy);
         this.register(normalStrategy.key, normalStrategy);
         this.register(switchStrategy.key, switchStrategy);
         this.register(areaStrategy.key, areaStrategy);
         this.register(objStrategy.key, objStrategy);
+        this.register(caseStrategy.key, caseStrategy);
     }
 
     /**
@@ -48,10 +51,17 @@ class TypeStrategy extends Base {
         let dataResults = {};
         let check = (results) => {
             let promises = [];
+            let getPromises = (results) => {
+                _.forEach(results, (result) => {
+                    if (_.isArray(result)) {
+                        getPromises(result);
+                    } else {
+                        result && result.data && result.data.data && (promises = promises.concat(this.doDealData.call(this, queueItem, result.data.data, result.result, result.$cur, result.index)));
+                    }
+                });
+            }
 
-            _.forEach(results, (result) => {
-                result && result.data && result.data.data && (promises = promises.concat(this.doDealData(queueItem, result.data.data, result.result, result.$cur)));
-            });
+            getPromises(results);
 
             return promises.length ? Promise.all(promises).then(check, defer.reject) : defer.resolve({
                 result: dataResults,
@@ -62,7 +72,7 @@ class TypeStrategy extends Base {
         // 处理area
         this.deals["area"].doDeal(queueItem, rule.area).then((results) => {
             _.forEach(rule.area, (area) => {
-                promiseAll = promiseAll.concat(this.doDealData(queueItem, area.data, dataResults, results[area.key] ? results[area.key].$cur : null));
+                promiseAll = promiseAll.concat(this.doDealData.call(this, queueItem, area.data, dataResults, results[area.key] ? results[area.key].$cur : null));
             });
 
             return Promise.all(promiseAll).then(check);

@@ -2,10 +2,10 @@ module.exports = (core) => {
     return (config) => {
         config.pages.community = {
             key: "crawler.community",
-            rule: {
+            rule: [{
                 "regexp": /\/xiaoqu\/(.*?)(.html)$/.toString(),
                 scope: "i"
-            },
+            }],
             fieldKey: "name",
             test: false,
             area: {
@@ -37,7 +37,6 @@ module.exports = (core) => {
                     dealStrategy: "jsdom",
                     data: [
                         // 城市
-                        // core.utils.data_builder.normal("city", [{eq: [1]}]),
                         core.utils.data_builder.combine(core.utils.data_builder.normal("city", [{eq: [1]}]), {
                             formats: [
                                 {str: []},

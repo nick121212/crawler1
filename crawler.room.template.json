@@ -7,50 +7,47 @@
     "mappings": {
         "_default_": {
             "_source": {
-                "enabled": false
+                "enabled": true
             },
             "properties": {
                 "feature": {
-                    "tpye": "string"
-                },
-                "isOnly": {
-                    "tpye": "string"
+                    "type": "string"
                 },
                 "position": {
-                    "tpye": "string"
+                    "type": "string"
                 },
                 "floorRoomScale": {
-                    "tpye": "string"
+                    "type": "string"
                 },
                 "monthPayment": {
-                    "tpye": "string"
+                    "type": "string"
                 },
                 "prevTrade": {
-                    "tpye": "string"
+                    "type": "string"
                 },
                 "yearLimit": {
-                    "tpye": "string"
+                    "type": "string"
                 },
                 "area": {
-                    "tpye": "string"
+                    "type": "string"
                 },
                 "sellingPoint": {
-                    "tpye": "string"
+                    "type": "string"
                 },
                 "toward": {
-                    "tpye": "string"
+                    "type": "string"
                 },
                 "completionTime": {
-                    "tpye": "string"
+                    "type": "string"
                 },
                 "onSellTime": {
-                    "tpye": "string"
+                    "type": "string"
                 },
                 "downPayment": {
-                    "tpye": "string"
+                    "type": "string"
                 },
                 "floorScale": {
-                    "tpye": "string"
+                    "type": "string"
                 },
                 "decoration": {
                     "type": "string"
@@ -89,18 +86,17 @@
                     "type": "nested",
                     "properties": {
                         "title": {
-                            "type": "string"
+                            "type": "string",
+                            "index": "analyzed"
                         },
                         "url": {
-                            "type": "string"
+                            "type": "string",
+                            "index": "not_analyzed"
                         }
                     }
                 },
                 "introduction": {
                     "type": "string"
-                },
-                "tags": {
-                    "type": "object"
                 }
             }
         }

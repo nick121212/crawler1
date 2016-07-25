@@ -15,10 +15,10 @@ module.exports = exports = (core, Download) => {
         }
         try {
             config.blackPathList = config.blackPathList.map((path) => {
-                return new RegExp(path.regexp.replace(/(^\/)|(\/$)/g, ""), path.scope);
+                return new RegExp(core.utils.tools.replaceRegexp(path.regexp), path.scope);
             });
             config.whitePathList = config.whitePathList.map((path) => {
-                return new RegExp(path.regexp.replace(/(^\/)|(\/$)/g, ""), path.scope);
+                return new RegExp(core.utils.tools.replaceRegexp(path.regexp), path.scope);
             });
             try {
                 // 启动爬虫

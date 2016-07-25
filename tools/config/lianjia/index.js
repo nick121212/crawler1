@@ -36,8 +36,11 @@ module.exports = exports = (core) => {
     config.addWhitePath("^\/xiaoqu\/d[1-9]{1,}");
 
     // -----------------页面配置------------------
-    core.config.lianjia.community(config);
-    core.config.lianjia.community_room(config);
+    _.forEach(core.config.lianjia.pages, (page)=> {
+        if (typeof page === "function") {
+            page(config);
+        }
+    });
 
     return config;
 };
