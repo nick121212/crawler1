@@ -20,11 +20,11 @@ module.exports = exports = (core) => {
     config.addWhitePath("^\/shanghai\/esf\/detail\/(.*?).html");
 
     // -----------------页面配置------------------
-    _.forEach(core.config.wukong.pages, (page) => {
-        if (typeof page === "function") {
-            page(config);
-        }
-    });
+    // _.forEach(core.config.wukong.pages, (page) => {
+    //     if (typeof page === "function") {
+    //         page(config);
+    //     }
+    // });
 
     return config;
 };
