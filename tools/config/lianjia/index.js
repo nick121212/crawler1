@@ -16,12 +16,12 @@ module.exports = exports = (core) => {
     };
     // 白名单
     config.addWhitePath(/^\/ershoufang(\/*)$/);
-    config.addWhitePath(/^\/ershoufang\/d\d*/);
-    config.addWhitePath(/^\/ershoufang\/\d*.html/);
+    config.addWhitePath(/^\/ershoufang\/d\d.*/);
+    config.addWhitePath(/^\/ershoufang\/(\d.*).html/);
 
-    config.addWhitePath(/^\/xiaoqu\/\d*.html$/);
+    config.addWhitePath(/^\/xiaoqu\/(\d.*).html$/);
     config.addWhitePath(/^\/xiaoqu(\/*)$/);
-    config.addWhitePath(/^\/xiaoqu\/d\d*/);
+    config.addWhitePath(/^\/xiaoqu\/d(\d.*)/);
 
     // -----------------页面配置------------------
     _.forEach(core.config.lianjia.pages, (page) => {
