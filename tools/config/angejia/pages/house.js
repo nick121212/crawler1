@@ -17,7 +17,7 @@ module.exports = (core) => {
                         core.utils.data_builder.normal("address", [".property-message .discount:eq(2)"], ["span"]),
                         // 图片
                         core.utils.data_builder.array("pictures", [".album-image-box .big-image-box .slide-box li"], [], [
-                            core.utils.data_builder.normal("img", ["img"], [], {attr: ["data-src"]}),
+                            core.utils.data_builder.normal("", ["img"], [], {attr: ["data-src"]})
                         ])
                     ]
                 }

@@ -31,7 +31,9 @@ class Strategy extends Base {
                 return Promise.all(promises).then((cases) => {
                     let rtnResults = [];
                     _.each(cases, (casee) => {
-                        casee && rtnResults.push(casee);
+                        if (casee) {
+                            rtnResults.push(casee);
+                        }
                     });
                     defer.resolve(rtnResults);
                 }).catch(defer.reject);

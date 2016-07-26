@@ -30,7 +30,9 @@ class TypeStrategy {
      */
     register(key, dealInstance) {
         if (dealInstance && key) {
-            !this.formats.hasOwnProperty(key) && (this.formats[key] = dealInstance);
+            if (!this.formats.hasOwnProperty(key)) {
+                (this.formats[key] = dealInstance);
+            }
         }
     }
 
@@ -41,7 +43,7 @@ class TypeStrategy {
      * @returns Any
      */
     doDeal(key, result, params) {
-        let strategy = this.formats[key] || strStrategy;
+        let strategy = this.formats[key] || str;
 
         try {
             return strategy.doDeal(result, params);

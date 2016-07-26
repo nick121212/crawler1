@@ -35,7 +35,9 @@ class TypeStrategy extends Base {
      */
     register(key, dealInstance) {
         if (dealInstance && key) {
-            !this.deals.hasOwnProperty(key) && (this.deals[key] = dealInstance);
+            if (!this.deals.hasOwnProperty(key)) {
+                this.deals[key] = dealInstance;
+            }
         }
     }
 
@@ -70,7 +72,7 @@ class TypeStrategy extends Base {
         };
 
         // 处理area
-        this.deals["area"].doDeal(queueItem, rule.area).then((results) => {
+        this.deals.area.doDeal(queueItem, rule.area).then((results) => {
             _.forEach(rule.area, (area) => {
                 promiseAll = promiseAll.concat(this.doDealData.call(this, queueItem, area.data, dataResults, results[area.key] ? results[area.key].$cur : null));
             });

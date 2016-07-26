@@ -1,5 +1,4 @@
-let qs = require("qs");
-let jpp = require("json-path-processor");
+let _ = require("lodash");
 
 /**
  * 处理html文本策越

@@ -40,7 +40,9 @@ class Strategy extends Base {
                 return Promise.all(promises).then((cases) => {
                     let rtnResults = [];
                     _.each(cases, (casee) => {
-                        casee && rtnResults.push(casee);
+                        if (casee) {
+                            rtnResults.push(casee);
+                        }
                     });
                     defer.resolve(rtnResults);
                 }).catch(defer.reject);
@@ -49,27 +51,6 @@ class Strategy extends Base {
         }, defer.reject);
 
         return defer.promise;
-    }
-
-    /**
-     * 数组的情况下执行
-     * @returns Promise
-     */
-    doDeal1(queueItem, data, results, $, index) {
-        let promise = null;
-
-        results[data.key] = [];
-        promise = htmlStrategy.getOne(data.htmlStrategy).doDeal(queueItem, data, $, index).then((res) => {
-            for (let i = 0; i < res.len; i++) {
-                results[data.key].push({});
-            };
-            res.result = results[data.key];
-            !res.len && (res.data = null);
-
-            return res;
-        });
-
-        return promise;
     }
 }
 

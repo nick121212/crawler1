@@ -18,7 +18,9 @@ class Strategy {
      */
     doDeal(result) {
 
-        if (typeof result !== "string") return result;
+        if (typeof result !== "string") {
+            return result;
+        }
 
         result = result || "";
         result = result.replace(/\r\n/gi, '');

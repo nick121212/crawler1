@@ -11,10 +11,10 @@ let _ = require("lodash");
 class QueueStoreOfES {
     constructor(index) {
         // es中的index
-        this.es_index = `${index}-crawler-allin`;
-        this.es_type_urls = "urls";
-        this.es_type_rsbody = "rsbody";
-        this.es_type_queue_urls = "mqurls";
+        this.esIndex = `${index}-crawler-allin`;
+        this.esTypeUrls = "urls";
+        this.esTypeRsbody = "rsbody";
+        this.esTypeQueueUrls = "mqurls";
     }
 
     /**
@@ -28,12 +28,12 @@ class QueueStoreOfES {
         core.elastic.mget({
             body: {
                 docs: [{
-                    _index: this.es_index,
-                    _type: this.es_type_urls,
+                    _index: this.esIndex,
+                    _type: this.esTypeUrls,
                     _id: queueItem.url
                 }, {
-                    _index: this.es_index,
-                    _type: this.es_type_queue_urls,
+                    _index: this.esIndex,
+                    _type: this.esTypeQueueUrls,
                     _id: queueItem.url
                 }]
             }
@@ -133,7 +133,7 @@ class QueueStoreOfES {
         let defer = Promise.defer();
 
         core.elastic.create({
-            index: index || this.es_index,
+            index: index || this.esIndex,
             type: type,
             id: data[idField],
             body: data
@@ -156,7 +156,7 @@ class QueueStoreOfES {
     indexEsData(data, idField, type, index) {
         let defer = Promise.defer();
         let config = {
-            index: index || this.es_index,
+            index: index || this.esIndex,
             type: type,
             body: data,
             consistency: "one"
@@ -184,7 +184,7 @@ class QueueStoreOfES {
      */
     deleteEsData(data, idField, type, index) {
         return core.elastic.delete({
-            index: index || this.es_index,
+            index: index || this.esIndex,
             type: type,
             id: data[idField] || null
         });
@@ -208,14 +208,14 @@ class QueueStoreOfES {
         // mget一下数据
         _.each(queueItems, (queueItem) => {
             esMgetBody.push({
-                _index: this.es_index,
-                _type: this.es_type_urls,
+                _index: this.esIndex,
+                _type: this.esTypeUrls,
                 _id: queueItem.url,
                 fields: ["fetched"]
             });
             esMgetBody.push({
-                _index: this.es_index,
-                _type: this.es_type_queue_urls,
+                _index: this.esIndex,
+                _type: this.esTypeQueueUrls,
                 _id: queueItem.url,
                 fields: ["fetched"]
             });
@@ -246,8 +246,8 @@ class QueueStoreOfES {
                 if (queueItems[urlRes._id]) {
                     esBulkBody.push({
                         create: {
-                            _index: this.es_index,
-                            _type: this.es_type_queue_urls,
+                            _index: this.esIndex,
+                            _type: this.esTypeQueueUrls,
                             _id: urlRes._id
                         }
                     });
@@ -259,7 +259,9 @@ class QueueStoreOfES {
         }, defer.reject).then((esBulkBody) => {
             let newQueueItems = [];
 
-            if (!esBulkBody.length) return defer.resolve();
+            if (!esBulkBody.length) {
+                return defer.resolve();
+            }
 
             // 新建数据,并添加到queue
             core.elastic.bulk({
@@ -286,7 +288,7 @@ class QueueStoreOfES {
     addCompleteQueueItem(queueItem, responseBody, key) {
         let defer = Promise.defer();
 
-        this.checkUrlDetail(queueItem).then((data) => {
+        this.checkUrlDetail(queueItem).then(() => {
             queueItem.fetched = true;
             queueItem.updateDate = Date.now();
             queueItem.status = "downloaded";
@@ -294,20 +296,20 @@ class QueueStoreOfES {
             core.elastic.bulk({
                 body: [{
                     create: {
-                        _index: this.es_index,
-                        _type: this.es_type_urls,
+                        _index: this.esIndex,
+                        _type: this.esTypeUrls,
                         _id: queueItem.url
                     }
                 }, queueItem, {
                     delete: {
-                        _index: this.es_index,
-                        _type: this.es_type_queue_urls,
+                        _index: this.esIndex,
+                        _type: this.esTypeQueueUrls,
                         _id: queueItem.url
                     }
                 }, {
                     create: {
-                        _index: this.es_index,
-                        _type: this.es_type_rsbody,
+                        _index: this.esIndex,
+                        _type: this.esTypeRsbody,
                         _id: queueItem.url
                     }
                 }, {
@@ -374,13 +376,9 @@ class QueueStoreOfES {
      * @param index     {String}
      */
     addCompleteData(queueItem, data, type, index, keyField = "url") {
-        // _.forEach(data, (d, key) => {
-        //     if (_.isArray(d)) {
-        //         data[key] = JSON.stringify(d);
-        //     }
-        // });
-
-        if (!data[keyField] && keyField !== "randow") keyField = "url";
+        if (!data[keyField] && keyField !== "randow") {
+            keyField = "url";
+        }
 
         return this.indexEsData(_.extend({
             url: queueItem.url,
@@ -397,12 +395,12 @@ class QueueStoreOfES {
         let promises = [];
 
         promises.push(core.elastic.count({
-            index: this.es_index,
-            type: this.es_type_rsbody
+            index: this.esIndex,
+            type: this.esTypeRsbody
         }));
         promises.push(core.elastic.count({
-            index: this.es_index,
-            type: this.es_type_queue_urls
+            index: this.esIndex,
+            type: this.esTypeQueueUrls
         }));
         promises.push(core.q.getQueue(`crawler.urls.${key}`));
 

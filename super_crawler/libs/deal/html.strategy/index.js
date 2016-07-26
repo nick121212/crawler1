@@ -47,7 +47,7 @@ class DealStrategy {
         let promises = [],
             promise;
 
-        _.each(data, (d, index) => {
+        _.each(data, (d) => {
             let isArray = _.isArray(results);
 
             if (isArray) {

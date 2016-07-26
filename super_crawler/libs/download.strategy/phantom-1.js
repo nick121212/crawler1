@@ -1,5 +1,4 @@
 const Horseman = require('node-horseman');
-let ips = require("./ips");
 
 class Downloader {
     constructor() {

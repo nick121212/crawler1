@@ -1,6 +1,3 @@
-let qs = require("qs");
-let jpp = require("json-path-processor");
-
 /**
  * 处理html文本策越
  */

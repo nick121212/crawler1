@@ -1,4 +1,3 @@
-let _ = require("lodash");
 let htmlStrategy = require("../html.strategy");
 let Base = require("./base");
 
@@ -27,7 +26,6 @@ class Strategy extends Base {
             if (res.result !== res.data.match) {
                 res = null;
             } else {
-                // res.index = undefined;
                 res.result = results;
                 res.$cur = res.$parent;
             }

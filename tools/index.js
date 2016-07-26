@@ -6,9 +6,7 @@ let consign = require('consign');
 let core = require("../core");
 var program = require('commander');
 
-consign({
-    verbose: false
-})
+consign({ verbose: false })
     .include('utils')
     .include('config/anjuke/pages')
     .include('config/lianjia/pages')

@@ -24,8 +24,12 @@ class Strategy {
         let noSparse, jData;
 
         if (typeof result === "string") {
-            result.indexOf("?") >= 0 && (result = result.substr(result.indexOf("?") + 1));
-            result.indexOf("#") >= 0 && (result = result.substr(result.indexOf("#") + 1));
+            if (result.indexOf("?") >= 0) {
+                result = result.substr(result.indexOf("?") + 1);
+            }
+            if (result.indexOf("#") >= 0) {
+                result = result.substr(result.indexOf("#") + 1);
+            }
         }
 
         noSparse = qs.parse(result);

@@ -80,7 +80,9 @@ class CheerDealStrategy {
                         $sel = this.doCallMethod($sel, sel.method, sel.params);
                         break;
                 }
-                if (!$sel.length) return false;
+                if (!$sel.length) {
+                    return false;
+                }
             });
 
             return $sel;
