@@ -3,7 +3,7 @@ module.exports = (core) => {
         config.pages.room = {
             key: "crawler.room",
             rule: [{
-                regexp: /\/ershoufang\/\d*.html$/.toString(),
+                regexp: /\/shanghai\/\d*.html/.toString(),
                 scope: "i"
             }],
             fieldKey: "random",

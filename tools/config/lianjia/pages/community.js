@@ -3,7 +3,7 @@ module.exports = (core) => {
         config.pages.community = {
             key: "crawler.community",
             rule: [{
-                "regexp": /\/xiaoqu\/(.*?)(.html)$/.toString(),
+                "regexp": /\/xiaoqu\/\d*.html/.toString(),
                 scope: "i"
             }],
             fieldKey: "name",
@@ -37,27 +37,27 @@ module.exports = (core) => {
                     dealStrategy: "jsdom",
                     data: [
                         // 城市
-                        core.utils.data_builder.combine(core.utils.data_builder.normal("city", [{eq: [1]}]), {
+                        core.utils.data_builder.combine(core.utils.data_builder.normal("city", [{ eq: [1] }]), {
                             formats: [
-                                {str: []},
-                                {
+                                { str: [] }, {
                                     replace: {
                                         regexp: /小区/.toString(),
                                         scope: "i",
                                         repStr: ""
                                     }
-                                }]
+                                }
+                            ]
                         }),
-                        core.utils.data_builder.combine(core.utils.data_builder.normal("area", [{eq: [2]}]), {
+                        core.utils.data_builder.combine(core.utils.data_builder.normal("area", [{ eq: [2] }]), {
                             formats: [
-                                {str: []},
-                                {
+                                { str: [] }, {
                                     replace: {
                                         regexp: /小区/.toString(),
                                         scope: "i",
                                         repStr: ""
                                     }
-                                }]
+                                }
+                            ]
                         })
                     ]
                 },
@@ -80,10 +80,14 @@ module.exports = (core) => {
                             // 经度
                             core.utils.data_builder.normal("lat", [], [], {
                                 attr: ["latitude"]
+                            }, {
+                                num: {}
                             }),
                             // 纬度
                             core.utils.data_builder.normal("lon", [], [], {
                                 attr: ["longitude"]
+                            }, {
+                                num: {}
                             })
                         ])
                     ]

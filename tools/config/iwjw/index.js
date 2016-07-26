@@ -5,19 +5,19 @@
 let _ = require("lodash");
 
 module.exports = exports = (core) => {
-    let config = new core.utils.builder("lianjia", "www.wkzf.com", []);
+    let config = new core.utils.builder("iwjw", "www.iwjw.com", []);
 
     config.setBaseInfo(1000, "superagent");
-    config.initDomain = "sh.lianjia.com";
+    config.initDomain = "www.iwjw.com/sale/shanghai";
     config.proxySettings = {
         useProxy: false,
         charset: "utf-8",
         timeout: 5000
     };
     // 白名单
-    config.addWhitePath("^\/shanghai\/esf");
-    config.addWhitePath("^\/shanghai\/esf\/p\d*");
-    config.addWhitePath("^\/shanghai\/esf\/detail\/(.*?).html");
+    config.addWhitePath("^\/ershoufang\/$");
+    config.addWhitePath("^\/ershoufang\/g\d*\/$");
+    config.addWhitePath("^\/ershoufang\/(.*?).html");
 
     // -----------------页面配置------------------
     // _.forEach(core.config.wukong.pages, (page) => {

@@ -6,7 +6,7 @@ module.exports = (core) => {
                 regexp: /\/sale\/a\d*.html/.toString(),
                 scope: "i"
             }],
-            fieldKey: "randow",
+            fieldKey: "name",
             test: false,
             area: {
                 none: {
