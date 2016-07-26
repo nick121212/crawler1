@@ -20,7 +20,9 @@ class Strategy {
     doDeal(result) {
         let res = Number(result);
 
-        // return Number.isNaN(res) || 0;
+        if (Number.isNaN(res)) {
+            res = 0;
+        }
 
         return res;
     }

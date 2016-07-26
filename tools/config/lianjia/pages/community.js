@@ -81,13 +81,13 @@ module.exports = (core) => {
                             core.utils.data_builder.normal("lat", [], [], {
                                 attr: ["latitude"]
                             }, {
-                                num: {}
+                                num: []
                             }),
                             // 纬度
                             core.utils.data_builder.normal("lon", [], [], {
                                 attr: ["longitude"]
                             }, {
-                                num: {}
+                                num: []
                             })
                         ])
                     ]
