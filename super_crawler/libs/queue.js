@@ -25,16 +25,16 @@ class Queue extends EventEmitter {
         super();
 
         this.queueStore = queueStore;
-        this.ignoreWWWDomain = settings.ignoreWWWDomain === null ? true : settings.ignoreWWWDomain;
-        this.scanSubdomains = settings.scanSubdomains === null ? false : settings.scanSubdomains;
-        this.stripWWWDomain = settings.stripWWWDomain === null ? true : settings.stripWWWDomain;
+        this.ignoreWWWDomain = settings.ignoreWWWDomain == null ? true : settings.ignoreWWWDomain;
+        this.scanSubdomains = settings.scanSubdomains == null ? false : settings.scanSubdomains;
+        this.stripWWWDomain = settings.stripWWWDomain == null ? true : settings.stripWWWDomain;
         this.host = settings.host || "";
         this.initialProtocol = settings.initialProtocol || "http";
         this.domainWhiteList = settings.domainWhiteList;
         this.initialPort = settings.initialPort || 80;
         this._fetchConditions = settings.fetchConditions || [];
-        this.filterByDomain = settings.filterByDomain === null ? true : settings.filterByDomain;
-        this.stripQuerystring = settings.stripQuerystring === null ? true : settings.stripQuerystring;
+        this.filterByDomain = settings.filterByDomain == null ? true : settings.filterByDomain;
+        this.stripQuerystring = settings.stripQuerystring == null ? true : settings.stripQuerystring;
 
         this.urlEncoding = "iso8859";
 
@@ -253,7 +253,7 @@ class Queue extends EventEmitter {
             domainInWhitelist(host) ||
             // Or if we're scanning subdomains, and this domain is a subdomain
             // of the crawler's set domain, return true.
-            this.scanSubdomains && isSubdomainOf(host, this.host);
+            (this.scanSubdomains && isSubdomainOf(host, this.host));
     }
 }
 
