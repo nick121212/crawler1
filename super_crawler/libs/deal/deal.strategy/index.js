@@ -4,6 +4,7 @@ let switchStrategy = require("./switch.js");
 let caseStrategy = require("./case.js");
 let areaStrategy = require("./area.js");
 let objStrategy = require("./object.js");
+let orStrategy = require("./or.js");
 let Base = require("./base");
 let _ = require("lodash");
 
@@ -26,6 +27,7 @@ class TypeStrategy extends Base {
         this.register(areaStrategy.key, areaStrategy);
         this.register(objStrategy.key, objStrategy);
         this.register(caseStrategy.key, caseStrategy);
+        this.register(orStrategy.key, orStrategy);
     }
 
     /**

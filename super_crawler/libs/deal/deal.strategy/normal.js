@@ -34,7 +34,7 @@ class Strategy extends Base {
                 path.length && (path += ".");
                 path += `${data.key}`;
             }
-            jData.set(path, this.doFormatData(res.result, data.formats), true);
+            res.result && jData.set(path, this.doFormatData(res.result, data.formats), true);
 
             return res;
         });

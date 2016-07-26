@@ -1,9 +1,9 @@
 module.exports = (core) => {
     return (config) => {
-        config.pages.house = {
-            key: "crawler.house",
+        config.pages.layout = {
+            key: "crawler.layouts",
             rule: [{
-                "regexp": /\/loupan\/\d*.html/.toString(),
+                regexp: /\/sale\/a\d*.html/.toString(),
                 scope: "i"
             }],
             fieldKey: "randow",
@@ -11,21 +11,24 @@ module.exports = (core) => {
             area: {
                 none: {
                     data: [
-                        // 楼盘名称
-                        core.utils.data_builder.normal("name", [".inventory-title"]),
-                        // 楼盘地址
-                        core.utils.data_builder.normal("address", [".property-message .discount:eq(2)"], ["span"]),
-                        // 图片
-                        core.utils.data_builder.array("pictures", [".album-image-box .big-image-box .slide-box li"], [], [
+                        // 户型图片
+                        core.utils.data_builder.array("pictures", ["#slide_house_type .view .slide-box li"], [], [
                             core.utils.data_builder.or([
                                 core.utils.data_builder.normal("url", ["img"], [], { attr: ["data-src"] }),
                                 core.utils.data_builder.normal("url", [], [], { css: ["backgroundImage"] }, [{ str: [], replace: { regexp: /^url\(|\)$/.toString(), scope: "g" } }])
                             ])
                         ])
                     ]
+                },
+                baseInfo: {
+                    selector: ".inventory-info",
+                    dealStrategy: "jsdom",
+                    data: [
+                        // 小区名称
+                        core.utils.data_builder.normal("name", [".detail-item .community-name span"])
+                    ]
                 }
-            },
-            ajax: {}
+            }
         };
     };
 };

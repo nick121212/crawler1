@@ -1,7 +1,7 @@
 module.exports = (core) => {
     return (config) => {
-        config.pages.house = {
-            key: "crawler.house",
+        config.pages.layout1 = {
+            key: "crawler.layout",
             rule: [{
                 "regexp": /\/loupan\/\d*.html/.toString(),
                 scope: "i"

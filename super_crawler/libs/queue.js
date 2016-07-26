@@ -25,16 +25,16 @@ class Queue extends EventEmitter {
         super();
 
         this.queueStore = queueStore;
-        this.ignoreWWWDomain = settings.ignoreWWWDomain || true;
-        this.scanSubdomains = settings.scanSubdomains || false;
-        this.stripWWWDomain = settings.stripWWWDomain || false;
+        this.ignoreWWWDomain = settings.ignoreWWWDomain === undefined ? true : settings.ignoreWWWDomain;
+        this.scanSubdomains = settings.scanSubdomains === undefined ? true : settings.scanSubdomains;
+        this.stripWWWDomain = settings.stripWWWDomain === undefined ? true : settings.stripWWWDomain;
         this.host = settings.host || "";
         this.initialProtocol = settings.initialProtocol || "http";
         this.domainWhiteList = settings.domainWhiteList;
         this.initialPort = settings.initialPort || 80;
         this._fetchConditions = settings.fetchConditions || [];
-        this.filterByDomain = settings.filterByDomain || true;
-        this.stripQuerystring = settings.stripQuerystring || true;
+        this.filterByDomain = settings.filterByDomain === undefined ? true : settings.filterByDomain;
+        this.stripQuerystring = settings.stripQuerystring === undefined ? true : settings.stripQuerystring;
 
         this.urlEncoding = "iso8859";
 

@@ -12,7 +12,7 @@ module.exports = () => {
          * @param htmlStrategy
          * @returns {{key: *, selector: Array, methodInfo: {text: Array}, formatStrategy: *[], htmlStrategy: string, dealStrategy: string, removeSelector: Array}}
          */
-        normal(key, selector = [], removeSelector = [], methodInfo = {text: []}, formats = [{"str": []}], htmlStrategy = "jsdom") {
+        normal(key, selector = [], removeSelector = [], methodInfo = { text: [] }, formats = [{ "str": [] }], htmlStrategy = "jsdom") {
             return {
                 key: key,
                 selector: selector,
@@ -25,7 +25,7 @@ module.exports = () => {
         }
 
         combine(result, ...settings) {
-            _.each(settings, (setting)=> {
+            _.each(settings, (setting) => {
                 _.extend(result, setting);
             });
 
@@ -79,7 +79,7 @@ module.exports = () => {
             };
         }
 
-        cases(selector, removeSelector = [], match = "", data = [], methodInfo = {text: []}) {
+        cases(selector, removeSelector = [], match = "", data = [], methodInfo = { text: [] }) {
             return {
                 selector: selector,
                 removeSelector: removeSelector,
@@ -87,6 +87,16 @@ module.exports = () => {
                 match: match,
                 data: data,
                 dealStrategy: "case"
+            };
+        }
+
+        or(data = []) {
+            return {
+                selector: [],
+                removeSelector: [],
+                methodInfo: null,
+                data: data,
+                dealStrategy: "or"
             };
         }
     }

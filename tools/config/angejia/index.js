@@ -5,10 +5,11 @@
 let _ = require("lodash");
 
 module.exports = (core) => {
-    let config = new core.utils.builder("angejia", "angejia.com", ["sh.angejia.com"]);
+    let config = new core.utils.builder("angejia", "sh.angejia.com", ["sh.angejia.com"]);
 
     config.setBaseInfo(1000, "phantom1");
     config.initDomain = "sh.angejia.com";
+    config.stripQuerystring = false;
     config.proxySettings = {
         useProxy: false,
         charset: "utf-8"
@@ -21,8 +22,10 @@ module.exports = (core) => {
     // 匹配新房参数页面
     config.addWhitePath(/^\/loupan\/p\d*\.html/);
 
+    config.addWhitePath(/^\/sale\/$/);
+    config.addWhitePath(/^\/sale\/[a-z]\d*.html/);
 
-    _.forEach(core.config.angejia.pages, (page)=> {
+    _.forEach(core.config.angejia.pages, (page) => {
         if (typeof page === "function") {
             page(config);
         }

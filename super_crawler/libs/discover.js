@@ -3,7 +3,7 @@
 let EventEmitter = require("events").EventEmitter;
 let uri = require("urijs");
 let robotsTxtParser = require("robots-parser");
-let downloaderStategy = require("./download.strategy");
+let downloaderStategy = require("./download");
 
 // 正则，用来匹配页面中的地址
 let discoverRegex = [
@@ -36,6 +36,10 @@ let discoverRegex = [
     // attributes on the <meta> tag can appear in any order
     (string) => {
         var match = string.match(/<\s*meta[^>]*http-equiv=["']{0,1}refresh["']{0,1}[^>]*content=["']{0,1}[^"'>]*url=([^"'>]*)["']{0,1}[^>]*>/i);
+        return Array.isArray(match) ? [match[1]] : undefined;
+    },
+    (string) => {
+        var match = string.match(/<\s*meta[^>]*content=["']{0,1}[^"'>]*url=([^"'>]*)["']{0,1}[^>]*http-equiv=["']{0,1}refresh["']{0,1}[^>]*>/i);
         return Array.isArray(match) ? [match[1]] : undefined;
     },
     (string) => {

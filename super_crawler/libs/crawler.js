@@ -7,7 +7,7 @@ let Queue = require("./queue");
 let QueueStoreOfEs = require("./queue_store_es");
 let Deal = require("./deal");
 let core = require("../../core");
-let downloaderStategy = require("./download.strategy");
+let downloaderStategy = require("./download");
 
 class Crawler extends EventEmitter {
     /**
@@ -129,6 +129,8 @@ class Crawler extends EventEmitter {
      * 循环获取链接
      */
     doLoop() {
+        let defer = Promise.defer();
+
         // 建立请求队列
         core.q.getQueue(`crawler.urls.${this.key}`, {}).then((result) => {
             Promise.all([
@@ -143,8 +145,12 @@ class Crawler extends EventEmitter {
                 }, {
                     noAck: false
                 });
+
+                defer.resolve();
             });
-        });
+        }, console.error);
+
+        return defer.promise;
     }
 
     /**
@@ -214,19 +220,23 @@ class Crawler extends EventEmitter {
             throw new Error("host不能为空！");
         }
         let robotsTxtUrl = uri(this.host).pathname("/robots.txt");
-        this.queue.queueStore.addUrlsToEsUrls([{
-            protocol: this.initialProtocol,
-            host: this.initDomain || this.host,
-            port: this.initialPort,
-            path: this.initialPath,
-            depth: 1
-        }], this.key);
+        let next = () => {
+            setTimeout(() => {
+                this.queue.queueStore.addUrlsToEsUrls([{
+                    protocol: this.initialProtocol,
+                    host: this.initDomain || this.host,
+                    port: this.initialPort,
+                    path: this.initialPath,
+                    depth: 1
+                }], this.key);
+            }, 500);
+        };
         // 获得机器人信息
         this.discover.getRobotsTxt(robotsTxtUrl).then(() => {
-            this.doLoop();
+            this.doLoop().then(next.bind(this));
         }, (err) => {
             console.error(err);
-            this.doLoop();
+            this.doLoop().then(next.bind(this));
         });
         this.isStart = true;
     }

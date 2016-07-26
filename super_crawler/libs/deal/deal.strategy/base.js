@@ -17,13 +17,14 @@ class Base {
 
         _.each(data, (d) => {
             strategy = this.deals[d.dealStrategy] || this.deals.normal;
-            if (_.isArray(curResults)) {
-                _.each(curResults, (result, index) => {
-                    promises.push(strategy.doDeal.call(this, queueItem, d, curResults, $, index));
-                });
-            } else {
-                promises.push(strategy.doDeal.call(this, queueItem, d, curResults, $, index));
-            }
+            promises.push(strategy.doDeal.call(this, queueItem, d, curResults, $, index));
+            // if (_.isArray(curResults)) {
+            //     _.each(curResults, (result, index) => {
+            //         promises.push(strategy.doDeal.call(this, queueItem, d, curResults, $, index));
+            //     });
+            // } else {
+            //     promises.push(strategy.doDeal.call(this, queueItem, d, curResults, $, index));
+            // }
         }, this);
 
         return promises;

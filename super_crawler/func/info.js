@@ -1,8 +1,8 @@
 /**
  * Created by NICK on 16/7/1.
  */
-module.exports = exports = (core, Download) => {
-    core.q.rpc.on('info', function(params, cb, inf) {
+module.exports = exports = (core) => {
+    core.q.rpc.on('info', function(params, cb) {
         if (core.downloadInstance) {
             return core.downloadInstance.queue.queueStore.getCount(core.downloadInstance.key).then((counts) => {
                 counts.length == 3 && (counts[2] = {
