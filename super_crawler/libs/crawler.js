@@ -217,7 +217,7 @@ class Crawler extends EventEmitter {
         }
         let robotsTxtUrl = uri(this.host).pathname("/robots.txt");
         let next = () => {
-            setTimeout(() => {
+            setTimeout(function() {
                 this.queue.queueStore.addUrlsToEsUrls([{
                     protocol: this.initialProtocol,
                     host: this.initDomain || this.host,
@@ -225,7 +225,7 @@ class Crawler extends EventEmitter {
                     path: this.initialPath,
                     depth: 1
                 }], this.key);
-            }, 500);
+            }.bind(this), 500);
         };
         // 获得机器人信息
         this.discover.getRobotsTxt(robotsTxtUrl).then(() => {
