@@ -61,9 +61,6 @@ class Crawler extends EventEmitter {
                 result.res && (queueItem.stateData = result.res.headers);
                 // 页面查找到的链接存储到es中去
                 return this.queue.queueStore.addCompleteQueueItem(queueItem, result.responseBody, this.key).then(nextQueue.bind(this, result), (err) => {
-                    // if (err.status === 404) {
-                    //     err.status = 405;
-                    // }
                     err.status = null;
                     defer.reject(err);
                 });
@@ -93,8 +90,7 @@ class Crawler extends EventEmitter {
 
         try {
             queueItem = JSON.parse(msg.content.toString());
-
-            if (queueItem) {
+            if (queueItem && typeof queueItem.url === "string") {
                 console.log(`start fetch ${queueItem.url} at ${new Date()}`);
                 // 请求页面
                 this.fetchQueueItem(queueItem).then((data) => {

@@ -20,10 +20,15 @@ class Strategy {
     doDeal(result, data) {
         let regexp = new RegExp(tools.replaceRegexp(data.regexp), data.scope || "i");
         let matchs = regexp.match(result);
+        let index = data.index || 0;
 
-        _.each(matchs, (match) => {
-            console.log(match);
-        });
+        // _.each(matchs, (match) => {
+        console.log(matchs);
+        // });
+
+        if (matchs.length > index) {
+            result = matchs[index];
+        }
 
         return result;
     }

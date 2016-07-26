@@ -16,6 +16,9 @@ consign({ verbose: false })
     .include('config/iwjw/pages')
     .include('config/fangduoduo/pages')
 
+.include('config/qiongyou/pages')
+
+
 .include('config')
     .include('func')
     .include('command')

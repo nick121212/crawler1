@@ -41,7 +41,7 @@ let check = (infos) => {
     });
 };
 
-schedule.scheduleJob('*/10 * * * *', function() {
+let scheduleJob = () => {
     let infos = {
         starting: [],
         pending: [],
@@ -68,7 +68,9 @@ schedule.scheduleJob('*/10 * * * *', function() {
         });
         check(infos);
     });
-});
+}
+
+schedule.scheduleJob('*/10 * * * *', scheduleJob);
 
 try {
     keys = process.env.KEYS.split(",");
@@ -80,5 +82,6 @@ _.each(keys, (key) => {
     keyMap[key] = 0;
 })
 
-
 console.log(`started at ${new Date()}`);
+
+scheduleJob();
