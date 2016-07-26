@@ -5,8 +5,12 @@ let _ = require("lodash");
 
 consign({ verbose: false })
     .include('utils')
+    .include('config/anjuke/pages')
+    .include('config/lianjia/pages')
+    .include('config/angejia/pages')
     .include('config')
     .include('func')
+    .include('command')
     .into(core);
 
 let keys = [],
