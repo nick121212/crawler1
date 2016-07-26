@@ -12,6 +12,7 @@ consign({ verbose: false })
     .include('config/zhongyuan/pages')
     .include('config/iwjw/pages')
     .include('config/fangduoduo/pages')
+    .include('config/qiongyou/pages')
     .include('config')
     .include('func')
     .into(core);
