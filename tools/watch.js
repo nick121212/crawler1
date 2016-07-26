@@ -10,7 +10,6 @@ consign({ verbose: false })
     .include('config/angejia/pages')
     .include('config')
     .include('func')
-    .include('command')
     .into(core);
 
 let keys = [],
