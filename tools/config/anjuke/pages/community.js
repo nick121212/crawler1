@@ -41,7 +41,7 @@ module.exports = (core) => {
                         // 均价
                         core.utils.data_builder.normal("averagePrice", [".mag-b2 em"]),
                         // 均价单位
-                        core.utils.data_builder.normal("averagePriceUnit", [".mag-b2 span"]),
+                        core.utils.data_builder.normal("averagePriceUnit", [".mag-b2 span:eq(0)"]),
                         // 标签
                         core.utils.data_builder.array("tags", [".comm-mark a"], [], [
                             core.utils.data_builder.normal("")

@@ -3,13 +3,14 @@ let core = require("../core");
 let schedule = require("node-schedule");
 let _ = require("lodash");
 
-consign({verbose: false})
+consign({ verbose: false })
     .include('utils')
     .include('config')
     .include('func')
     .into(core);
 
-let keys = [];
+let keys = [],
+    keyMap = {};
 
 let check = (infos) => {
     _.each(infos.pending, (stat) => {
@@ -33,15 +34,11 @@ let check = (infos) => {
     });
 };
 
-schedule.scheduleJob('*/10 * * * *', function () {
+schedule.scheduleJob('*/10 * * * *', function() {
     let infos = {
         starting: [],
         pending: [],
-        keys: {
-            "anjuke": 0,
-            "fangtianxia": 0,
-            "lianjia": 0
-        }
+        keys: keyMap
     };
     // 获得所有的进程，有可能会落下一些节点
     core.func.list({
@@ -68,9 +65,13 @@ schedule.scheduleJob('*/10 * * * *', function () {
 
 try {
     keys = process.env.KEYS.split(",");
-}
-catch (e) {
+} catch (e) {
     keys = ["anjuke", "angejia", "lianjia"];
 }
+
+_.each(keys, (key) => {
+    keyMap[key] = 0;
+})
+
 
 console.log(`started at ${new Date()}`);
