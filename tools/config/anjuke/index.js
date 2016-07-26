@@ -5,7 +5,7 @@
 let _ = require("lodash");
 
 module.exports = (core) => {
-    let config = new core.utils.builder("anjuke", "anjuke.com", ["sh.fang.anjuke.com"]);
+    let config = new core.utils.builder("anjuke", "shanghai.anjuke.com", ["sh.fang.anjuke.com", "shanghai.anjuke.com"]);
 
     config.setBaseInfo(1000, "superagent");
     config.initDomain = "sh.fang.anjuke.com";
@@ -27,21 +27,19 @@ module.exports = (core) => {
     config.addWhitePath(/^\/loupan\/huxing-\d*\/s/);
     // 匹配新房相册页面
     config.addWhitePath(/^\/loupan\/xiangce-\d*/);
-
     // 小区户型图
     config.addWhitePath(/^\/community\/photos\/model\/\d*/);
-
+    // 小区列表页
+    config.addWhitePath(/^\/community\/\d*/);
+    // 小区详情页
+    config.addWhitePath(/^\/community\/view\//);
     // 匹配经纪人列表页面
     config.addWhitePath(/^\/tycoon\//);
     config.addWhitePath(/^\/tycoon\/p\d*\//);
     // 匹配经纪人详情
     config.addWhitePath(/^\/gongsi-jjr-\d*\/(js)*/);
-    // 小区列表页
-    config.addWhitePath(/^\/community\/\d*/);
-    // 小区详情页
-    config.addWhitePath(/^\/community\/view\//);
 
-    _.forEach(core.config.anjuke.pages, (page)=> {
+    _.forEach(core.config.anjuke.pages, (page) => {
         if (typeof page === "function") {
             page(config);
         }

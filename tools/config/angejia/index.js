@@ -15,12 +15,12 @@ module.exports = (core) => {
         charset: "utf-8"
     };
     // 白名单
-    // 匹配新房列表
-    config.addWhitePath(/^\/loupan$/);
-    // 匹配新房主页
-    config.addWhitePath(/^\/loupan\/\d*\.html/);
-    // 匹配新房参数页面
-    config.addWhitePath(/^\/loupan\/p\d*\.html/);
+    // // 匹配新房列表
+    // config.addWhitePath(/^\/loupan$/);
+    // // 匹配新房主页
+    // config.addWhitePath(/^\/loupan\/\d*\.html/);
+    // // 匹配新房参数页面
+    // config.addWhitePath(/^\/loupan\/p\d*\.html/);
 
     config.addWhitePath(/^\/sale\/$/);
     config.addWhitePath(/^\/sale\/[a-z]\d*.html/);

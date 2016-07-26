@@ -1,7 +1,7 @@
 module.exports = (core) => {
     return (config) => {
         config.pages.house = {
-            key: "crawler.house",
+            key: "crawler.loupan",
             rule: [{
                 "regexp": /\/loupan\/\d*.html/.toString(),
                 scope: "i"
@@ -16,7 +16,7 @@ module.exports = (core) => {
                         // 楼盘地址
                         core.utils.data_builder.normal("address", [".property-message .discount:eq(2)"], ["span"]),
                         // 图片
-                        core.utils.data_builder.array("pictures", [".album-image-box .big-image-box .slide-box li"], [], [
+                        core.utils.data_builder.array("pictures", [".thumb-box-pic .slide-box li"], [], [
                             core.utils.data_builder.or([
                                 core.utils.data_builder.normal("url", ["img"], [], { attr: ["data-src"] }),
                                 core.utils.data_builder.normal("url", [], [], { css: ["backgroundImage"] }, [{ str: [], replace: { regexp: /^url\(|\)$/.toString(), scope: "g" } }])

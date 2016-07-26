@@ -3,13 +3,13 @@ let core = require("../core");
 let schedule = require("node-schedule");
 let _ = require("lodash");
 
-consign({
-        verbose: false
-    })
+consign({verbose: false})
     .include('utils')
     .include('config')
     .include('func')
     .into(core);
+
+let keys = [];
 
 let check = (infos) => {
     _.each(infos.pending, (stat) => {
@@ -24,7 +24,6 @@ let check = (infos) => {
             }
         });
 
-
         if (smallestKey && core.config[smallestKey] && core.config[smallestKey].index) {
             infos.keys[smallestKey]++;
             core.func.start(core.config[smallestKey].index, {
@@ -34,7 +33,7 @@ let check = (infos) => {
     });
 };
 
-schedule.scheduleJob('*/10 * * * *', function() {
+schedule.scheduleJob('*/10 * * * *', function () {
     let infos = {
         starting: [],
         pending: [],
@@ -66,5 +65,12 @@ schedule.scheduleJob('*/10 * * * *', function() {
         check(infos);
     });
 });
+
+try {
+    keys = process.env.KEYS.split(",");
+}
+catch (e) {
+    keys = ["anjuke", "angejia", "lianjia"];
+}
 
 console.log(`started at ${new Date()}`);
