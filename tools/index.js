@@ -11,7 +11,12 @@ consign({ verbose: false })
     .include('config/anjuke/pages')
     .include('config/lianjia/pages')
     .include('config/angejia/pages')
-    .include('config')
+    .include('config/wkzf/pages')
+    .include('config/zhongyuan/pages')
+    .include('config/iwjw/pages')
+    .include('config/fangduoduo/pages')
+
+.include('config')
     .include('func')
     .include('command')
     .into(core, program);
