@@ -5,7 +5,7 @@
 let _ = require("lodash");
 
 module.exports = (core) => {
-    let config = new core.utils.builder("angejia", "sh.angejia.com", ["sh.angejia.com"]);
+    let config = new core.utils.builder("angejia", "www.angejia.com", ["sh.angejia.com"]);
 
     config.setBaseInfo(1000, "phantom1");
     config.initDomain = "sh.angejia.com";

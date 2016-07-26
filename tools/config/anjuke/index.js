@@ -5,7 +5,7 @@
 let _ = require("lodash");
 
 module.exports = (core) => {
-    let config = new core.utils.builder("anjuke", "shanghai.anjuke.com", ["sh.fang.anjuke.com", "shanghai.anjuke.com"]);
+    let config = new core.utils.builder("anjuke", "www.anjuke.com", ["sh.fang.anjuke.com", "shanghai.anjuke.com"]);
 
     config.setBaseInfo(1000, "superagent");
     config.initDomain = "sh.fang.anjuke.com";
