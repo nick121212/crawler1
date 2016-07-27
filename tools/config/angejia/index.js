@@ -23,7 +23,7 @@ module.exports = (core) => {
     // config.addWhitePath(/^\/loupan\/p\d*\.html/);
 
     config.addWhitePath(/^\/sale\/$/);
-    config.addWhitePath(/^\/sale\/[a-z]\d*.html/);
+    config.addWhitePath(/^\/sale\/[a-z](\d.*).html/);
 
     _.forEach(core.config.angejia.pages, (page) => {
         if (typeof page === "function") {
