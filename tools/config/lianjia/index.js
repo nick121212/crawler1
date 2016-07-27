@@ -19,9 +19,9 @@ module.exports = exports = (core) => {
     // config.addWhitePath(/^\/ershoufang\/d(\d+)/);
     // config.addWhitePath(/^\/ershoufang\/(\D+)(\d+).html/);
 
-    config.addWhitePath(/^\/xiaoqu\/(\d+).html$/);
-    config.addWhitePath(/^\/(xiaoqu(\/?))$/);
-    config.addWhitePath(/^\/xiaoqu\/d(\d+)/);
+    config.addWhitePath(/^\/xiaoqu\/\d+.html$/);
+    config.addWhitePath(/^\/xiaoqu/);
+    config.addWhitePath(/^\/xiaoqu\/d\d+/);
 
     // -----------------页面配置------------------
     _.forEach(core.config.lianjia.pages, (page) => {

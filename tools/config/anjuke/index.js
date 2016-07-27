@@ -27,10 +27,10 @@ module.exports = (core) => {
     // config.addWhitePath(/^\/loupan\/huxing-\d+\/s/);
     // // 匹配新房相册页面
     // config.addWhitePath(/^\/loupan\/xiangce-\d+/);
-    // 小区户型图
-    config.addWhitePath(/^\/community\/photos\/model\/\d+/);
+    // // 小区户型图
+    // config.addWhitePath(/^\/community\/photos\/model\/\d+/);
     // 小区列表页
-    config.addWhitePath(/^\/community\/?$/);
+    config.addWhitePath(/^\/community/);
     config.addWhitePath(/^\/community\/p\d+/);
     // 小区详情页
     config.addWhitePath(/^\/community\/view\/\d+/);
