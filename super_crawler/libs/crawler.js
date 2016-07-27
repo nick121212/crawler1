@@ -108,7 +108,7 @@ class Crawler extends EventEmitter {
                 }).then(() => {
                     next(msg);
                 }).catch((err) => {
-                    console.error(err.status, err);
+                    console.error(err.status, err.message);
                     // err.message == "fail" || 
                     if (err.status === 404 || err.status === 301 || err.status === 400) {
                         return next(msg);
