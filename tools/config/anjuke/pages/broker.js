@@ -4,7 +4,7 @@ module.exports = (core) => {
             key: "crawler.brokers",
             extendData: {},
             rule: [{
-                regexp: /\/gongsi-jjr-\d*\/js\//.toString(),
+                regexp: /\/gongsi-jjr-\d+\/js\//.toString(),
                 scope: "i"
             }],
             fieldKey: "random",
@@ -15,7 +15,7 @@ module.exports = (core) => {
                         // 联系电话
                         core.utils.data_builder.normal("phone1", [".phonenum"]),
                         // 照片
-                        core.utils.data_builder.normal("phone1", ["..portrait img"], [], [{attr: ["src"]}])
+                        core.utils.data_builder.normal("phone1", ["..portrait img"], [], [{ attr: ["src"] }])
                     ]
                 },
                 baseInfo: {

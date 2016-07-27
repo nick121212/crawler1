@@ -3,7 +3,7 @@ module.exports = (core) => {
         config.pages.house = {
             key: "crawler.loupan",
             rule: [{
-                "regexp": /\/loupan\/canshu-\d*.html/.toString(),
+                "regexp": /\/loupan\/canshu-(\d+).html/.toString(),
                 scope: "i"
             }],
             fieldKey: "name",

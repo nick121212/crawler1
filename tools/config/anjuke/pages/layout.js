@@ -4,10 +4,10 @@ module.exports = (core) => {
         config.pages.layout = {
             key: "crawler.layouts",
             rule: [{
-                regexp: /\/loupan\/huxing-\d*\/s/.toString(),
+                regexp: /\/loupan\/huxing-\d+\/s/.toString(),
                 scope: "i"
             }, {
-                regexp: /\/loupan\/huxing-\d*(\.html)/.toString(),
+                regexp: /\/loupan\/huxing-\d+(\.html)/.toString(),
                 scope: "i"
             }],
             fieldKey: "random",
@@ -19,8 +19,8 @@ module.exports = (core) => {
                         core.utils.data_builder.normal("name", [".lp-info .lp-tit h1"]),
                         // 户型
                         core.utils.data_builder.array("layouts", [".hx-list li"], [], [
-                            core.utils.data_builder.normal("img", ["img"], [], {attr: ["imglazyload-src"]}),
-                            core.utils.data_builder.normal("title", ["img"], [], {attr: ["title"]}),
+                            core.utils.data_builder.normal("img", ["img"], [], { attr: ["imglazyload-src"] }),
+                            core.utils.data_builder.normal("title", ["img"], [], { attr: ["title"] }),
                             core.utils.data_builder.normal("name", [".descrip:eq(0) .desc-k"], []),
                             core.utils.data_builder.normal("layout", [".descrip:eq(0) .desc-v"], []),
                             core.utils.data_builder.normal("area", [".descrip:eq(1) .desc-v"], [])

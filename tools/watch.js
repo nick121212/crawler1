@@ -76,7 +76,7 @@ schedule.scheduleJob('*/10 * * * *', scheduleJob);
 try {
     keys = process.env.KEYS.split(",");
 } catch (e) {
-    keys = ["anjuke", "angejia", "lianjia"];
+    keys = ["anjuke", "lianjia"];
 }
 
 _.each(keys, (key) => {

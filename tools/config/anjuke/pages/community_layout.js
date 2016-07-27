@@ -4,7 +4,7 @@ module.exports = (core) => {
         config.pages.layout = {
             key: "crawler.community_layouts",
             rule: [{
-                regexp: /\/community\/photos\/model\/\d*/.toString(),
+                regexp: /\/community\/photos\/model\/\d+/.toString(),
                 scope: "i"
             }],
             fieldKey: "random",
@@ -16,7 +16,7 @@ module.exports = (core) => {
                         core.utils.data_builder.normal("name", [".comm-title h1"]),
                         // 户型
                         core.utils.data_builder.array("layouts", [".photo-list dd"], [], [
-                            core.utils.data_builder.normal("img", ["img"], [], {attr: ["src"]}),
+                            core.utils.data_builder.normal("img", ["img"], [], { attr: ["src"] }),
                             core.utils.data_builder.combine(core.utils.data_builder.normal("layout", [".title"], []), {
                                 formats: [{
                                     "str": [],
