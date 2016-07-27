@@ -3,7 +3,7 @@ module.exports = (core) => {
         config.pages.community = {
             key: "crawler.community",
             rule: [{
-                "regexp": /\/community\/view\/(\d+)/.toString(),
+                "regexp": /\/community\/view\/\d+/.toString(),
                 scope: "i"
             }],
             fieldKey: "name",
