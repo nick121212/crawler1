@@ -58,7 +58,7 @@ class Crawler extends EventEmitter {
             // 开始下载页面
             downloaderStategy.start(this.downloader, uri(URL).normalize(), this.proxySettings || {}).then((result) => {
                 result.urls = this.discover.discoverResources(result.responseBody, queueItem);
-                console.log(result.urls);
+                // console.log(result.urls);
                 result.res && (queueItem.stateData = result.res.headers);
                 // 页面查找到的链接存储到es中去
                 return this.queue.queueStore.addCompleteQueueItem(queueItem, result.responseBody, this.key).then(nextQueue.bind(this, result), (err) => {
@@ -97,7 +97,7 @@ class Crawler extends EventEmitter {
                 this.fetchQueueItem(queueItem).then((data) => {
                     data.urls.map((url) => {
                         url = this.queue.queueURL(decodeURIComponent(url), queueItem);
-                        console.log(url);
+                        // console.log(url);
                         url && urls.push(url);
                     }, this);
                     // 把搜索到的地址存入到es
