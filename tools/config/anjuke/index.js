@@ -30,7 +30,7 @@ module.exports = (core) => {
     // 小区户型图
     config.addWhitePath(/^\/community\/photos\/model\/(\d+)/);
     // 小区列表页
-    config.addWhitePath(/^\/community\/(\d+)/);
+    config.addWhitePath(/^\/community\/(\d+)?/);
     // 小区详情页
     config.addWhitePath(/^\/community\/view\/(\d+)/);
     // // 匹配经纪人列表页面
