@@ -130,7 +130,7 @@ class Crawler extends EventEmitter {
         let defer = Promise.defer();
 
         // 建立请求队列
-        core.q.getQueue(`crawler.urls.${this.key}`, {}).then((result) => {
+        core.q.getQueue(`crawler.urls.${this.key}`, { durable: true }).then((result) => {
             Promise.all([
                 // 绑定queue到exchange
                 result.ch.bindQueue(result.q.queue, "amq.topic", `${result.q.queue}.urls`),
@@ -176,7 +176,7 @@ class Crawler extends EventEmitter {
      * 初始化html处理部分的queue
      */
     doInitHtmlDeal() {
-        core.q.getQueue(`crawler.deals.${this.key}`, {}).then((result) => {
+        core.q.getQueue(`crawler.deals.${this.key}`, { durable: true }).then((result) => {
             Promise.all([
                 // 绑定queue到exchange
                 result.ch.bindQueue(result.q.queue, "amq.topic", `${result.q.queue}.bodys`),
