@@ -39,7 +39,12 @@ module.exports = (core) => {
                         // 小区名称
                         core.utils.data_builder.normal("name", [".comm-cont h1"]),
                         // 均价
-                        core.utils.data_builder.normal("averagePrice", [".mag-b2 em"]),
+                        core.utils.data_builder.combine(core.utils.data_builder.normal("averagePrice", [".mag-b2 em"]), {
+                            formats: [
+                                { str: [] },
+                                { num: [] }
+                            ]
+                        }),
                         // 均价单位
                         core.utils.data_builder.normal("averagePriceUnit", [".mag-b2 span:eq(0)"]),
                         // 标签

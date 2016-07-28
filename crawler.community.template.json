@@ -116,7 +116,7 @@
                     "type": "string"
                 },
                 "averagePrice": {
-                    "type": "float"
+                    "type": "string"
                 },
                 "averagePriceUnit": {
                     "type": "string"
