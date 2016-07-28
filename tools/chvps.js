@@ -2,24 +2,33 @@ let schedule = require("node-schedule");
 let shell = require('shelljs');
 
 let commands = [
-    "pptpsetup --create nicv --server czpptp.webok.net --user cz003 --password 111 --encrypt --start",
+    "poff nicv",
+    "pptpsetup --create nicv --server czpptp.webok.net --user cz003 --password 111 --start &",
     "route add default gw ",
     "service nginx restart"
 ];
 
 let scheduleJob = () => {
-    let pptpsetup = shell.exec(commands[0], { silent: true }).stdout;
-    let isSuccess = /succeeded/i.test(pptpsetup);
-    let localhostIp = pptpsetup.match(/([1-9]{1,3}\.){3}[1-9]/ig); //local  IP address 11.1.1.14
+    let poff = shell.exec(commands[0], { silent: false }).stdout;
+    let pptpsetup = shell.exec(commands[1], { silent: true, async: true });
+    let isSuccess, localhostIp;
+    let datas = [];
 
-    if (isSuccess) {
+    pptpsetup.stdout.on("data", (data) => {
+        !isSuccess && (isSuccess = /succeeded/i.test(data));
+        datas.push(data);
+        if (/remote/i.test(data)) {
+            isSuccess && (localhostIp = datas.join("").match(/([1-9]{1,3}\.){3}[1-9]{1,3}/ig));
+            console.log(localhostIp);
+            if (isSuccess && localhostIp.length > 1) {
+                console.log("ok");
+            }
+            shell.exec(commands[2] + localhostIp[0], { silent: false }).stdout;
+            shell.exec(commands[3], { silent: false }).stdout;
 
-    }
-
-    console.log(isSuccess, localhostIp);
+            shell.exit(1);
+        }
+    });
 };
 
-// schedule.scheduleJob('*/5 * * * *', scheduleJob);
-
-
-scheduleJob();
+schedule.scheduleJob('*/5 * * * *', scheduleJob);
