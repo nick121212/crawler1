@@ -334,7 +334,7 @@ class QueueStoreOfES {
 
         core.q.getQueue(`crawler.urls.${key}`, {}).then((result) => {
             _.each(queueItems, (queueItem) => {
-                result.ch.publish("amq.topic", `${result.q.queue}.urls`, new Buffer(JSON.stringify(queueItem)));
+                result.ch.publish("amq.topic", `${result.q.queue}.urls`, new Buffer(JSON.stringify(queueItem)), { persistent: true });
             });
             result.ch.close();
             defer.resolve(true);
@@ -357,7 +357,7 @@ class QueueStoreOfES {
             responseBody: responseBody
         });
         core.q.getQueue(`crawler.deals.${key}`, {}).then((result) => {
-            result.ch.publish("amq.topic", `${result.q.queue}.bodys`, new Buffer(JSON.stringify(queueItem)));
+            result.ch.publish("amq.topic", `${result.q.queue}.bodys`, new Buffer(JSON.stringify(queueItem)) ,{ persistent: true });
             result.ch.close();
             defer.resolve(true);
         }, (err) => {
