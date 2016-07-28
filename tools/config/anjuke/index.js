@@ -29,11 +29,9 @@ module.exports = (core) => {
     // config.addWhitePath(/^\/loupan\/xiangce-\d+/);
     // // 小区户型图
     // config.addWhitePath(/^\/community\/photos\/model\/\d+/);
-    // 小区列表页
-    config.addWhitePath(/^\/community/);
-    config.addWhitePath(/^\/community\/p\d+/);
-    // 小区详情页
-    config.addWhitePath(/^\/community\/view\/\d+/);
+    // 匹配小区列表页，小区详情页（只根据区域版块过滤）
+    config.addWhitePath(/^\/community(?:\/?[a-z]*\/?(?:p\d+\/?|\/?)|\/?|\/view\/\d+)$/);
+
     // // 匹配经纪人列表页面
     // config.addWhitePath(/^\/tycoon\//);
     // config.addWhitePath(/^\/tycoon\/p\d+\//);

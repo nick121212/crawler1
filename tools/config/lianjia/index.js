@@ -19,9 +19,8 @@ module.exports = exports = (core) => {
     // config.addWhitePath(/^\/ershoufang\/d(\d+)/);
     // config.addWhitePath(/^\/ershoufang\/(\D+)(\d+).html/);
 
-    config.addWhitePath(/^\/xiaoqu\/\d+.html$/);
-    config.addWhitePath(/^\/xiaoqu/);
-    config.addWhitePath(/^\/xiaoqu\/d\d+/);
+    // 匹配小区列表，小区详情页，小区版块列表（只按照区域和版块过滤）
+    config.addWhitePath(/^\/xiaoqu(?:\/[a-z]*\/?(?:d\d+\/?|\/?)|\/?|\/\d+.html)$/);
 
     // -----------------页面配置------------------
     _.forEach(core.config.lianjia.pages, (page) => {
