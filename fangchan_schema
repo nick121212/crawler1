@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `xiwa_redstar_community_layout` (
   `ownerId` INT NULL COMMENT '小区ID/楼盘ID',
   `ownerName` VARCHAR(45) NULL COMMENT '小区/楼盘名称',
   `picture` VARCHAR(1024) NULL COMMENT '户型图',
-  `type` VARCHAR(45) NULL COMMENT '类型',
+--  `type` VARCHAR(45) NULL COMMENT '类型',
   `areaAmount` DECIMAL(10,2) NULL COMMENT '面积',
   `toward` VARCHAR(45) NULL COMMENT '朝向',
   `tags` VARCHAR(1024) NULL COMMENT 'tag',

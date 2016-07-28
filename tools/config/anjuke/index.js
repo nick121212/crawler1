@@ -11,7 +11,11 @@ module.exports = (core) => {
     config.initDomain = "shanghai.anjuke.com";
     config.proxySettings = {
         useProxy: false,
-        charset: "utf-8"
+        charset: "utf-8",
+        ipInfo: {
+            host: "10.25.254.241",
+            port: "8081"
+        }
     };
     // 白名单
     // // 匹配新房列表

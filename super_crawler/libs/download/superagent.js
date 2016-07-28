@@ -18,6 +18,9 @@ class Downloader {
             if (settings.useProxy && ipInfo && ipInfo.port && ipInfo.port) {
                 req.proxy(`http://${ipInfo.host}:${ipInfo.port}`);
             }
+            if (settings.useProxy && settings.ipInfo && settings.ipInfo.port && settings.ipInfo.port) {
+                req.proxy(`http://${settings.ipInfo.host}:${settings.ipInfo.port}`);
+            }
             // 5s超时，不允许跳转
             req
             // .set("User-Agent", settings.ua || "Mozilla/5.0 (Window10; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36")
