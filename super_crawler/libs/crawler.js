@@ -220,6 +220,7 @@ class Crawler extends EventEmitter {
         if (!this.host) {
             throw new Error("host不能为空！");
         }
+
         let robotsTxtUrl = uri(this.host).pathname("/robots.txt");
         let next = () => {
             setTimeout(function() {

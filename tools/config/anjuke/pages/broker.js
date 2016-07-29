@@ -15,7 +15,7 @@ module.exports = (core) => {
                         // 联系电话
                         core.utils.data_builder.normal("phone1", [".phonenum"]),
                         // 照片
-                        core.utils.data_builder.normal("phone1", ["..portrait img"], [], [{ attr: ["src"] }])
+                        core.utils.data_builder.normal("phone1", [".portrait img"], [], [{ attr: ["src"] }])
                     ]
                 },
                 baseInfo: {
