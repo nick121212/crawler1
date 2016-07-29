@@ -9,8 +9,8 @@ let commands = [
 ];
 
 let scheduleJob = () => {
-    let poff = shell.exec(commands[0], { silent: false }).stdout;
-    let pptpsetup = shell.exec(commands[1], { silent: true, async: true });
+    let poff = shell.exec(commands[0], {silent: false}).stdout;
+    let pptpsetup = shell.exec(commands[1], {silent: true, async: true});
     let isSuccess, localhostIp;
     let datas = [];
 
@@ -23,15 +23,17 @@ let scheduleJob = () => {
             if (isSuccess && localhostIp.length > 1) {
                 console.log("ok");
             }
-            shell.exec(commands[2] + localhostIp[0], { silent: false }).stdout;
-            setTimeout(function() {
-                shell.exec(commands[3], { silent: false }).stdout;
+            shell.exec(commands[2] + localhostIp[0], {silent: false}).stdout;
+            setTimeout(function () {
+                shell.exec(commands[3], {silent: false}).stdout;
+                setTimeout(()=> {
+                    "use strict";
+                    shell.exit(1);
+                }, 2000);
 
-                shell.exec(commands[3], { silent: false }).stdout;
-                shell.exit(1);
             }, 1000);
         }
     });
 };
 
-schedule.scheduleJob('*/5 * * * *', scheduleJob);
+schedule.scheduleJob('*/10 * * * *', scheduleJob);
