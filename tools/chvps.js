@@ -27,7 +27,7 @@ let scheduleJob = () => {
             }
             shell.exec(commands[2] + localhostIp[0], {silent: false}).stdout;
             setTimeout(function () {
-                shell.exit(1);
+                // shell.exit(1);
             }, 1000);
         }
     });
