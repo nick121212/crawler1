@@ -33,5 +33,6 @@ let scheduleJob = () => {
     });
 };
 
-console.log("start at ", new Date());
+// console.log("start at ", new Date());
 schedule.scheduleJob('*/10 * * * *', scheduleJob);
+scheduleJob();
