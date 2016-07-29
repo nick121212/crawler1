@@ -32,7 +32,7 @@ module.exports = (core) => {
     // 匹配新房相册页面
     config.addWhitePath(/^\/loupan\/xiangce-\d+/);
 
-    
+
 
     // 小区户型图
     config.addWhitePath(/^\/community\/photos\/model\/\d+/);
