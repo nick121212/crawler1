@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/command/export.js" afterPath="$PROJECT_DIR$/tools/command/export.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/func/export.js" afterPath="$PROJECT_DIR$/tools/func/export.js" />
     </list>
     <ignored path="crawler.iws" />
@@ -34,6 +33,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="169">
+              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="production.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/config/production.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -47,8 +56,8 @@
       <file leaf-file-name="export.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/func/export.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+            <state relative-caret-position="165">
+              <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -70,7 +79,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/super_crawler/libs/deal.js" />
         <option value="$PROJECT_DIR$/crawler.template.json" />
         <option value="$PROJECT_DIR$/super_crawler/libs/deal/deal.strategy/array.js" />
         <option value="$PROJECT_DIR$/super_crawler/libs/deal/deal.strategy/base.js" />
@@ -118,8 +126,9 @@
         <option value="$PROJECT_DIR$/tools/command/export.js" />
         <option value="$PROJECT_DIR$/tools/community-lianjia1.txt" />
         <option value="$PROJECT_DIR$/tools/community-lianjia.txt" />
-        <option value="$PROJECT_DIR$/tools/func/export.js" />
         <option value="$PROJECT_DIR$/tools/community-anjuke.txt" />
+        <option value="$PROJECT_DIR$/tools/func/export.js" />
+        <option value="$PROJECT_DIR$/tools/community-loupan.txt" />
         <option value="$PROJECT_DIR$/core/config/production.js" />
       </list>
     </option>
@@ -176,6 +185,34 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -292,7 +329,7 @@
       <workItem from="1468916378593" duration="1095000" />
       <workItem from="1468988252548" duration="39819000" />
       <workItem from="1469513040395" duration="1392000" />
-      <workItem from="1469757367000" duration="11136000" />
+      <workItem from="1469757367000" duration="11599000" />
     </task>
     <task id="LOCAL-00001" summary="dfdf">
       <created>1468915216094</created>
@@ -378,11 +415,18 @@
       <option name="project" value="LOCAL" />
       <updated>1469774237334</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="dfdf">
+      <created>1469796271403</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1469796271403</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62541000" />
+    <option name="totallyTimeSpent" value="63004000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="24" y="12" width="1232" height="777" extended-state="0" />
@@ -431,13 +475,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/super_crawler/libs/deal/deal.strategy/switch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="35" column="18" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/super_crawler/libs/deal/html.strategy/cheerio.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -575,14 +612,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="32" column="46" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -790,26 +819,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/community-lianjia.txt">
+    <entry file="file://$PROJECT_DIR$/tools/community-anjuke.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7717">
-          <caret line="22552" column="54" selection-start-line="22552" selection-start-column="54" selection-end-line="22552" selection-end-column="54" />
+        <state relative-caret-position="382">
+          <caret line="20878" column="0" selection-start-line="20878" selection-start-column="0" selection-end-line="20879" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tools/func/export.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+        <state relative-caret-position="165">
+          <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/community-anjuke.txt">
+    <entry file="file://$PROJECT_DIR$/tools/community-lianjia.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="20878" column="0" selection-start-line="20878" selection-start-column="0" selection-end-line="20879" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/community-loupan.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="62" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
           <folding />
         </state>
       </provider>

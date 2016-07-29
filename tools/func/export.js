@@ -5,7 +5,7 @@ let fs = require("fs");
 let _ = require("lodash");
 
 module.exports = exports = (core) => {
-    let total = 0;
+    let total = 0, setHeader = false;
 
     let search = (index, type = "all", key = "url", filename = `${Date.now()}.csv`, from = 0, size = 20) => {
         let defer = Promise.defer();
@@ -25,12 +25,14 @@ module.exports = exports = (core) => {
             }
 
             response.hits.hits.forEach(function (res) {
-                let strs = [];
+                let strs = [], header = [];
 
                 res = res._source;
-                // if (res[key]) {
                 _.forEach(res, (v, k) => {
                     if (k !== "url" && k !== "_id" && k !== "pictures") {
+                        if (!setHeader) {
+                            header.push(k);
+                        }
                         if (_.isArray(v) || _.isObject(v)) {
                             strs.push(JSON.stringify(v));
                         } else {
@@ -38,8 +40,10 @@ module.exports = exports = (core) => {
                         }
                     }
                 });
+                if (header.length) {
+                    fs.appendFileSync(filename, `${header.join("\t")}\n`);
+                }
                 fs.appendFileSync(filename, `${strs.join("\t")}\n`);
-                // }
             });
 
             total += response.hits.hits.length;
