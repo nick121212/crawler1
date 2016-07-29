@@ -7,15 +7,17 @@ let commands = [
     "route add default gw ",
     "service nginx restart"
 ];
-
+let scheduleJob1 = () => {
+    console.log("nginx restart at ", new Date());
+    shell.exec(commands[3], { silent: false, async: true });
+};
 let scheduleJob = () => {
-    let poff = shell.exec(commands[0], {silent: false}).stdout;
-    let nginx = shell.exec(commands[3], {silent: false}).stdout;
-    let pptpsetup = shell.exec(commands[1], {silent: true, async: true});
-    let isSuccess, localhostIp;
-    let datas = [];
+    let isSuccess, localhostIp, pptpsetup, datas = [];
 
-    console.log("restart at ", new Date());
+    console.log("poff restart at ", new Date());
+    shell.exec(commands[0], { silent: false });
+    console.log("pptpsetup restart at ", new Date());
+    pptpsetup = shell.exec(commands[1], { silent: true, async: true });
     pptpsetup.stdout.on("data", (data) => {
         !isSuccess && (isSuccess = /succeeded/i.test(data));
         datas.push(data);
@@ -25,17 +27,13 @@ let scheduleJob = () => {
             if (isSuccess && localhostIp.length > 1) {
                 console.log("ok");
             }
-            shell.exec(commands[2] + localhostIp[0], {silent: false}).stdout;
-
-
-            shell.exec(commands[3], {silent: false}).stdout;
-            // setTimeout(function () {
-            //     // shell.exit(1);
-            // }, 1000);
+            console.log("route restart at ", new Date());
+            shell.exec(commands[2] + localhostIp[0], { silent: false });
+            shell.exec(commands[3], { silent: false, async: true });
         }
     });
 };
 
-// console.log("start at ", new Date());
 schedule.scheduleJob('*/10 * * * *', scheduleJob);
-scheduleJob();
+schedule.scheduleJob('*/5 * * * *', scheduleJob1);
+// scheduleJob();
