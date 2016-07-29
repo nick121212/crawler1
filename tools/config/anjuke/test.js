@@ -22,9 +22,9 @@ let regexs = {
             "http://sh.fang.anjuke.com/loupan/xiangce-131001/wzt.html"
         ]
     },
-    community:{
+    community: {
         regexp: /\/community\/?(?:[a-z]*(?:\/p\d+\/?|\/?)|\/view\/\d+|photos\/model\/\d+)\/?$/i,
-        data:[
+        data: [
             "http://shanghai.anjuke.com/community",
             "http://shanghai.anjuke.com/community/",
             "http://shanghai.anjuke.com/community/pudong/",
@@ -61,6 +61,8 @@ let regexs = {
 };
 
 let keyV = regexs[process.argv[2]];
+
+if (!keyV) return;
 
 for (let key in keyV.data) {
     let data = keyV.data[key];
