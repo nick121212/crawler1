@@ -8,6 +8,7 @@ let QueueStoreOfEs = require("./queue_store_es");
 let Deal = require("./deal");
 let core = require("../../core");
 let downloaderStategy = require("./download");
+let _ = require("lodash");
 
 class Crawler extends EventEmitter {
     /**
@@ -37,6 +38,9 @@ class Crawler extends EventEmitter {
         this.lastTime = Date.now();
         this.proxySettings = settings.proxySettings || {};
         this.initDomain = settings.initDomain || {};
+
+        this.ignoreStatusCode = settings.ignoreStatusCode || [301, 400, 404, 500, "ENOTFOUND"];
+
         // this.proxySettings.useProxy && this.doInitDownloader();
         this.deal = new Deal(settings, this.queue.queueStore.addCompleteData.bind(this.queue.queueStore));
         this.doInitHtmlDeal();
@@ -108,9 +112,8 @@ class Crawler extends EventEmitter {
                 }).then(() => {
                     next(msg);
                 }).catch((err) => {
-                    console.error(err.status, err.message);
-                    // err.message == "fail" || 
-                    if (err.status === 404 || err.status === 301 || err.status === 400 || err.status === 500 || err.code == "ENOTFOUND") {
+                    console.error(err.status, err.code, err.message);
+                    if (_.indexOf(this.ignoreStatusCode, err.status) >= 0 || _.indexOf(this.ignoreStatusCode, err.code) >= 0) {
                         return next(msg);
                     }
                     next(msg, true);
