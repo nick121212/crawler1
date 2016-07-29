@@ -8,7 +8,7 @@ module.exports = exports = (core, program) => {
     };
 
     program
-        .command('export <index> <type> <filename>')
+        .command('export <index> <type> <key> <filename>')
         .description('导出一个索引数据到CSV文件')
         .action(action);
 };
