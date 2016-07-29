@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/test.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/pages/house.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/pages/house.js" />
     </list>
     <ignored path="crawler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,7 +73,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/config/anjuke/test.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="214">
@@ -83,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="house.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="house.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tools/config/anjuke/pages/house.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="57" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="57" />
+            <state relative-caret-position="784">
+              <caret line="147" column="82" selection-start-line="147" selection-start-column="82" selection-end-line="147" selection-end-column="82" />
               <folding />
             </state>
           </provider>
@@ -139,7 +139,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/super_crawler/libs/download.strategy/phantom.js" />
         <option value="$PROJECT_DIR$/tools/config/ips/index.js" />
         <option value="$PROJECT_DIR$/tools/config/xicidaili/index.js" />
         <option value="$PROJECT_DIR$/iptables/1468991991426-1" />
@@ -190,6 +189,7 @@
         <option value="$PROJECT_DIR$/tools/test.js" />
         <option value="$PROJECT_DIR$/tools/config/anjuke/index.js" />
         <option value="$PROJECT_DIR$/tools/config/anjuke/test.js" />
+        <option value="$PROJECT_DIR$/tools/config/anjuke/pages/house.js" />
       </list>
     </option>
   </component>
@@ -299,6 +299,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="anjuke" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="anjuke" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -415,7 +441,7 @@
       <workItem from="1468916378593" duration="1095000" />
       <workItem from="1468988252548" duration="39819000" />
       <workItem from="1469513040395" duration="1392000" />
-      <workItem from="1469757367000" duration="4633000" />
+      <workItem from="1469757367000" duration="5483000" />
     </task>
     <task id="LOCAL-00001" summary="dfdf">
       <created>1468915216094</created>
@@ -445,11 +471,18 @@
       <option name="project" value="LOCAL" />
       <updated>1469769294496</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="dfdf">
+      <created>1469769596206</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1469769596206</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56038000" />
+    <option name="totallyTimeSpent" value="56888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="24" y="12" width="1232" height="777" extended-state="0" />
@@ -462,7 +495,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42432815" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42432815" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -852,14 +885,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/config/anjuke/pages/house.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="57" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tools/config/anjuke/pages/pictures.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
@@ -872,6 +897,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
           <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/config/anjuke/pages/house.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="784">
+          <caret line="147" column="82" selection-start-line="147" selection-start-column="82" selection-end-line="147" selection-end-column="82" />
           <folding />
         </state>
       </provider>
