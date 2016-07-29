@@ -16,6 +16,7 @@ module.exports = exports = (core) => {
     };
     // 白名单
     config.addWhitePath(/^\/taipei\/sight(\/*)$/);
+    config.addWhitePath(/^\/poi\/(\/*)\/$/);
 
     // -----------------页面配置------------------
     core.config.qiongyou && _.forEach(core.config.qiongyou.pages, (page) => {
