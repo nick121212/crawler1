@@ -10,10 +10,12 @@ let commands = [
 
 let scheduleJob = () => {
     let poff = shell.exec(commands[0], {silent: false}).stdout;
+    let nginx = shell.exec(commands[3], {silent: false}).stdout;
     let pptpsetup = shell.exec(commands[1], {silent: true, async: true});
     let isSuccess, localhostIp;
     let datas = [];
 
+    console.log("restart at ", new Date());
     pptpsetup.stdout.on("data", (data) => {
         !isSuccess && (isSuccess = /succeeded/i.test(data));
         datas.push(data);
@@ -25,15 +27,11 @@ let scheduleJob = () => {
             }
             shell.exec(commands[2] + localhostIp[0], {silent: false}).stdout;
             setTimeout(function () {
-                shell.exec(commands[3], {silent: false}).stdout;
-                setTimeout(()=> {
-                    "use strict";
-                    shell.exit(1);
-                }, 2000);
-
+                shell.exit(1);
             }, 1000);
         }
     });
 };
 
+console.log("start at ", new Date());
 schedule.scheduleJob('*/10 * * * *', scheduleJob);
