@@ -15,11 +15,15 @@ module.exports = (core) => {
                         // 联系电话
                         core.utils.data_builder.normal("phone1", [".phonenum"]),
                         // 照片
-                        core.utils.data_builder.normal("phone1", [".portrait img"], [], [{ attr: ["src"] }])
+                        core.utils.data_builder.normal("avatar", [".portrait img"], [], { attr: ["src"] }),
+                        // 公司
+                        core.utils.data_builder.normal("company", [".company a:eq(0)"]),
+                        // 门店
+                        core.utils.data_builder.normal("store", [".company a:eq(1)"]),
                     ]
                 },
                 baseInfo: {
-                    selector: ".second:eq(0)",
+                    selector: ".section:eq(0)",
                     dealStrategy: "jsdom",
                     data: [
                         // 业务特长
@@ -37,7 +41,7 @@ module.exports = (core) => {
                     ]
                 },
                 personInfo: {
-                    selector: ".second:eq(1)",
+                    selector: ".section:eq(1)",
                     dealStrategy: "jsdom",
                     data: [
                         // 姓名
