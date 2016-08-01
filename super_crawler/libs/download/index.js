@@ -38,13 +38,19 @@ class Downloader {
         let promise = intance.start(uri, settings, this.ipInfo);
 
         promise.catch(err => {
-            !err.timeout && errCount++;
-            err.timeout && timeoutCount++;
-            if (this.result && this.msg && (errCount > 4 || timeoutCount > 4)) {
-                this.ipInfo = null;
-                this.result.ch.ack(this.msg);
-                this.msg = null;
-            }
+
+            // if (!errors[uri.toString()]) {
+            //     errors[uri.toString()] = 0;
+            // }
+            // errors[uri.toString()]++;
+
+            // !err.timeout && errCount++;
+            // err.timeout && timeoutCount++;
+            // if (this.result && this.msg && (errCount > 4 || timeoutCount > 4)) {
+            //     this.ipInfo = null;
+            //     this.result.ch.ack(this.msg);
+            //     this.msg = null;
+            // }
             return err;
         });
 
