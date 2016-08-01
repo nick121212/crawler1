@@ -12,6 +12,7 @@ let scheduleJob1 = () => {
     shell.exec(commands[3], {silent: false, async: true});
 };
 let scheduleJob = () => {
+
     let isSuccess, localhostIp, pptpsetup, datas = [];
 
     console.log("poff restart at ", new Date());
@@ -34,7 +35,5 @@ let scheduleJob = () => {
     });
 };
 
-schedule.scheduleJob('*/10 * * * *', scheduleJob);
-schedule.scheduleJob('*/5 * * * *', scheduleJob1);
-scheduleJob();
-scheduleJob1();
+schedule.scheduleJob('*/5 * * * *', scheduleJob);
+schedule.scheduleJob('*/3 * * * *', scheduleJob1);
