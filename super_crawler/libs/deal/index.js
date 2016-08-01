@@ -52,7 +52,7 @@ class DealHtml {
                     if (result.result[result.rule.strictField]) {
                         save(queueItem, result.result, result.rule);
                     } else {
-                        console.log(`回滚url${queueItem.url}`);
+                        console.log(`回滚url:${queueItem.url},_id:${queueItem.urlId}`);
                         promises.push(this.rollbackFunc(queueItem));
                     }
                 } else {
