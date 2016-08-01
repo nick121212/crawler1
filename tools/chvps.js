@@ -34,12 +34,12 @@ let scheduleJob = () => {
                 console.log("ok");
                 console.log("route restart at ", new Date());
 
-                shell.exec(commands[7], { silent: false });
+                // shell.exec(commands[7], { silent: false });
                 shell.exec(commands[2] + localhostIp[0], { silent: false });
 
                 let route = shell.exec(commands[6], { silent: false }).stdout;
 
-                console.log(route);
+                // console.log(route);
                 console.log("ip是否在route中", route.indexOf(localhostIp[0]));
 
                 if (route.indexOf(localhostIp[0]) > 0) {
