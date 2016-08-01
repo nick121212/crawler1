@@ -120,7 +120,7 @@ class Crawler extends EventEmitter {
                         this.errors[queueItem.urlId] = 0;
                     }
                     this.errors[queueItem.urlId]++;
-                    if (this.errors[queueItem.urlId] > 60) {
+                    if (this.errors[queueItem.urlId] > 200) {
                         delete this.errors[queueItem.urlId];
                         return next(msg);
                     }
