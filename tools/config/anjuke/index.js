@@ -11,6 +11,7 @@ module.exports = (core) => {
     config.initDomain = "shanghai.anjuke.com";
     config.proxySettings = {
         useProxy: process.env.ENV == "production",
+        timeout: 10000,
         charset: "utf-8",
         ipInfo: {
             host: "10.25.254.241",
