@@ -27,7 +27,7 @@ module.exports = exports = (core, Download) => {
 
                 if (core.downloadInstance.isStart) {
                     cb(null, {
-                        pid: process.pid
+                        pid: `${process.pid};${config.proxy.proxySettings.useProxy}`
                     });
                 } else {
                     cb("启动失败！");
