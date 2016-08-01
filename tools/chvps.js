@@ -11,7 +11,7 @@ let commands = [
 ];
 let scheduleJob1 = () => {
     console.log("nginx restart at ", new Date());
-    shell.exec(commands[3], {silent: false, async: true});
+    shell.exec(commands[3], {silent: false});
 };
 let scheduleJob = () => {
     let isSuccess, localhostIp, pptpsetup, datas = [];
