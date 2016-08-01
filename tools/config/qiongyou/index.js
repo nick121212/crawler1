@@ -12,9 +12,13 @@ module.exports = exports = (core) => {
     config.fetchWhitelistedMimeTypesBelowMaxDepth = true;
     config.maxDepth = 3;
     config.proxySettings = {
-        useProxy: false,
+        useProxy: true,
         charset: "utf-8",
-        timeout: 5000
+        timeout: 10000,
+        ipInfo: {
+            host: "10.25.254.241",
+            port: "8081"
+        }
     };
     // 白名单
     config.addWhitePath(/^\/taipei\/sight(\/*)$/);
