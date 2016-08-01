@@ -86,8 +86,8 @@
       <file leaf-file-name="chvps.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tools/chvps.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="35" column="75" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="75" />
+            <state relative-caret-position="150">
+              <caret line="35" column="74" selection-start-line="35" selection-start-column="74" selection-end-line="35" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -375,7 +375,7 @@
       <workItem from="1468988252548" duration="39819000" />
       <workItem from="1469513040395" duration="1392000" />
       <workItem from="1469757367000" duration="13409000" />
-      <workItem from="1469847739098" duration="11915000" />
+      <workItem from="1469847739098" duration="12017000" />
     </task>
     <task id="LOCAL-00001" summary="dfdf">
       <created>1468915216094</created>
@@ -622,11 +622,18 @@
       <option name="project" value="LOCAL" />
       <updated>1470046671398</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="dfdfdfadf">
+      <created>1470046890954</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1470046890954</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76729000" />
+    <option name="totallyTimeSpent" value="76831000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1020,8 +1027,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tools/chvps.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="35" column="75" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="75" />
+        <state relative-caret-position="150">
+          <caret line="35" column="74" selection-start-line="35" selection-start-column="74" selection-end-line="35" selection-end-column="74" />
           <folding />
         </state>
       </provider>
