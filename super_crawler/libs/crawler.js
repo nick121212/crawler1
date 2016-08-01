@@ -38,7 +38,7 @@ class Crawler extends EventEmitter {
         this.lastTime = Date.now();
         this.proxySettings = settings.proxySettings || {};
         this.initDomain = settings.initDomain || {};
-        this.ignoreStatusCode = settings.ignoreStatusCode || [301, 400, 404, 500, "ENOTFOUND"];
+        this.ignoreStatusCode = settings.ignoreStatusCode || [301, 400, 404, 500, "ENOTFOUND", "ECONNABORTED"];
 
         // this.proxySettings.useProxy && this.doInitDownloader();
         this.deal = new Deal(settings, this.queue.queueStore.addCompleteData.bind(this.queue.queueStore), this.queue.queueStore.rollbackCompleteData.bind(this.queue.queueStore));

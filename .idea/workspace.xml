@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/crawler.js" afterPath="$PROJECT_DIR$/super_crawler/libs/crawler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/deal/index.js" afterPath="$PROJECT_DIR$/super_crawler/libs/deal/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" afterPath="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/package.json" afterPath="$PROJECT_DIR$/super_crawler/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/chvps.js" afterPath="$PROJECT_DIR$/tools/chvps.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/index.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/pages/broker.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/pages/broker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/pages/community.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/pages/community.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/pages/community_layout.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/pages/community_layout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/pages/house.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/pages/house.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/pages/layout.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/pages/layout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/pages/pictures.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/pages/pictures.js" />
-    </list>
+    <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="" />
     <ignored path="crawler.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
