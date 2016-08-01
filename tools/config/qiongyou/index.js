@@ -7,12 +7,12 @@ let _ = require("lodash");
 module.exports = exports = (core) => {
     let config = new core.utils.builder("qiongyou", "place.qyer.com", []);
 
-    config.setBaseInfo(3000, "superagent");
+    config.setBaseInfo(1000, "superagent");
     config.initDomain = "place.qyer.com/taipei";
-    config.fetchWhitelistedMimeTypesBelowMaxDepth = true;
-    config.maxDepth = 3;
+    config.fetchWhitelistedMimeTypesBelowMaxDepth = 3;
+    // config.maxDepth = 3;
     config.proxySettings = {
-        useProxy: true,
+        useProxy: process.env.ENV == "production",
         charset: "utf-8",
         timeout: 10000,
         ipInfo: {

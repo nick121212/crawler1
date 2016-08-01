@@ -290,7 +290,7 @@ class DiscoverLinks extends EventEmitter {
         return this.maxDepth === 0 ||
             queueItem.depth <= this.maxDepth ||
             whitelistedDepth <= this.maxDepth &&
-            this.whitelistedMimeTypes.some(function(mimeCheck) {
+            whitelistedMimeTypes.some(function(mimeCheck) {
                 return mimeCheck.test(queueItem.stateData.contentType);
             });
     }
