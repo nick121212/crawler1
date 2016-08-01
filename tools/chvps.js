@@ -41,6 +41,6 @@ let scheduleJob = () => {
 };
 
 schedule.scheduleJob('*/2 * * * *', scheduleJob);
-setTimeout(scheduleJob1, 1000);
+setTimeout(scheduleJob1, 5000);
 
 // schedule.scheduleJob('*/3 * * * *', scheduleJob1);
