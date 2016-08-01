@@ -9,7 +9,7 @@ module.exports = (core) => {
             fieldKey: "name",
             test: false,
             strict: true,
-            strictField: "name1",
+            strictField: "name",
             area: {
                 none: {
                     data: [
