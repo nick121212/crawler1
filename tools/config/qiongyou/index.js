@@ -5,10 +5,10 @@
 let _ = require("lodash");
 
 module.exports = exports = (core) => {
-    let config = new core.utils.builder("lianjia", "place.qyer.com", []);
+    let config = new core.utils.builder("qiongyou", "place.qyer.com", []);
 
     config.setBaseInfo(1000, "superagent");
-    config.initDomain = "";
+    config.initDomain = "place.qyer.com/taibei";
     config.proxySettings = {
         useProxy: false,
         charset: "utf-8",
