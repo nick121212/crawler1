@@ -95,7 +95,7 @@ class Crawler extends EventEmitter {
         try {
             queueItem = JSON.parse(msg.content.toString());
             if (queueItem && typeof queueItem.url === "string") {
-                console.log(`start fetch ${queueItem.url} at ${new Date()}`);
+                console.log(`start fetch ${queueItem.url} depth:${queueItem.depth} at ${new Date()}`);
                 // 请求页面
                 this.fetchQueueItem(queueItem).then((data) => {
                     data.urls.map((url) => {

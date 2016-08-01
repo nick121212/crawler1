@@ -9,6 +9,8 @@ module.exports = exports = (core) => {
 
     config.setBaseInfo(1000, "superagent");
     config.initDomain = "place.qyer.com/taipei";
+    config.fetchWhitelistedMimeTypesBelowMaxDepth = true;
+    config.maxDepth = 3;
     config.proxySettings = {
         useProxy: false,
         charset: "utf-8",
