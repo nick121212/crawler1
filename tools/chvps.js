@@ -55,7 +55,7 @@ let scheduleJob = () => {
     });
 };
 
-schedule.scheduleJob('*/2 * * * *', scheduleJob);
+schedule.scheduleJob('*/1 * * * *', scheduleJob);
 setTimeout(scheduleJob1, 5000);
 
 // schedule.scheduleJob('*/3 * * * *', scheduleJob1);
