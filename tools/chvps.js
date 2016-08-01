@@ -5,7 +5,9 @@ let commands = [
     "poff nicv",
     "pptpsetup --create nicv --server czpptp.webok.net --user cz003 --password 111 --start",
     "route add default gw ",
-    "service nginx restart"
+    "service nginx restart",
+    "service nginx stop",
+    "service nginx start"
 ];
 let scheduleJob1 = () => {
     console.log("nginx restart at ", new Date());
@@ -14,6 +16,7 @@ let scheduleJob1 = () => {
 let scheduleJob = () => {
     let isSuccess, localhostIp, pptpsetup, datas = [];
 
+    shell.exec(commands[4], {silent: false});
     console.log("poff restart at ", new Date());
     shell.exec(commands[0], {silent: false});
     console.log("pptpsetup restart at ", new Date());
@@ -29,10 +32,10 @@ let scheduleJob = () => {
             }
             console.log("route restart at ", new Date());
             shell.exec(commands[2] + localhostIp[0], {silent: false});
-            shell.exec(commands[3], {silent: false});
+            shell.exec(commands[5], {silent: false});
         }
     });
 };
 
 schedule.scheduleJob('*/5 * * * *', scheduleJob);
-schedule.scheduleJob('*/3 * * * *', scheduleJob1);
+// schedule.scheduleJob('*/3 * * * *', scheduleJob1);
