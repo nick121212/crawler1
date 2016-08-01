@@ -69,15 +69,19 @@ let scheduleJob = () => {
         });
         check(infos);
     });
-}
+};
 
 schedule.scheduleJob('*/10 * * * *', scheduleJob);
+
+console.log(process.env.KEYS);
 
 try {
     keys = process.env.KEYS.split(",");
 } catch (e) {
     keys = ["anjuke", "lianjia"];
 }
+
+console.log(keys);
 
 _.each(keys, (key) => {
     keyMap[key] = 0;
