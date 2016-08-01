@@ -24,17 +24,17 @@ let scheduleJob = () => {
     pptpsetup.stdout.on("data", (data) => {
         !isSuccess && (isSuccess = /succeeded/i.test(data));
         datas.push(data);
+
         if (/remote/i.test(datas.join(""))) {
             isSuccess && (localhostIp = datas.join("").match(/([1-9]{1,3}\.){3}[1-9]{1,3}/ig));
             console.log(localhostIp);
             if (isSuccess && localhostIp.length > 1) {
                 console.log("ok");
+                console.log("route restart at ", new Date());
+                shell.exec(commands[2] + localhostIp[0], {silent: false});
+
+                shell.exit(1);
             }
-            console.log("route restart at ", new Date());
-            shell.exec(commands[2] + localhostIp[0], {silent: false});
-
-            shell.exit(1);
-
             // shell.exec(commands[5], {silent: false});
         }
     });
