@@ -9,15 +9,15 @@ let commands = [
 ];
 let scheduleJob1 = () => {
     console.log("nginx restart at ", new Date());
-    shell.exec(commands[3], { silent: false, async: true });
+    shell.exec(commands[3], {silent: false, async: true});
 };
 let scheduleJob = () => {
     let isSuccess, localhostIp, pptpsetup, datas = [];
 
     console.log("poff restart at ", new Date());
-    shell.exec(commands[0], { silent: false });
+    shell.exec(commands[0], {silent: false});
     console.log("pptpsetup restart at ", new Date());
-    pptpsetup = shell.exec(commands[1], { silent: true, async: true });
+    pptpsetup = shell.exec(commands[1], {silent: true, async: true});
     pptpsetup.stdout.on("data", (data) => {
         !isSuccess && (isSuccess = /succeeded/i.test(data));
         datas.push(data);
@@ -28,12 +28,13 @@ let scheduleJob = () => {
                 console.log("ok");
             }
             console.log("route restart at ", new Date());
-            shell.exec(commands[2] + localhostIp[0], { silent: false });
-            shell.exec(commands[3], { silent: false, async: true });
+            shell.exec(commands[2] + localhostIp[0], {silent: false});
+            shell.exec(commands[3], {silent: false, async: true});
         }
     });
 };
 
 schedule.scheduleJob('*/10 * * * *', scheduleJob);
 schedule.scheduleJob('*/5 * * * *', scheduleJob1);
-// scheduleJob();
+scheduleJob();
+scheduleJob1();
