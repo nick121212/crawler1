@@ -7,7 +7,8 @@ let commands = [
     "route add default gw ",
     "service nginx restart",
     "service nginx stop",
-    "service nginx start"
+    "service nginx start",
+    "route"
 ];
 let scheduleJob1 = () => {
     console.log("nginx restart at ", new Date());
@@ -31,9 +32,18 @@ let scheduleJob = () => {
             if (isSuccess && localhostIp.length > 1) {
                 console.log("ok");
                 console.log("route restart at ", new Date());
-                shell.exec(commands[2] + localhostIp[0], {silent: false});
 
-                shell.exit(1);
+                let route = shell.exec(commands[6], {silent: false}).stdout;
+
+                console.log("ip是否在route中", route.indexOf(localhostIp[0]));
+
+                if (route.indexOf(localhostIp[0]) > 0) {
+                    shell.exec(commands[2] + localhostIp[0], {silent: false});
+                    shell.exec(commands[5], {silent: false});
+                    shell.exit(1);
+                }
+
+
             }
             // shell.exec(commands[5], {silent: false});
         }
