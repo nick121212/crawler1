@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/download/superagent.js" afterPath="$PROJECT_DIR$/super_crawler/libs/download/superagent.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/crawler.js" afterPath="$PROJECT_DIR$/super_crawler/libs/crawler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/chvps.js" afterPath="$PROJECT_DIR$/tools/chvps.js" />
     </list>
     <ignored path="crawler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,7 +43,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="superagent.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="superagent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/super_crawler/libs/download/superagent.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
@@ -93,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chvps.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="chvps.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tools/chvps.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -107,12 +107,9 @@
         <entry file="file://$PROJECT_DIR$/super_crawler/libs/crawler.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="123" column="60" selection-start-line="123" selection-start-column="60" selection-end-line="123" selection-end-column="60" />
+              <caret line="124" column="60" selection-start-line="124" selection-start-column="60" selection-end-line="124" selection-end-column="60" />
               <folding>
-                <marker date="1470063322000" expanded="true" signature="1887:1936" ph="/** 爬取一个链接 ...*/" />
-                <marker date="1470063322000" expanded="true" signature="3133:3202" ph="/** 处理一条queue数据 ...*/" />
-                <marker date="1470063322000" expanded="true" signature="3233:3358" ph="{...}" />
-                <marker date="1470063322000" expanded="true" signature="3325:3358" ph="{...}" />
+                <marker date="1470066554000" expanded="true" signature="678:1548" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -178,13 +175,13 @@
         <option value="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" />
         <option value="$PROJECT_DIR$/tools/config/anjuke/pages/community.js" />
         <option value="$PROJECT_DIR$/super_crawler/libs/deal/index.js" />
-        <option value="$PROJECT_DIR$/tools/chvps.js" />
         <option value="$PROJECT_DIR$/super_crawler/libs/download/index.js" />
         <option value="$PROJECT_DIR$/super_crawler/libs/crawler.js" />
         <option value="$PROJECT_DIR$/tools/config/qiongyou/index.js" />
         <option value="$PROJECT_DIR$/tools/watch.js" />
         <option value="$PROJECT_DIR$/core/config/production.js" />
         <option value="$PROJECT_DIR$/super_crawler/libs/download/superagent.js" />
+        <option value="$PROJECT_DIR$/tools/chvps.js" />
       </list>
     </option>
   </component>
@@ -377,7 +374,7 @@
       <workItem from="1468988252548" duration="39819000" />
       <workItem from="1469513040395" duration="1392000" />
       <workItem from="1469757367000" duration="13409000" />
-      <workItem from="1469847739098" duration="14101000" />
+      <workItem from="1469847739098" duration="14217000" />
     </task>
     <task id="LOCAL-00001" summary="dfdf">
       <created>1468915216094</created>
@@ -677,7 +674,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78915000" />
+    <option name="totallyTimeSpent" value="79031000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1001,14 +998,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/chvps.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/config/developer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1020,12 +1009,9 @@
     <entry file="file://$PROJECT_DIR$/super_crawler/libs/crawler.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="123" column="60" selection-start-line="123" selection-start-column="60" selection-end-line="123" selection-end-column="60" />
+          <caret line="124" column="60" selection-start-line="124" selection-start-column="60" selection-end-line="124" selection-end-column="60" />
           <folding>
-            <marker date="1470063322000" expanded="true" signature="1887:1936" ph="/** 爬取一个链接 ...*/" />
-            <marker date="1470063322000" expanded="true" signature="3133:3202" ph="/** 处理一条queue数据 ...*/" />
-            <marker date="1470063322000" expanded="true" signature="3233:3358" ph="{...}" />
-            <marker date="1470063322000" expanded="true" signature="3325:3358" ph="{...}" />
+            <marker date="1470066554000" expanded="true" signature="678:1548" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1082,6 +1068,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/chvps.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding />
         </state>
       </provider>
