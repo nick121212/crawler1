@@ -37,5 +37,5 @@ let scheduleJob = () => {
     });
 };
 
-schedule.scheduleJob('*/5 * * * *', scheduleJob);
+schedule.scheduleJob('*/2 * * * *', scheduleJob);
 // schedule.scheduleJob('*/3 * * * *', scheduleJob1);
