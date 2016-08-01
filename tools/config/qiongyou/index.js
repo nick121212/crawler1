@@ -7,7 +7,7 @@ let _ = require("lodash");
 module.exports = exports = (core) => {
     let config = new core.utils.builder("qiongyou", "place.qyer.com", []);
 
-    config.setBaseInfo(1000, "superagent");
+    config.setBaseInfo(3000, "superagent");
     config.initDomain = "place.qyer.com/taipei";
     config.fetchWhitelistedMimeTypesBelowMaxDepth = true;
     config.maxDepth = 3;
