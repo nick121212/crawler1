@@ -32,11 +32,14 @@ let scheduleJob = () => {
             }
             console.log("route restart at ", new Date());
             shell.exec(commands[2] + localhostIp[0], {silent: false});
-            shell.exec(commands[5], {silent: false});
-            scheduleJob1();
+
+            shell.exit(1);
+
+            // shell.exec(commands[5], {silent: false});
         }
     });
 };
 
 schedule.scheduleJob('*/2 * * * *', scheduleJob);
+scheduleJob1();
 // schedule.scheduleJob('*/3 * * * *', scheduleJob1);
