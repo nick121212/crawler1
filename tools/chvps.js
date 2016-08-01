@@ -12,7 +12,6 @@ let scheduleJob1 = () => {
     shell.exec(commands[3], {silent: false, async: true});
 };
 let scheduleJob = () => {
-
     let isSuccess, localhostIp, pptpsetup, datas = [];
 
     console.log("poff restart at ", new Date());

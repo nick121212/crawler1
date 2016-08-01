@@ -8,6 +8,8 @@ module.exports = (core) => {
             }],
             fieldKey: "name",
             test: false,
+            strict: true,
+            strictField: "name",
             area: {
                 position: {
                     selector: ".crumb-item a",

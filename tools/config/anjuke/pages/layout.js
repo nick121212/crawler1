@@ -12,6 +12,8 @@ module.exports = (core) => {
             }],
             fieldKey: "random",
             test: false,
+            strict: true,
+            strictField: "name",
             area: {
                 none: {
                     data: [

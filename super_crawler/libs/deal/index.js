@@ -5,12 +5,12 @@ let dealStrategy = require("./deal.strategy");
 let tools = require("../../utils/tools")();
 
 class DealHtml {
-    constructor(settings, saveFunc) {
+    constructor(settings, saveFunc, rollbackFunc) {
         this.settings = settings;
         this.pages = settings.pages;
         this.key = settings.key || "";
-        this.saveFunc = saveFunc || function () {
-            };
+        this.saveFunc = saveFunc || function() {};
+        this.rollbackFunc = rollbackFunc || function() {};
         _.forEach(this.pages, (page) => {
             page.rule = _.map(page.rule, (rule) => {
                 return new RegExp(tools.replaceRegexp(rule.regexp), rule.scope);
@@ -31,6 +31,42 @@ class DealHtml {
         });
     }
 
+    checkStrict() {
+
+    }
+
+    checkStatus(queueItem, results) {
+        let promises = [];
+
+        let save = (queueItem, result, rule) => {
+            if (rule.fieldKey && result[rule.fieldKey]) {
+                promises.push(this.saveFunc(queueItem, result, this.key, rule.key, rule.fieldKey));
+            } else {
+                promises.push(this.saveFunc(queueItem, result, this.key, rule.key, "url"));
+            }
+        };
+
+        _.each(results, (result) => {
+            if (!result.rule.test) {
+                result.result = _.extend({}, result.rule.extendData || {}, result.result);
+                // console.log(JSON.stringify(result.result));
+                if (result.rule.strict && result.rule.strictField) {
+                    if (result.result[result.rule.strictField]) {
+                        save(queueItem, result.result, result.rule);
+                    } else {
+                        promises.push(this.rollbackFunc(queueItem));
+                    }
+                } else {
+                    save(queueItem, result.result, result.rule);
+                }
+            } else {
+                console.log(result.result);
+            }
+        });
+
+        return promises;
+    }
+
     /**
      * 消费一条消息
      * @param queueItem {Object}
@@ -49,24 +85,9 @@ class DealHtml {
                 _.each(rules, (rule) => {
                     promises.push(dealStrategy.doDeal(queueItem, rule));
                 });
-
                 // 所有的处理完后，保存结果
                 Promise.all(promises).then((results) => {
-                    promises.length = 0;
-                    _.each(results, (result) => {
-                        if (!result.rule.test) {
-                            result.result = _.extend({}, result.rule.extendData || {}, result.result);
-                            console.log(JSON.stringify(result.result));
-                            if (result.rule.fieldKey && result.result[result.rule.fieldKey]) {
-                                promises.push(this.saveFunc(queueItem, result.result, this.key, result.rule.key, result.rule.fieldKey));
-                            } else {
-                                promises.push(this.saveFunc(queueItem, result.result, this.key, result.rule.key, "url"));
-                            }
-                        } else {
-                            console.log(result.result);
-                        }
-                    });
-                    return Promise.all(promises);
+                    return Promise.all(this.checkStatus(queueItem, results));
                 }).then(() => {
                     console.log(`deal complete ${queueItem.url} at ${new Date()}`);
                     defer.resolve();

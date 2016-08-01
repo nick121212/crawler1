@@ -8,6 +8,8 @@ module.exports = (core) => {
                 scope: "i"
             }],
             fieldKey: "random",
+            strict: true,
+            strictField: "name1",
             test: false,
             area: {
                 none: {

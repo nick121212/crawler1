@@ -8,6 +8,8 @@ module.exports = (core) => {
             }],
             fieldKey: "name",
             test: false,
+            strict: true,
+            strictField: "name1",
             area: {
                 none: {
                     data: [

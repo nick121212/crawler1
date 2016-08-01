@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "blueimp-md5": "^2.3.0",
     "cheerio": "^0.20.0",
     "consign": "^0.1.2",
     "iconv-lite": "^0.4.13",

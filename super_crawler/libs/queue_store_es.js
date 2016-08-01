@@ -2,6 +2,7 @@
 
 let core = require("../../core");
 let _ = require("lodash");
+let md5 = require("blueimp-md5");
 
 /**
  * 数据存储在es里面
@@ -25,16 +26,17 @@ class QueueStoreOfES {
     getUrlAndQUrlDetail(queueItem) {
         let defer = Promise.defer();
 
+
         core.elastic.mget({
             body: {
                 docs: [{
                     _index: this.esIndex,
                     _type: this.esTypeUrls,
-                    _id: queueItem.url
+                    _id: queueItem.urlId
                 }, {
                     _index: this.esIndex,
                     _type: this.esTypeQueueUrls,
-                    _id: queueItem.url
+                    _id: queueItem.urlId
                 }]
             }
         }).then((data) => {
@@ -76,6 +78,7 @@ class QueueStoreOfES {
         url = protocol + "://" + host + (port !== 80 ? ":" + port : "") + path;
         queueItem = {
             url: url,
+            urlId: md5(url),
             protocol: protocol,
             host: host,
             port: port,
@@ -114,7 +117,7 @@ class QueueStoreOfES {
             }
             defer.resolve({
                 isError: true,
-                url: queueItem.url,
+                url: queueItem.urlId,
                 err: new Error("queueItem不需要再爬取了！")
             });
         }, defer.reject);
@@ -203,20 +206,20 @@ class QueueStoreOfES {
         // 检查url在es中是否存在
         _.each(urls, (url) => {
             let queueItem = this.getQueueItemInfo(url.protocol, url.host, url.port, url.path, url.depth);
-            queueItems[queueItem.url] = queueItem;
+            queueItems[queueItem.urlId] = queueItem;
         }, this);
         // mget一下数据
         _.each(queueItems, (queueItem) => {
             esMgetBody.push({
                 _index: this.esIndex,
                 _type: this.esTypeUrls,
-                _id: queueItem.url,
+                _id: queueItem.urlId,
                 fields: ["fetched"]
             });
             esMgetBody.push({
                 _index: this.esIndex,
                 _type: this.esTypeQueueUrls,
-                _id: queueItem.url,
+                _id: queueItem.urlId,
                 fields: ["fetched"]
             });
         });
@@ -298,22 +301,22 @@ class QueueStoreOfES {
                     create: {
                         _index: this.esIndex,
                         _type: this.esTypeUrls,
-                        _id: queueItem.url
+                        _id: queueItem.urlId
                     }
                 }, queueItem, {
                     delete: {
                         _index: this.esIndex,
                         _type: this.esTypeQueueUrls,
-                        _id: queueItem.url
+                        _id: queueItem.urlId
                     }
                 }, {
                     create: {
                         _index: this.esIndex,
                         _type: this.esTypeRsbody,
-                        _id: queueItem.url
+                        _id: queueItem.urlId
                     }
                 }, {
-                    url: queueItem.url,
+                    url: queueItem.urlId,
                     text: responseBody
                 }]
             }).then(() => {
@@ -375,16 +378,45 @@ class QueueStoreOfES {
      * @param type      {String}
      * @param index     {String}
      */
-    addCompleteData(queueItem, data, type, index, keyField = "url") {
+    addCompleteData(queueItem, data, type, index, keyField = "urlId") {
         if (!data[keyField] && keyField !== "randow") {
-            keyField = "url";
+            keyField = "urlId";
         }
 
         return this.indexEsData(_.extend({
             url: queueItem.url,
+            urlid: queueItem.urlId,
             createdAt: Date.now(),
             updatedAt: Date.now()
         }, data), keyField, type, index);
+    }
+
+    /**
+     * 将数据回滚到待下载状态
+     */
+    rollbackCompleteData(queueItem, key) {
+        let defer = Promise.defer();
+
+        core.elastic.update({
+            index: this.esIndex,
+            type: this.esTypeUrls,
+            id: queueItem.urlId,
+            body: {
+                doc: {
+                    fetched: false,
+                    updatedAt: Date.now()
+                }
+            }
+        }).then(() => {
+            queueItem.responseBody = null;
+            queueItem.fetched = false;
+            queueItem.createdAt = null;
+            queueItem.updatedAt = null;
+            queueItem.stateData = null;
+            this.addQueueItemsToQueue(queueItem, key).then(defer.resolve, defer.reject);
+        }).catch(defer.reject);
+
+        return defer.promise;
     }
 
     /**
