@@ -33,6 +33,7 @@ let scheduleJob = () => {
             console.log("route restart at ", new Date());
             shell.exec(commands[2] + localhostIp[0], {silent: false});
             shell.exec(commands[5], {silent: false});
+            scheduleJob1();
         }
     });
 };
