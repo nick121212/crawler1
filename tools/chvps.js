@@ -3,7 +3,7 @@ let shell = require('shelljs');
 
 let commands = [
     "poff nicv",
-    "pptpsetup --create nicv --server czpptp.webok.net --user cz003 --password 111 --start &",
+    "pptpsetup --create nicv --server czpptp.webok.net --user cz003 --password 111 --start",
     "route add default gw ",
     "service nginx restart"
 ];
@@ -21,7 +21,7 @@ let scheduleJob = () => {
     pptpsetup.stdout.on("data", (data) => {
         !isSuccess && (isSuccess = /succeeded/i.test(data));
         datas.push(data);
-        if (/remote/i.test(data)) {
+        if (/remote/i.test(datas.join(""))) {
             isSuccess && (localhostIp = datas.join("").match(/([1-9]{1,3}\.){3}[1-9]{1,3}/ig));
             console.log(localhostIp);
             if (isSuccess && localhostIp.length > 1) {
@@ -29,7 +29,7 @@ let scheduleJob = () => {
             }
             console.log("route restart at ", new Date());
             shell.exec(commands[2] + localhostIp[0], {silent: false});
-            shell.exec(commands[3], {silent: false, async: true});
+            shell.exec(commands[3], {silent: false});
         }
     });
 };
