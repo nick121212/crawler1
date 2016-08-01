@@ -35,6 +35,7 @@ let scheduleJob = () => {
 
                 let route = shell.exec(commands[6], {silent: false}).stdout;
 
+                console.log(route);
                 console.log("ip是否在route中", route.indexOf(localhostIp[0]));
 
                 if (route.indexOf(localhostIp[0]) > 0) {
