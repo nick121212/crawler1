@@ -7,14 +7,15 @@ let _ = require("lodash");
 module.exports = exports = (core) => {
     let total = 0, setHeader = false;
 
-    let search = (index, type = "all", key = "url", filename = `${Date.now()}.csv`, from = 0, size = 20) => {
+    let search = (index, type = "all", filename = `${Date.now()}.csv`, fields = "", from = 0, size = 20) => {
         let defer = Promise.defer();
 
+        fields = fields.split(",");
         core.elastic.search({
             index: index,
             type: type === "all" ? null : type,
-            scroll: '30s',
-            // search_type: 'scan',
+            scroll: '10s',
+            search_type: 'scan',
             from: from,
             size: size
         }, function getMoreUntilDone(error, response) {
@@ -28,25 +29,24 @@ module.exports = exports = (core) => {
                 let strs = [], header = [];
 
                 res = res._source;
-                _.forEach(res, (v, k) => {
-                    if (k !== "url" && k !== "_id" && k !== "pictures") {
-                        if (!setHeader) {
-                            header.push(k);
-                        }
-                        if (_.isArray(v) || _.isObject(v)) {
-                            strs.push(JSON.stringify(v));
-                        } else {
-                            strs.push(v);
-                        }
+                _.each(fields, (field)=> {
+                    if (!setHeader) {
+                        header.push(field);
+                    }
+                    if (_.isArray(res[field]) || _.isObject(res[field])) {
+                        strs.push(JSON.stringify(res[field]));
+                    } else {
+                        strs.push(res[field] || "无");
                     }
                 });
-                if (header.length) {
+                if (!setHeader && header.length) {
+                    setHeader = true;
                     fs.appendFileSync(filename, `${header.join("\t")}\n`);
                 }
                 fs.appendFileSync(filename, `${strs.join("\t")}\n`);
             });
-
             total += response.hits.hits.length;
+            console.log("scroll to:", total);
             if (response.hits.total !== total) {
                 core.elastic.scroll({
                     scrollId: response._scroll_id,
@@ -54,6 +54,7 @@ module.exports = exports = (core) => {
                 }, getMoreUntilDone);
             } else {
                 console.log("导出总数：", total);
+                console.log("文件:", filename);
                 defer.resolve();
             }
         });
@@ -61,8 +62,8 @@ module.exports = exports = (core) => {
         return defer.promise;
     };
 
-    return (index, type, key, filename, options) => {
-        console.log(index, type, filename);
+    return (index, type, filename, fields, options) => {
+        console.log(index, type, filename, fields);
 
         if (fs.existsSync(filename)) {
             fs.unlinkSync(filename);
@@ -70,7 +71,7 @@ module.exports = exports = (core) => {
         fs.writeFileSync(filename, "");
         console.log("start export:");
 
-        return search(index, type, key, filename, 0, 3000);
+        return search(index, type, filename, fields, 0, 1000);
     };
 }
 ;

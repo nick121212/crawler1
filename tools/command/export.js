@@ -3,12 +3,12 @@
  */
 
 module.exports = exports = (core, program) => {
-    let action = (index, type, filename, options) => {
-        core.func["export"](index, type, filename, options).then(process.exit, process.exit);
+    let action = (index, type, filename, fields, options) => {
+        core.func["export"](index, type, filename, fields, options).then(process.exit, process.exit);
     };
 
     program
-        .command('export <index> <type> <key> <filename>')
+        .command('export <index> <type>  <filename> <fields>')
         .description('导出一个索引数据到CSV文件')
         .action(action);
 };
