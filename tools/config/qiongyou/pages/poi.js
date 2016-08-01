@@ -3,10 +3,10 @@ module.exports = (core) => {
         config.pages.poi = {
             key: "crawler.poi",
             rule: [{
-                regexp: /\/poi\/[a-z|A-Z|\d]*(\/*)$/.toString(),
+                regexp: /\/poi\/[1-9|a-z|A-Z|_]+\/$/.toString(),
                 scope: "i"
             }],
-            fieldKey: "name",
+            fieldKey: "",
             test: false,
             area: {
                 none: {
@@ -20,9 +20,9 @@ module.exports = (core) => {
                     dealStrategy: "jsdom",
                     data: [
                         // 国家
-                        core.utils.data_builder.normal("country", [{eq: [1]}, "a"]),
+                        core.utils.data_builder.normal("country", [{ eq: [1] }, "a"]),
                         // 城市
-                        core.utils.data_builder.normal("city", [{eq: [2]}, "a"]),
+                        core.utils.data_builder.normal("city", [{ eq: [2] }, "a"]),
                     ]
                 },
                 names: {
@@ -34,7 +34,7 @@ module.exports = (core) => {
                         // 中文名字
                         core.utils.data_builder.normal("nameCn", [".cn a"], []),
                         // 小贴士
-                        core.utils.data_builder.normal("nameCn", [".poiDet-tipContent .content p"], [], {html: []}),
+                        core.utils.data_builder.normal("nameCn", [".poiDet-tipContent .content p"], [], { html: [] }),
                     ]
                 },
                 placeInfo: {
@@ -44,24 +44,24 @@ module.exports = (core) => {
                         // 评分
                         core.utils.data_builder.normal("score", [".points .number"]),
                         // 评论数量
-                        core.utils.data_builder.combine(core.utils.data_builder.normal("comments", [".poiDet-stars .summery a"]), {
-                            formats: [{"str": []}, {
+                        core.utils.data_builder.combine(core.utils.data_builder.normal("commentCount", [".poiDet-stars .summery a"]), {
+                            formats: [{ str: [] }, {
                                 regexp: {
-                                    regexp: /\d*/.toString(),
+                                    regexp: /\d+/.toString(),
                                     scope: "ig",
                                     index: 0
                                 }
-                            }]
+                            }, { num: [] }]
                         }),
                         // 排名
                         core.utils.data_builder.combine(core.utils.data_builder.normal("rank", [".rank span"]), {
-                            formats: [{"str": []}, {
+                            formats: [{ str: [] }, {
                                 regexp: {
-                                    regexp: /\d*/.toString(),
+                                    regexp: /\d+/.toString(),
                                     scope: "ig",
                                     index: 0
                                 }
-                            }]
+                            }, { num: [] }]
                         })
                     ]
                 },
@@ -96,18 +96,19 @@ module.exports = (core) => {
                     dealStrategy: "jsdom",
                     data: [
                         // 更新者
-                        core.utils.data_builder.array("updatedAt", ["span a"], [], [
+                        core.utils.data_builder.array("updator", ["span a"], [], [
                             core.utils.data_builder.normal("name", []),
-                            core.utils.data_builder.normal("link", [], [{attr: ["href"]}])
+                            core.utils.data_builder.normal("link", [], [], { attr: ["href"] })
                         ]),
                         // 更新时间
-                        core.utils.data_builder.combine(core.utils.data_builder.normal("updatedAt", ["span:eq(0)"], ["a"]), {
-                            formats: [{"str": []}, {
+                        core.utils.data_builder.combine(core.utils.data_builder.normal("updatedEditAt", ["span:eq(0)"], ["a"]), {
+                            formats: [{ "str": [] }, {
                                 regexp: {
                                     regexp: /\d*-\d*-\d*/.toString(),
                                     scope: "ig",
                                     index: 0
-                                }
+                                },
+                                num: []
                             }]
                         })
                     ]
@@ -119,16 +120,16 @@ module.exports = (core) => {
                         core.utils.data_builder.array("comments", [], [], [
                             // 用户信息
                             core.utils.data_builder.object("user", [
-                                core.utils.data_builder.normal("avatar", [".largeavatar img"], [], {attr: ["src"]}),
+                                core.utils.data_builder.normal("avatar", [".largeavatar img"], [], { attr: ["src"] }),
                                 core.utils.data_builder.normal("nickname", [".largeavatar span"]),
-                                core.utils.data_builder.normal("href", [".largeavatar"], [], {attr: ["href"]}),
+                                core.utils.data_builder.normal("href", [".largeavatar"], [], { attr: ["href"] }),
                             ]),
                             // 评论日志
                             core.utils.data_builder.normal("createdAt", [".comment .title .date"]),
                             // 评论内容
-                            core.utils.data_builder.normal("content", [".comment .content"], [], {html: []}),
+                            core.utils.data_builder.normal("content", [".comment .content"], [], { html: [] }),
                             // 评论的星星数量
-                            core.utils.data_builder.normal("stars", [".comment .poiDet-stars em.full"], [], {length: []}),
+                            core.utils.data_builder.normal("stars", [".comment .poiDet-stars em.full"], [], { size: [] }),
                         ])
                     ]
                 }

@@ -19,11 +19,11 @@ class Strategy {
      */
     doDeal(result, data) {
         let regexp = new RegExp(tools.replaceRegexp(data.regexp), data.scope || "i");
-        let matchs = regexp.match(result);
+        let matchs = result.match(regexp);
         let index = data.index || 0;
 
         // _.each(matchs, (match) => {
-        console.log(matchs);
+        // console.log(matchs);
         // });
 
         if (matchs.length > index) {

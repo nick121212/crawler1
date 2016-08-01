@@ -1,6 +1,7 @@
 let _ = require("lodash");
 let htmlStrategy = require("../html.strategy");
 let Base = require("./base");
+let jpp = require("json-path-processor");
 
 /**
  * 处理html文本策越
@@ -22,9 +23,24 @@ class Strategy extends Base {
     doDeal(queueItem, data, results, $, index) {
         let promise = null;
 
-        results[data.key] = {};
+        // results[data.key] = {};
         promise = htmlStrategy.getOne(data.htmlStrategy).doDeal(queueItem, data, $, index).then((res) => {
+            let jData = jpp(results);
+            let path = "";
+
+            if (typeof res.index === "number" && _.isArray(results)) {
+                path = `${res.index}`;
+            }
+
+            if (path) {
+                results = jData.get(path).value();
+            }
+            results[data.key] = {};
             res.result = results[data.key];
+
+            if (path) {
+                res.index = null;
+            }
 
             return res;
         });

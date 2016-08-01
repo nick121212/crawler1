@@ -9,7 +9,8 @@ class DealHtml {
         this.settings = settings;
         this.pages = settings.pages;
         this.key = settings.key || "";
-        this.saveFunc = saveFunc || function() {};
+        this.saveFunc = saveFunc || function () {
+            };
         _.forEach(this.pages, (page) => {
             page.rule = _.map(page.rule, (rule) => {
                 return new RegExp(tools.replaceRegexp(rule.regexp), rule.scope);
@@ -55,6 +56,7 @@ class DealHtml {
                     _.each(results, (result) => {
                         if (!result.rule.test) {
                             result.result = _.extend({}, result.rule.extendData || {}, result.result);
+                            console.log(JSON.stringify(result.result));
                             if (result.rule.fieldKey && result.result[result.rule.fieldKey]) {
                                 promises.push(this.saveFunc(queueItem, result.result, this.key, result.rule.key, result.rule.fieldKey));
                             } else {
@@ -64,7 +66,6 @@ class DealHtml {
                             console.log(result.result);
                         }
                     });
-
                     return Promise.all(promises);
                 }).then(() => {
                     console.log(`deal complete ${queueItem.url} at ${new Date()}`);

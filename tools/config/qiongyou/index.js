@@ -8,7 +8,7 @@ module.exports = exports = (core) => {
     let config = new core.utils.builder("qiongyou", "place.qyer.com", []);
 
     config.setBaseInfo(1000, "superagent");
-    config.initDomain = "place.qyer.com/taibei";
+    config.initDomain = "place.qyer.com/taipei";
     config.proxySettings = {
         useProxy: false,
         charset: "utf-8",
@@ -16,7 +16,8 @@ module.exports = exports = (core) => {
     };
     // 白名单
     config.addWhitePath(/^\/taipei\/sight(\/*)$/);
-    config.addWhitePath(/^\/poi\/(\/*)\/$/);
+    // poi和poi的照片,评论默认1条
+    config.addWhitePath(/^\/poi\/[1-9|a-z|A-Z|_]+(?:\/photo\/?(?:\/page\d+|)|)\/?$/);
 
     // -----------------页面配置------------------
     core.config.qiongyou && _.forEach(core.config.qiongyou.pages, (page) => {
