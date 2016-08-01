@@ -49,7 +49,7 @@ class DealHtml {
         _.each(results, (result) => {
             if (!result.rule.test) {
                 result.result = _.extend({}, result.rule.extendData || {}, result.result);
-                // console.log(JSON.stringify(result.result));
+                console.log(JSON.stringify(result.result));
                 if (result.rule.strict && result.rule.strictField) {
                     if (result.result[result.rule.strictField]) {
                         save(queueItem, result.result, result.rule);
