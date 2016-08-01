@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/chvps.js" afterPath="$PROJECT_DIR$/tools/chvps.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/deal/index.js" afterPath="$PROJECT_DIR$/super_crawler/libs/deal/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" afterPath="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" />
     </list>
     <ignored path="crawler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/super_crawler/libs/deal/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+            <state relative-caret-position="295">
+              <caret line="54" column="57" selection-start-line="54" selection-start-column="57" selection-end-line="54" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -93,7 +94,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chvps.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chvps.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/chvps.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="337">
@@ -106,13 +107,9 @@
       <file leaf-file-name="queue_store_es.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/super_crawler/libs/queue_store_es.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-77">
+            <state relative-caret-position="118">
               <caret line="404" column="0" selection-start-line="404" selection-start-column="0" selection-end-line="404" selection-end-column="0" />
-              <folding>
-                <marker date="1470035958000" expanded="true" signature="2098:2148" ph="{...}" />
-                <marker date="1470035958000" expanded="true" signature="12281:12439" ph="{...}" />
-                <marker date="1470035958000" expanded="true" signature="12445:12501" ph="/** 返回es中,数据的总数 ...*/" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -120,7 +117,7 @@
       <file leaf-file-name="crawler.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/super_crawler/libs/crawler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
+            <state relative-caret-position="313">
               <caret line="98" column="23" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="56" />
               <folding />
             </state>
@@ -190,10 +187,10 @@
         <option value="$PROJECT_DIR$/tools/config/qiongyou/index.js" />
         <option value="$PROJECT_DIR$/tools/config/qiongyou/pages/poi_photo.js" />
         <option value="$PROJECT_DIR$/tools/config/qiongyou/pages/poi.js" />
-        <option value="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" />
         <option value="$PROJECT_DIR$/tools/config/anjuke/index.js" />
-        <option value="$PROJECT_DIR$/super_crawler/libs/deal/index.js" />
         <option value="$PROJECT_DIR$/tools/chvps.js" />
+        <option value="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" />
+        <option value="$PROJECT_DIR$/super_crawler/libs/deal/index.js" />
       </list>
     </option>
   </component>
@@ -261,7 +258,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
+              <option name="myItemId" value="super_crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="super_crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="super_crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="deal" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -379,7 +416,7 @@
       <workItem from="1468988252548" duration="39819000" />
       <workItem from="1469513040395" duration="1392000" />
       <workItem from="1469757367000" duration="13409000" />
-      <workItem from="1469847739098" duration="10109000" />
+      <workItem from="1469847739098" duration="10480000" />
     </task>
     <task id="LOCAL-00001" summary="dfdf">
       <created>1468915216094</created>
@@ -563,11 +600,18 @@
       <option name="project" value="LOCAL" />
       <updated>1470043377937</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="dfdf">
+      <created>1470043512319</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1470043512319</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74923000" />
+    <option name="totallyTimeSpent" value="75294000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -893,26 +937,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/super_crawler/libs/queue_store_es.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-77">
-          <caret line="404" column="0" selection-start-line="404" selection-start-column="0" selection-end-line="404" selection-end-column="0" />
-          <folding>
-            <marker date="1470035958000" expanded="true" signature="2098:2148" ph="{...}" />
-            <marker date="1470035958000" expanded="true" signature="12281:12439" ph="{...}" />
-            <marker date="1470035958000" expanded="true" signature="12445:12501" ph="/** 返回es中,数据的总数 ...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/super_crawler/libs/crawler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="98" column="23" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tools/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -953,18 +977,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/super_crawler/libs/deal/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tools/chvps.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="337">
           <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/super_crawler/libs/crawler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="98" column="23" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/super_crawler/libs/queue_store_es.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="404" column="0" selection-start-line="404" selection-start-column="0" selection-end-line="404" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/super_crawler/libs/deal/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="54" column="57" selection-start-line="54" selection-start-column="57" selection-end-line="54" selection-end-column="57" />
           <folding />
         </state>
       </provider>

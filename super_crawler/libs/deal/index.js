@@ -9,8 +9,10 @@ class DealHtml {
         this.settings = settings;
         this.pages = settings.pages;
         this.key = settings.key || "";
-        this.saveFunc = saveFunc || function() {};
-        this.rollbackFunc = rollbackFunc || function() {};
+        this.saveFunc = saveFunc || function () {
+            };
+        this.rollbackFunc = rollbackFunc || function () {
+            };
         _.forEach(this.pages, (page) => {
             page.rule = _.map(page.rule, (rule) => {
                 return new RegExp(tools.replaceRegexp(rule.regexp), rule.scope);
@@ -29,10 +31,6 @@ class DealHtml {
                 return rule.test(url);
             });
         });
-    }
-
-    checkStrict() {
-
     }
 
     checkStatus(queueItem, results) {
@@ -54,6 +52,7 @@ class DealHtml {
                     if (result.result[result.rule.strictField]) {
                         save(queueItem, result.result, result.rule);
                     } else {
+                        console.log(`回滚url${queueItem.url}`);
                         promises.push(this.rollbackFunc(queueItem));
                     }
                 } else {

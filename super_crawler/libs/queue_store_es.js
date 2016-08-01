@@ -330,14 +330,19 @@ class QueueStoreOfES {
     /**
      * 添加URLS到Queue
      * @param queueItems {Array} queueItem列表
+     * @param key {String} 标志
+     * @param priority {Integer} 消息的优先级
      * @returns {promise}
      */
-    addQueueItemsToQueue(queueItems, key) {
+    addQueueItemsToQueue(queueItems, key, priority = 1) {
         let defer = Promise.defer();
 
         core.q.getQueue(`crawler.urls.${key}`, {}).then((result) => {
             _.each(queueItems, (queueItem) => {
-                result.ch.publish("amq.topic", `${result.q.queue}.urls`, new Buffer(JSON.stringify(queueItem)), { persistent: true });
+                result.ch.publish("amq.topic", `${result.q.queue}.urls`, new Buffer(JSON.stringify(queueItem)), {
+                    persistent: true,
+                    priority: priority
+                });
             });
             result.ch.close();
             defer.resolve(true);
@@ -360,7 +365,7 @@ class QueueStoreOfES {
             responseBody: responseBody
         });
         core.q.getQueue(`crawler.deals.${key}`, {}).then((result) => {
-            result.ch.publish("amq.topic", `${result.q.queue}.bodys`, new Buffer(JSON.stringify(queueItem)), { persistent: true });
+            result.ch.publish("amq.topic", `${result.q.queue}.bodys`, new Buffer(JSON.stringify(queueItem)), {persistent: true});
             result.ch.close();
             defer.resolve(true);
         }, (err) => {
@@ -413,7 +418,7 @@ class QueueStoreOfES {
             queueItem.createdAt = null;
             queueItem.updatedAt = null;
             queueItem.stateData = null;
-            this.addQueueItemsToQueue(queueItem, key).then(defer.resolve, defer.reject);
+            this.addQueueItemsToQueue(queueItem, key, 2).then(defer.resolve, defer.reject);
         }).catch(defer.reject);
 
         return defer.promise;
