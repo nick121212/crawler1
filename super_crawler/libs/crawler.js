@@ -110,6 +110,7 @@ class Crawler extends EventEmitter {
                     }
                     return null;
                 }).then(() => {
+                    delete this.errors[queueItem.urlId];
                     next(msg);
                 }).catch((err) => {
                     console.error(err.status, err.code, err.message);
