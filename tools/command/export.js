@@ -14,6 +14,6 @@ module.exports = exports = (core, program) => {
         .option('-i, --index <s>', '导出的索引')
         .option('-t, --type <s>', '导出的类型')
         .option('-F, --fields <s>', '导出的类型')
-        .description('从es导出文件')
+        .description('从es导出数据')
         .action(action);
 };
