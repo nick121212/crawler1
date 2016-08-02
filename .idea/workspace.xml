@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="">
+    <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="dfdfdfadf">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/command/chips.js" afterPath="$PROJECT_DIR$/tools/command/chips.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/func/chips.js" afterPath="$PROJECT_DIR$/tools/func/chips.js" />
     </list>
     <ignored path="crawler.iws" />
@@ -83,31 +84,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="del.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/command/del.js">
+      <file leaf-file-name="chips.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/func/chips.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="225">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="kill.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/command/kill.js">
+      <file leaf-file-name="watch.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/func/watch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="12" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state relative-caret-position="194">
+              <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="average.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/func/watchs/average.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="48" column="45" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="chips.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tools/func/chips.js">
+        <entry file="file://$PROJECT_DIR$/tools/command/chips.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+            <state relative-caret-position="120">
+              <caret line="8" column="0" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -173,13 +186,13 @@
         <option value="$PROJECT_DIR$/tools/command/chip.js" />
         <option value="$PROJECT_DIR$/tools/func/chip.js" />
         <option value="$PROJECT_DIR$/tools/index.js" />
-        <option value="$PROJECT_DIR$/tools/command/chips.js" />
         <option value="$PROJECT_DIR$/tools/func/exports/excel/export.js" />
         <option value="$PROJECT_DIR$/tools/func/exports/mysql/loupan.js" />
         <option value="$PROJECT_DIR$/tools/readme.md" />
         <option value="$PROJECT_DIR$/tools/func/export.js" />
         <option value="$PROJECT_DIR$/tools/command/export.js" />
         <option value="$PROJECT_DIR$/tools/func/chips.js" />
+        <option value="$PROJECT_DIR$/tools/command/chips.js" />
       </list>
     </option>
   </component>
@@ -265,7 +278,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="func" />
+              <option name="myItemId" value="command" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -390,7 +403,7 @@
       <workItem from="1468988252548" duration="39819000" />
       <workItem from="1469513040395" duration="1392000" />
       <workItem from="1469757367000" duration="13409000" />
-      <workItem from="1469847739098" duration="26926000" />
+      <workItem from="1469847739098" duration="27358000" />
     </task>
     <task id="LOCAL-00001" summary="dfdf">
       <created>1468915216094</created>
@@ -700,11 +713,18 @@
       <option name="project" value="LOCAL" />
       <updated>1470120178722</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="dfdfdfadf">
+      <created>1470120482585</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1470120482585</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91740000" />
+    <option name="totallyTimeSpent" value="92172000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1002,24 +1022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/func/watch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/func/watchs/average.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tools/func/create.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1072,14 +1074,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/command/chips.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -1166,8 +1160,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tools/func/chips.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/func/watch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/func/watchs/average.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="48" column="45" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/command/chips.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="0" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="33" />
           <folding />
         </state>
       </provider>

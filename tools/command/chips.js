@@ -9,6 +9,7 @@ module.exports = exports = (core, program) => {
 
     program
         .command('chips')
+        .option('-i, --interval <n>', '等待时间')
         .description('动态更换ip')
         .action(action);
 };
