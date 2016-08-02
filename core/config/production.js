@@ -1,10 +1,10 @@
 module.exports = exports = {
     elastic: {
-        host: "localhost",
+        host: "10.25.255.50",
         port: 9200
     },
     q: {
-        host: "localhost",
+        host: "10.25.255.50",
         user: "nick",
         password: "111111"
     },
