@@ -5,7 +5,7 @@ module.exports = exports = (core) => {
     return (options) => {
         let defer = Promise.defer();
 
-        core.q.rpc.call('info', {}, (err, counts) => {
+        core.q.rpc.call('info' + `${options.key ? "." + options.key : ""}`, {}, (err, counts) => {
             if (err) {
                 console.error(err);
             } else {

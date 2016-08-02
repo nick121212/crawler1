@@ -1,7 +1,6 @@
 module.exports = (core) => {
     return (config) => {
-        // http://sh.fang.anjuke.com/loupan/huxing-246309.html
-        config.pages.layout = {
+        config.pages.communityLayout = {
             key: "crawler.community_layouts",
             rule: [{
                 regexp: /\/community\/photos\/model\/\d+/.toString(),

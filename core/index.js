@@ -1,7 +1,5 @@
-var mq = require('./libs/mq');
-var elastic = require('./libs/elastic');
-
 module.exports = exports = {
-    q: mq,
-    elastic: elastic
+    q: require('./libs/mq'),
+    elastic: require('./libs/elastic'),
+    db: require("./libs/db")
 };

@@ -2,7 +2,8 @@
  * Created by NICK on 16/7/1.
  */
 module.exports = exports = (core) => {
-    core.q.rpc.on('info', function(params, cb) {
+
+    let call = (cb)=> {
         if (core.downloadInstance) {
             return core.downloadInstance.queue.queueStore.getCount(core.downloadInstance.key).then((counts) => {
                 counts.length == 3 && (counts[2] = {
@@ -13,9 +14,22 @@ module.exports = exports = (core) => {
             }, (err) => {
                 cb(err);
             });
+        } else {
+            cb();
         }
-        cb();
+    };
+
+    core.q.rpc.on('info', function (params, cb) {
+        call(cb);
     }, null, {
         autoDelete: true
     });
+
+    return (key)=> {
+        core.q.rpc.on(`info.${key}`, function (params, cb) {
+            call(cb);
+        }, null, {
+            autoDelete: true
+        });
+    }
 };

@@ -73,6 +73,16 @@ module.exports = (core) => {
                         core.utils.data_builder.normal("averagePrice", [".p"], ["img"])
                     ]
                 },
+                refPriceInfo: {
+                    selector: ".res-info .priceInfo .item:eq(1) p:eq(1)",
+                    dealStrategy: "jsdom",
+                    data: [
+                        // 均价单位
+                        core.utils.data_builder.normal("refPriceUnit", [".u"]),
+                        // 均价
+                        core.utils.data_builder.normal("refPrice", [".p"], ["img"])
+                    ]
+                },
                 geoInfo: {
                     selector: ".zone-map.js_content",
                     dealStrategy: "jsdom",

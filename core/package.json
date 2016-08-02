@@ -1,19 +1,22 @@
 {
-    "name": "splider",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "amqp-rpc": "0.0.8",
-        "amqplib": "^0.4.1",
-        "elasticsearch": "^11.0.0",
-        "lodash": "^4.8.2",
-        "rabbit.js": "^0.4.4"
-    },
-    "devDependencies": {}
+  "name": "splider",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqp-rpc": "0.0.8",
+    "amqplib": "^0.4.1",
+    "elasticsearch": "^11.0.0",
+    "lodash": "^4.8.2",
+    "mysql": "^2.11.1",
+    "rabbit.js": "^0.4.4",
+    "sequelize": "^3.23.6",
+    "sequelize-import": "^1.2.1"
+  },
+  "devDependencies": {}
 }

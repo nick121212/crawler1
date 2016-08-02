@@ -88,52 +88,49 @@ class Crawler extends EventEmitter {
         let urls = [],
             queueItem;
         let next = (msg, reject = false) => {
-            setTimeout(function() {
+            setTimeout(function () {
                 reject ? result.ch.reject(msg) : result.ch.ack(msg);
             }, this.interval);
         };
 
         try {
             queueItem = JSON.parse(msg.content.toString());
-            if (queueItem && typeof queueItem.url === "string") {
-                console.log(`start fetch ${queueItem.url} depth:${queueItem.depth} at ${new Date()}`);
-                // 请求页面
-                this.fetchQueueItem(queueItem).then((data) => {
-                    data.urls.map((url) => {
-                        url = this.queue.queueURL(decodeURIComponent(url), queueItem);
-                        // console.log(url);
-                        url && urls.push(url);
-                    }, this);
-                    // 把搜索到的地址存入到es
-                    if (urls.length) {
-                        return this.queue.queueStore.addUrlsToEsUrls(urls, this.key);
-                    }
-                    return null;
-                }).then(() => {
-                    delete this.errors[queueItem.urlId];
-                    next(msg);
-                }).catch((err) => {
-
-                    if (!this.errors[queueItem.urlId]) {
-                        this.errors[queueItem.urlId] = 0;
-                    }
-                    if (_.indexOf(this.ignoreStatusCode, err.status) >= 0 || _.indexOf(this.ignoreStatusCode, err.code) >= 0) {
-                        this.errors[queueItem.urlId] += 20;
-                    } else {
-                        this.errors[queueItem.urlId]++;
-                    }
-
-                    console.error(err.status, err.code, err.message, this.errors[queueItem.urlId]);
-                    if (this.errors[queueItem.urlId] > 200) {
-                        delete this.errors[queueItem.urlId];
-                        return next(msg);
-                    }
-
-                    next(msg, true);
-                });
-            } else {
-                next(msg);
+            if (!queueItem || typeof queueItem.url === "string") {
+                return next(msg);
             }
+
+            console.log(`start fetch ${queueItem.url} depth:${queueItem.depth} at ${new Date()}`);
+            // 请求页面
+            this.fetchQueueItem(queueItem).then((data) => {
+                data.urls.map((url) => {
+                    url = this.queue.queueURL(decodeURIComponent(url), queueItem);
+                    url && urls.push(url);
+                }, this);
+                // 把搜索到的地址存入到es
+                if (urls.length) {
+                    return this.queue.queueStore.addUrlsToEsUrls(urls, this.key);
+                }
+                return null;
+            }).then(() => {
+                delete this.errors[queueItem.urlId];
+                next(msg);
+            }).catch((err) => {
+
+                if (!this.errors[queueItem.urlId]) {
+                    this.errors[queueItem.urlId] = 0;
+                }
+                if (_.indexOf(this.ignoreStatusCode, err.status) >= 0 || _.indexOf(this.ignoreStatusCode, err.code) >= 0) {
+                    this.errors[queueItem.urlId] += 20;
+                } else {
+                    this.errors[queueItem.urlId]++;
+                }
+                console.error(err.status, err.code, err.message, this.errors[queueItem.urlId]);
+                if (this.errors[queueItem.urlId] > 200) {
+                    delete this.errors[queueItem.urlId];
+                    return next(msg);
+                }
+                next(msg, true);
+            });
         } catch (e) {
             next(msg);
         }
@@ -146,7 +143,7 @@ class Crawler extends EventEmitter {
         let defer = Promise.defer();
 
         // 建立请求队列
-        core.q.getQueue(`crawler.urls.${this.key}`, { durable: true }).then((result) => {
+        core.q.getQueue(`crawler.urls.${this.key}`, {durable: true}).then((result) => {
             Promise.all([
                 // 绑定queue到exchange
                 result.ch.bindQueue(result.q.queue, "amq.topic", `${result.q.queue}.urls`),
@@ -168,31 +165,10 @@ class Crawler extends EventEmitter {
     }
 
     /**
-     * 初始化代理ip的quque
-     */
-    doInitDownloader() {
-        core.q.getQueue(`crawler.ips`, {}).then((result) => {
-            Promise.all([
-                // 绑定queue到exchange
-                result.ch.bindQueue(result.q.queue, "amq.topic", `${result.q.queue}`),
-                // 每次消费1条queue
-                result.ch.prefetch(1)
-            ]).then(() => {
-                // 添加消费监听
-                result.ch.consume(result.q.queue, (msg) => {
-                    downloaderStategy.setQueueInfo(result, msg);
-                }, {
-                    noAck: false
-                });
-            });
-        });
-    }
-
-    /**
      * 初始化html处理部分的queue
      */
     doInitHtmlDeal() {
-        core.q.getQueue(`crawler.deals.${this.key}`, { durable: true }).then((result) => {
+        core.q.getQueue(`crawler.deals.${this.key}`, {durable: true}).then((result) => {
             Promise.all([
                 // 绑定queue到exchange
                 result.ch.bindQueue(result.q.queue, "amq.topic", `${result.q.queue}.bodys`),
@@ -236,7 +212,7 @@ class Crawler extends EventEmitter {
 
         let robotsTxtUrl = uri(this.host).pathname("/robots.txt");
         let next = () => {
-            setTimeout(function() {
+            setTimeout(function () {
                 this.queue.queueStore.addUrlsToEsUrls([{
                     protocol: this.initialProtocol,
                     host: this.initDomain || this.host,
