@@ -12,10 +12,10 @@ let models = sequelizeImport(__dirname + '/../models', sequelize, {
     exclude: ['index.js']
 });
 
-sequelize.authenticate().then(()=> {
+sequelize.authenticate().then(() => {
     console.log("数据库连接成功");
-}).catch((err)=> {
-    console.error(err);
+}).catch((err) => {
+    console.error("数据库链接失败" + err.message);
 });
 
 module.exports = exports = {

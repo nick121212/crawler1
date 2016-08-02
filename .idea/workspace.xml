@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="dfdfdfadf">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/command/chips.js" afterPath="$PROJECT_DIR$/tools/command/chips.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/func/chips.js" afterPath="$PROJECT_DIR$/tools/func/chips.js" />
-    </list>
+    <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="dfdfdfadf" />
     <ignored path="crawler.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -403,7 +399,7 @@
       <workItem from="1468988252548" duration="39819000" />
       <workItem from="1469513040395" duration="1392000" />
       <workItem from="1469757367000" duration="13409000" />
-      <workItem from="1469847739098" duration="27358000" />
+      <workItem from="1469847739098" duration="27439000" />
     </task>
     <task id="LOCAL-00001" summary="dfdf">
       <created>1468915216094</created>
@@ -724,7 +720,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92172000" />
+    <option name="totallyTimeSpent" value="92253000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
