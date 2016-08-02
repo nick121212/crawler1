@@ -118,7 +118,7 @@ class Crawler extends EventEmitter {
                         this.errors[queueItem.urlId] = 0;
                     }
                     if (_.indexOf(this.ignoreStatusCode, err.status) >= 0 || _.indexOf(this.ignoreStatusCode, err.code) >= 0) {
-                        this.errors[queueItem.urlId] += 10;
+                        this.errors[queueItem.urlId] += 20;
                     } else {
                         this.errors[queueItem.urlId]++;
                     }
