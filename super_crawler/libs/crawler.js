@@ -88,14 +88,14 @@ class Crawler extends EventEmitter {
         let urls = [],
             queueItem;
         let next = (msg, reject = false) => {
-            setTimeout(function () {
+            setTimeout(function() {
                 reject ? result.ch.reject(msg) : result.ch.ack(msg);
             }, this.interval);
         };
 
         try {
             queueItem = JSON.parse(msg.content.toString());
-            if (!queueItem || typeof queueItem.url === "string") {
+            if (!queueItem || typeof queueItem.url !== "string") {
                 return next(msg);
             }
 
@@ -143,7 +143,7 @@ class Crawler extends EventEmitter {
         let defer = Promise.defer();
 
         // 建立请求队列
-        core.q.getQueue(`crawler.urls.${this.key}`, {durable: true}).then((result) => {
+        core.q.getQueue(`crawler.urls.${this.key}`, { durable: true }).then((result) => {
             Promise.all([
                 // 绑定queue到exchange
                 result.ch.bindQueue(result.q.queue, "amq.topic", `${result.q.queue}.urls`),
@@ -168,7 +168,7 @@ class Crawler extends EventEmitter {
      * 初始化html处理部分的queue
      */
     doInitHtmlDeal() {
-        core.q.getQueue(`crawler.deals.${this.key}`, {durable: true}).then((result) => {
+        core.q.getQueue(`crawler.deals.${this.key}`, { durable: true }).then((result) => {
             Promise.all([
                 // 绑定queue到exchange
                 result.ch.bindQueue(result.q.queue, "amq.topic", `${result.q.queue}.bodys`),
@@ -212,7 +212,7 @@ class Crawler extends EventEmitter {
 
         let robotsTxtUrl = uri(this.host).pathname("/robots.txt");
         let next = () => {
-            setTimeout(function () {
+            setTimeout(function() {
                 this.queue.queueStore.addUrlsToEsUrls([{
                     protocol: this.initialProtocol,
                     host: this.initDomain || this.host,
