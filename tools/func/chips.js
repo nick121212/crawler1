@@ -15,10 +15,11 @@ module.exports = exports = (core) => {
         "route",
         "route delete default gw all"
     ];
-    let isRunning = false;
+    let isRunning = false, retryCount = 0;
     let scheduleJob1 = () => {
         console.log("nginx restart at ", new Date());
         shell.exec(commands[3], {silent: false});
+        retryCount = 0;
     };
     let scheduleJob = () => {
         let isSuccess, localhostIp, pptpsetup, datas = [];
@@ -31,6 +32,8 @@ module.exports = exports = (core) => {
 
         setTimeout(function () {
             "use strict";
+
+            retryCount++;
             console.log("pptpsetup restart at ", new Date());
             pptpsetup = shell.exec(commands[1], {silent: true, async: true});
             pptpsetup.stdout.on("data", (data) => {
@@ -47,9 +50,11 @@ module.exports = exports = (core) => {
                         console.log("ip是否在route中", route.indexOf(localhostIp[0]));
                         if (route.indexOf(localhostIp[0]) > 0) {
                             shell.exec(commands[5], {silent: false});
-                            //shell.exit(1);
                             setTimeout(scheduleJob1, 5000);
                         } else {
+                            if(retryCount>10){
+                                return shell.exit(1);
+                            }
                             setTimeout(function () {
                                 scheduleJob();
                             }, 10);
