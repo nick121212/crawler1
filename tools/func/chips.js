@@ -81,5 +81,6 @@ module.exports = exports = (core) => {
     };
     return (options) => {
         schedule.scheduleJob(`*/${options.interval || 1} * * * *`, scheduleJob);
+        scheduleJob();
     };
 };
