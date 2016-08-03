@@ -67,7 +67,7 @@ module.exports = exports = (core) => {
             if (/remote/i.test(datas.join(""))) {
                 console.log("pptp done");
                 isSuccess = /succeeded/i.test(datas.join(""));
-                isSuccess && (localhostIp = datas.join("").match(/([1-9]{1,3}\.){3}[1-9]{1,3}/ig));
+                isSuccess && (localhostIp = datas.join("").match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/ig));
 
                 console.log(datas.join(""));
                 console.log(localhostIp);
