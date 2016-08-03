@@ -53,7 +53,7 @@ module.exports = exports = (core) => {
         if (isRunning) return;
 
         isRunning = true;
-
+        console.log(new Date());
         // 关闭nginx
         shell.exec(commands.nginxStop, {silent: false});
         // 关闭poff
