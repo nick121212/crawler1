@@ -7,6 +7,8 @@ module.exports = (core) => {
                 scope: "i"
             }],
             fieldKey: "random",
+            strict: true,
+            strictField: "community",
             test: false,
             area: {
                 none: {
@@ -67,7 +69,7 @@ module.exports = (core) => {
                         // 地址
                         core.utils.data_builder.normal("address", ["tr:eq(5) td:eq(0) .addrEllipsis"]),
                         // 房源编号
-                        core.utils.data_builder.normal("no", ["tr:eq(6) td:eq(0)"])
+                        // core.utils.data_builder.normal("no", ["tr:eq(6) td:eq(0)"])
                     ]
                 },
                 basicInfo: {

@@ -32,6 +32,7 @@ class Downloader {
                 resources[res.url] = res;
             })
             .open(uri.toString())
+            .wait(settings.wait || 10)
             .html()
             .then(body => {
                 result.responseBody = body;

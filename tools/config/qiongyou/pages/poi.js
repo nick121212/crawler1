@@ -46,7 +46,7 @@ module.exports = (core) => {
                         // 评论数量
                         core.utils.data_builder.combine(core.utils.data_builder.normal("commentCount", [".poiDet-stars .summery a"]), {
                             formats: [{ str: [] }, {
-                                regexp: {
+                                match: {
                                     regexp: /\d+/.toString(),
                                     scope: "ig",
                                     index: 0
@@ -56,7 +56,7 @@ module.exports = (core) => {
                         // 排名
                         core.utils.data_builder.combine(core.utils.data_builder.normal("rank", [".rank span"]), {
                             formats: [{ str: [] }, {
-                                regexp: {
+                                match: {
                                     regexp: /\d+/.toString(),
                                     scope: "ig",
                                     index: 0
@@ -103,7 +103,7 @@ module.exports = (core) => {
                         // 更新时间
                         core.utils.data_builder.combine(core.utils.data_builder.normal("updatedEditAt", ["span:eq(0)"], ["a"]), {
                             formats: [{ "str": [] }, {
-                                regexp: {
+                                match: {
                                     regexp: /\d*-\d*-\d*/.toString(),
                                     scope: "ig",
                                     index: 0

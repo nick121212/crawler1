@@ -15,9 +15,7 @@ module.exports = exports = (core) => {
         timeout: 5000
     };
     // 白名单
-    config.addWhitePath("^\/shanghai\/esf");
-    config.addWhitePath("^\/shanghai\/esf\/p\d*");
-    config.addWhitePath("^\/shanghai\/esf\/detail\/(.*?).html");
+    config.addWhitePath(/^\/shanghai\/esf(?:\/\D+(?:-\D+|)(?:\/p\d+|)|\/detail\/.+\.html|)\/?$/);
 
     // -----------------页面配置------------------
     _.forEach(core.config.wkzf.pages, (page) => {

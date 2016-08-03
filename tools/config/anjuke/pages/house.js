@@ -118,7 +118,7 @@ module.exports = (core) => {
                                 core.utils.data_builder.normal("floorInfo", [".des"])
                             ]),
                             core.utils.data_builder.cases(".name", [], "工程进度", [
-                                core.utils.data_builder.normal("jobProgress", [".des"]),
+                                core.utils.data_builder.normal("jobProgress", [".des"])
                             ]),
                             core.utils.data_builder.cases(".name", [], "物业管理费", [
                                 core.utils.data_builder.normal("propertyFee", [".des"]),

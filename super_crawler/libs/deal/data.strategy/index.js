@@ -2,7 +2,9 @@ let str = require("./str.js");
 let qs = require("./query_string.js");
 let num = require("./number.js");
 let regexp = require("./regexp.js");
+let match = require("./match.js");
 let repl = require("./replace.js");
+let json = require("./json.js");
 
 /**
  * 处理html文本策越
@@ -21,6 +23,8 @@ class TypeStrategy {
         this.register(regexp.key, regexp);
         this.register(qs.key, qs);
         this.register(repl.key, repl);
+        this.register(json.key, json);
+        this.register(match.key, match);
     }
 
     /**

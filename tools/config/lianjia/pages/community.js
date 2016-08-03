@@ -7,6 +7,8 @@ module.exports = (core) => {
                 scope: "i"
             }],
             fieldKey: "name",
+            strict: true,
+            strictField: "community",
             test: false,
             area: {
                 none: {
@@ -92,15 +94,11 @@ module.exports = (core) => {
                             // 经度
                             core.utils.data_builder.normal("lat", [], [], {
                                 attr: ["latitude"]
-                            }, {
-                                num: []
-                            }),
+                            }, [core.utils.data_builder.formats.num]),
                             // 纬度
                             core.utils.data_builder.normal("lon", [], [], {
                                 attr: ["longitude"]
-                            }, {
-                                num: []
-                            })
+                            }, [core.utils.data_builder.formats.num])
                         ])
                     ]
                 },

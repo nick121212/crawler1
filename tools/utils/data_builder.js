@@ -2,6 +2,21 @@ let _ = require("lodash");
 
 module.exports = () => {
     class Builder {
+
+        constructor() {
+            this.formats = {
+                str: {
+                    str: []
+                },
+                num: {
+                    num: []
+                },
+                match: {
+                    price: {match: {regexp: /\d+(?:.\d+|)/.toString(), index: 0}},
+                }
+            };
+        }
+
         /**
          * 默认情况
          * @param key
@@ -12,7 +27,7 @@ module.exports = () => {
          * @param htmlStrategy
          * @returns {{key: *, selector: Array, methodInfo: {text: Array}, formatStrategy: *[], htmlStrategy: string, dealStrategy: string, removeSelector: Array}}
          */
-        normal(key, selector = [], removeSelector = [], methodInfo = { text: [] }, formats = [{ "str": [] }], htmlStrategy = "jsdom") {
+        normal(key, selector = [], removeSelector = [], methodInfo = {text: []}, formats = [{"str": []}], htmlStrategy = "jsdom") {
             return {
                 key: key,
                 selector: selector,
@@ -79,7 +94,7 @@ module.exports = () => {
             };
         }
 
-        cases(selector, removeSelector = [], match = "", data = [], methodInfo = { text: [] }) {
+        cases(selector, removeSelector = [], match = "", data = [], methodInfo = {text: []}) {
             return {
                 selector: selector,
                 removeSelector: removeSelector,

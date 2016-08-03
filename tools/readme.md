@@ -3,3 +3,5 @@
 ##导出小区(lianjia,anjuke)
     ENV=production node . export excel -i crawler.community -t lianjia -f community.lianjia.txt -F name,address,city,area,averagePriceUnit,averagePrice,buildingTime,propertyFee,propertyCompany,developerName,roomAmount,buildingAmount,volumeRate,greeningRate
     ENV=production node . export excel -i crawler.community -t anjuke  -f community.anjuke.txt -F name,address,city,area,averagePriceUnit,averagePrice,buildingTime,propertyFee,propertyCompany,developerName,roomAmount,buildingAmount,volumeRate,greeningRate
+##导出二手房
+    ENV=production node . export excel -i crawler.room

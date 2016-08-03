@@ -3,95 +3,93 @@ module.exports = (core) => {
         config.pages.room = {
             key: "crawler.room",
             rule: [{
-                regexp: /\/ershoufang\/(.*?).html/.toString(),
+                regexp: /\/sale\/([1-9]|[a-z]|[A-Z]){11}/.toString(),
                 scope: "i"
             }],
             fieldKey: "random",
+            strict: true,
+            strictField: "community",
             test: false,
             area: {
                 none: {
                     data: [
-                        // 特色标签
-                        core.utils.data_builder.array("tags", [".featureTag span"], [], [
-                            core.utils.data_builder.normal("")
-                        ]),
-                        // 卖点
-                        core.utils.data_builder.normal("sellingPoint", ["h1.main"])
-                    ]
-                },
-                album: {
-                    selector: ".esf-top .album-box .album-panel .album-view-wrap ul",
-                    dealStrategy: "jsdom",
-                    data: [
-                        // 楼盘二手房图片
-                        core.utils.data_builder.array("pictures", ["li"], [], [
-                            core.utils.data_builder.normal("title", ["img"], [], {
-                                attr: ["img-title"]
+                        // 图片
+                        core.utils.data_builder.array("pictures", [".img-ul li"], [], [
+                            core.utils.data_builder.normal("title", [".dicon-imgInfo .pic-desc"], [], {
+                                attr: ["title"]
                             }),
-                            core.utils.data_builder.normal("url", ["img"], [], {
-                                attr: ["data-large"]
+                            core.utils.data_builder.normal("url", [".house-img-m"], [], {
+                                attr: ["src"]
                             })
                         ])
                     ]
                 },
                 baseInfo: {
-                    selector: ".esf-top .cj-cun .content",
+                    selector: ".detail-infos .detailInfo",
                     dealStrategy: "jsdom",
                     data: [
-                        // 总价
-                        core.utils.data_builder.normal("sumPrice", [".houseInfo .price"]),
-                        // 面积
-                        core.utils.data_builder.normal("sumArea", [".houseInfo .area"]),
-                    ]
-                },
-                moreInfo: {
-                    selector: ".esf-top .cj-cun .content .aroundInfo",
-                    dealStrategy: "jsdom",
-                    data: [
-                        // 单价
-                        core.utils.data_builder.normal("price", ["tr:eq(0) td:eq(0)"], [".title"]),
-                        // 楼层
-                        core.utils.data_builder.normal("floor", ["tr:eq(1) td:eq(0)"], [".title"]),
-                        // 建造年代
-                        core.utils.data_builder.normal("completingTime", ["tr:eq(1) td:eq(1)"], [".title"]),
-                        // 装修
-                        core.utils.data_builder.normal("decoration", ["tr:eq(2) td:eq(0)"], [".title"]),
-                        // 朝向
-                        core.utils.data_builder.normal("toward", ["tr:eq(2) td:eq(1)"], [".title"]),
-                        // 首付
-                        core.utils.data_builder.normal("downPayment", ["tr:eq(3) td:eq(0)"], [".title"]),
-                        // 月供
-                        core.utils.data_builder.normal("monthPayment", ["tr:eq(3) td:eq(1)"], [".title"]),
                         // 小区
-                        core.utils.data_builder.normal("community", ["tr:eq(4) td:eq(0) a"]),
-                        // 地址
-                        core.utils.data_builder.normal("address", ["tr:eq(5) td:eq(0) .addrEllipsis"]),
-                        // 房源编号
-                        core.utils.data_builder.normal("no", ["tr:eq(6) td:eq(0)"])
-                    ]
-                },
-                basicInfo: {
-                    selector: ".introContent .base .content ul",
-                    dealStrategy: "jsdom",
-                    data: [
+                        core.utils.data_builder.normal("community", [".detail-title-h1"]),
+                        //版块
+                        core.utils.data_builder.normal("plate", [".estate-title-h2.need-cut"]),
                         // 房型
-                        core.utils.data_builder.normal("layout", ["li:eq(0)"], [".label"]),
-                        // 梯户比
-                        core.utils.data_builder.normal("floorScale", ["li:eq(4)"], [".label"]),
+                        core.utils.data_builder.normal("layout", [".estate-title-info .g-fence span:eq(1)"]),
+                        // 面积
+                        core.utils.data_builder.normal("sumArea", [".estate-title-info .g-fence span:eq(0) i"]),
+                        // 总价
+                        core.utils.data_builder.normal("sumPrice", [".estate-title-info .g-fence span:eq(2) i"]),
                     ]
                 },
-                basicTransactionInfo: {
-                    selector: ".introContent .transaction .content ul",
+                detailInfo: {
+                    selector: ".detail-infos .detailInfo .list-infos .item-infos p",
                     dealStrategy: "jsdom",
                     data: [
-                        // 上次交易
-                        core.utils.data_builder.normal("prevTrade", ["li:eq(0)"], [".label"]),
-                        // 房屋类型
-                        core.utils.data_builder.normal("type", ["li:eq(1)"], [".label"]),
-                        // 房本年限
-                        core.utils.data_builder.normal("yearLimit", ["li:eq(2)"], [".label"]),
-                        // 是否唯一
-                        core.utils.data_builder.normal("isOnly", ["li:eq(3)"], [".label"])
+                        core.utils.data_builder.switchs([], [], [
+                            core.utils.data_builder.cases(".pname", [], "单价：", [
+                                core.utils.data_builder.combine(core.utils.data_builder.normal("price", [], [".pname"]), {
+                                    formats: [
+                                        core.utils.data_builder.formats.match.price
+                                    ]
+                                })
+                            ]),
+                            core.utils.data_builder.cases(".pname", [], "首付：", [
+                                core.utils.data_builder.combine(core.utils.data_builder.normal("downPayment", [], [".pname"]), {
+                                    formats: [
+                                        core.utils.data_builder.formats.match.price
+                                    ]
+                                })
+                            ]),
+                            core.utils.data_builder.cases(".pname", [], "参考月供：", [
+                                core.utils.data_builder.combine(core.utils.data_builder.normal("monthPayment", [], [".pname"]), {
+                                    formats: [
+                                        core.utils.data_builder.formats.match.price
+                                    ]
+                                })
+                            ]),
+                            core.utils.data_builder.cases(".pname", [], "楼层：", [
+                                core.utils.data_builder.normal("floor", [], [".pname"])
+                            ]),
+                            core.utils.data_builder.cases(".pname", [], "建造年代：", [
+                                core.utils.data_builder.normal("completingTime", [], [".pname"])
+                            ]),
+                            core.utils.data_builder.cases(".pname", [], "电梯：", [
+                                core.utils.data_builder.normal("lift", [], [".pname"])
+                            ]),
+                            core.utils.data_builder.cases(".pname", [], "楼面户数：", [
+                                core.utils.data_builder.normal("floorScale", [], [".pname"])
+                            ]),
+                            core.utils.data_builder.cases(".pname", [], "朝向：", [
+                                core.utils.data_builder.normal("toward", [], [".pname"])
+                            ]),
+                            core.utils.data_builder.cases(".pname", [], "装修：", [
+                                core.utils.data_builder.normal("decoration", [], [".pname"])
+                            ]),
+                            core.utils.data_builder.cases(".pname", [], "特色：", [
+                                core.utils.data_builder.array("tags", ["em"], [], [
+                                    core.utils.data_builder.normal("")
+                                ])
+                            ])
+                        ])
                     ]
                 }
             },
