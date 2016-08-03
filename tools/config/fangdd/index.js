@@ -5,20 +5,21 @@
 let _ = require("lodash");
 
 module.exports = exports = (core) => {
-    let config = new core.utils.builder("iwjw", "www.iwjw.com", []);
+    let config = new core.utils.builder("fangdd", "esf.fangdd.com", []);
 
     config.setBaseInfo(1000, "superagent");
-    config.initDomain = "www.iwjw.com/sale/shanghai";
+    config.initDomain = "esf.fangdd.com/shanghai";
     config.proxySettings = {
         useProxy: false,
         charset: "utf-8",
         timeout: 5000
     };
     // 白名单
-    config.addWhitePath(/\/sale(?:\/shanghai\/(g1|g2)(?:id\d+|)(p\d+)?|\/([1-9]|[a-z]|[A-Z])+|shanghai)\/?$/);
+    // 二手房正则
+    config.addWhitePath(/^\/shanghai(?:\/list\/pa\d+|\/list\/s\d+(?:_b\d+|_pa\d+|_b\d+_pa\d+|)|\/\d+.html|)\/?$/);
 
     // -----------------页面配置------------------
-    _.forEach(core.config.iwjw.pages, (page) => {
+    _.forEach(core.config.fangdd.pages, (page) => {
         if (typeof page === "function") {
             page(config);
         }
