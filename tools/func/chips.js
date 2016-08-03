@@ -64,13 +64,16 @@ module.exports = exports = (core) => {
         pptpsetup = shell.exec(commands.pptpsetup, {silent: true, async: true});
         pptpsetup.stdout.on("data", (data) => {
             datas.push(data);
-
-            !isSuccess && (isSuccess = /succeeded/i.test(data));
-
             if (/remote/i.test(datas.join(""))) {
+                console.log("pptp done");
+                isSuccess = /succeeded/i.test(datas.join(""));
                 isSuccess && (localhostIp = datas.join("").match(/([1-9]{1,3}\.){3}[1-9]{1,3}/ig));
+
+                console.log(isSuccess);
+
                 if (isSuccess && localhostIp.length > 1) {
                     lastIp = localhostIp[0];
+                    console.log(lastIp);
                     return success();
                 }
             }
