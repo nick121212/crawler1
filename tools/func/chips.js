@@ -69,7 +69,8 @@ module.exports = exports = (core) => {
                 isSuccess = /succeeded/i.test(datas.join(""));
                 isSuccess && (localhostIp = datas.join("").match(/([1-9]{1,3}\.){3}[1-9]{1,3}/ig));
 
-                console.log(isSuccess);
+                console.log(datas.join(""));
+                console.log(localhostIp);
 
                 if (isSuccess && localhostIp.length > 1) {
                     lastIp = localhostIp[0];
