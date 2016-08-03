@@ -29,7 +29,7 @@ class Downloader {
                 // .redirects(0)
                 .end((err, res) => {
                     if (err) {
-                        console.log("error URI:", uri.toString());
+                        // console.log("error URI:", uri.toString());
                         return defer.reject(err);
                     }
                     result = {
