@@ -77,7 +77,6 @@ module.exports = exports = (core) => {
         });
     };
     return (options) => {
-        console.log(options);
         schedule.scheduleJob(`*/${options.interval || 1} * * * *`, scheduleJob);
     };
 };
