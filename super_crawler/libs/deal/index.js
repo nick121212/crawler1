@@ -9,10 +9,9 @@ class DealHtml {
         this.settings = settings;
         this.pages = settings.pages;
         this.key = settings.key || "";
-        this.saveFunc = saveFunc || function () {
-            };
-        this.rollbackFunc = rollbackFunc || function () {
-            };
+        this.saveFunc = saveFunc || function() {};
+        this.rollbackFunc = rollbackFunc || function() {};
+
         _.forEach(this.pages, (page) => {
             page.rule = _.map(page.rule, (rule) => {
                 return new RegExp(tools.replaceRegexp(rule.regexp), rule.scope);
@@ -33,6 +32,12 @@ class DealHtml {
         });
     }
 
+    /**
+     * 检查状态，html解析完成后，判断数据是保存还是回滚
+     * @param queueItem {Object}
+     * @param results   {Object}
+     * @return {Array<promise>}
+     */
     checkStatus(queueItem, results) {
         let promises = [];
 
@@ -46,13 +51,14 @@ class DealHtml {
 
         _.each(results, (result) => {
             if (!result.rule.test) {
+                // 合并数据，将配置好的静态数据和解析得来的数据合并
                 result.result = _.extend({}, result.rule.extendData || {}, result.result);
-                console.log(JSON.stringify(result.result));
+                // 判断验证模式，如果验证字段为空，则回滚数据，否则保存数据
                 if (result.rule.strict && result.rule.strictField) {
                     if (result.result[result.rule.strictField]) {
                         save(queueItem, result.result, result.rule);
                     } else {
-                        console.log(`回滚url:${queueItem.url},_id:${queueItem.urlId}`);
+                        console.log(`回滚:${queueItem.url},_id:${queueItem.urlId}`);
                         promises.push(this.rollbackFunc(queueItem));
                     }
                 } else {
@@ -67,15 +73,15 @@ class DealHtml {
     }
 
     /**
-     * 消费一条消息
+     * 消费一条消息,一条数据可能被多个规则匹配到，需要处理多次
      * @param queueItem {Object}
+     * @return {Promise}
      */
     consumeQueue(queueItem) {
         let rules = this.findRule(decodeURIComponent(queueItem.url)),
             defer = Promise.defer(),
             promises = [];
 
-        // console.log(`deal start ${queueItem.url} at ${new Date()}`);
         if (!rules.length) {
             defer.resolve();
         } else {

@@ -286,41 +286,54 @@ class QueueStoreOfES {
      * @param queueItem    {object}   url的详情
      * @param responseBody {string}   url的页面信息
      * @param key          {string}   key，区分不同网站
+     * @param status       {string}   网页的下载状态，error：错误，downloaded：已下载
      * @returns {promise}
      */
-    addCompleteQueueItem(queueItem, responseBody, key) {
+    addCompleteQueueItem(queueItem, responseBody, key, status = "downloaded") {
         let defer = Promise.defer();
+        let opts = [];
+        let isError = !responseBody || status === "error";
 
         this.checkUrlDetail(queueItem).then(() => {
             queueItem.fetched = true;
             queueItem.updateDate = Date.now();
-            queueItem.status = "downloaded";
+            queueItem.status = status;
 
-            core.elastic.bulk({
-                body: [{
+            // 删除mqurl中的数据
+            opts.push({
+                delete: {
+                    _index: this.esIndex,
+                    _type: this.esTypeQueueUrls,
+                    _id: queueItem.urlId
+                }
+            });
+            if (!isError) {
+                opts = opts.concat([{
                     create: {
                         _index: this.esIndex,
                         _type: this.esTypeUrls,
                         _id: queueItem.urlId
                     }
-                }, queueItem, {
-                    delete: {
-                        _index: this.esIndex,
-                        _type: this.esTypeQueueUrls,
-                        _id: queueItem.urlId
-                    }
-                }, {
+                }, queueItem]);
+                opts = opts.concat([{
                     create: {
                         _index: this.esIndex,
                         _type: this.esTypeRsbody,
                         _id: queueItem.urlId
                     }
                 }, {
-                    url: queueItem.urlId,
+                    urlId: queueItem.urlId,
+                    url: queueItem.url,
                     text: responseBody
-                }]
+                }]);
+            }
+            core.elastic.bulk({
+                body: opts
             }).then(() => {
-                return this.addCompleteQueueItemsToQueue(queueItem, responseBody, key);
+                if (!isError) {
+                    return this.addCompleteQueueItemsToQueue(queueItem, responseBody, key);
+                }
+                return null;
             }, defer.reject).then(defer.resolve, defer.reject);
         }, defer.reject);
 
@@ -365,7 +378,7 @@ class QueueStoreOfES {
             responseBody: responseBody
         });
         core.q.getQueue(`crawler.deals.${key}`, {}).then((result) => {
-            result.ch.publish("amq.topic", `${result.q.queue}.bodys`, new Buffer(JSON.stringify(queueItem)), {persistent: true});
+            result.ch.publish("amq.topic", `${result.q.queue}.bodys`, new Buffer(JSON.stringify(queueItem)), { persistent: true });
             result.ch.close();
             defer.resolve(true);
         }, (err) => {

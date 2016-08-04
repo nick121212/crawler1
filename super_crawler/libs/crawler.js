@@ -41,7 +41,6 @@ class Crawler extends EventEmitter {
         this.initDomain = settings.initDomain || {};
         this.ignoreStatusCode = settings.ignoreStatusCode || [302, 400, 404, 500, "ENOTFOUND", "ECONNABORTED"];
 
-        // this.proxySettings.useProxy && this.doInitDownloader();
         this.deal = new Deal(settings, this.queue.queueStore.addCompleteData.bind(this.queue.queueStore), this.queue.queueStore.rollbackCompleteData.bind(this.queue.queueStore));
         this.doInitHtmlDeal();
     }
@@ -61,16 +60,13 @@ class Crawler extends EventEmitter {
             this.lastTime = Date.now();
             // 开始下载页面
             downloaderStategy.start(this.downloader, uri(URL).normalize(), this.proxySettings || {}).then((result) => {
-                result.urls = this.discover.discoverResources(result.responseBody, queueItem);
-                // console.log(result.urls);
+                // result.urls = this.discover.discoverResources(result.responseBody, queueItem);
                 result.res && (queueItem.stateData = result.res.headers);
-                // 页面查找到的链接存储到es中去
-                return this.queue.queueStore.addCompleteQueueItem(queueItem, result.responseBody, this.key).then(nextQueue.bind(this, result), (err) => {
+                // 保存下载下来的页面
+                return this.queue.queueStore.addCompleteQueueItem(queueItem, result.responseBody, this.key).then(res => defer.resolve(result), (err) => {
                     err.status = null;
                     defer.reject(err);
                 });
-            }).then(() => {
-                // console.log("downloaded");
             }).catch(defer.reject);
         } catch (err) {
             defer.reject(err);
@@ -96,13 +92,13 @@ class Crawler extends EventEmitter {
         try {
             queueItem = JSON.parse(msg.content.toString());
             if (!queueItem || typeof queueItem.url !== "string") {
-                return next(msg);
+                return this.queue.queueStore.addCompleteQueueItem(queueItem, "", this.key, "error").then(next.bind(this, msg), next.bind(this, msg));
             }
-
             console.log(`start fetch ${queueItem.url} depth:${queueItem.depth} at ${new Date()}`);
             // 请求页面
             this.fetchQueueItem(queueItem).then((data) => {
-                data.urls.map((url) => {
+                // 发现并过滤页面中的urls
+                this.discover.discoverResources(data.responseBody, queueItem).map((url) => {
                     url = this.queue.queueURL(decodeURIComponent(url), queueItem);
                     url && urls.push(url);
                 }, this);
@@ -115,19 +111,21 @@ class Crawler extends EventEmitter {
                 delete this.errors[queueItem.urlId];
                 next(msg);
             }).catch((err) => {
-
+                // 错误重试机制
                 if (!this.errors[queueItem.urlId]) {
                     this.errors[queueItem.urlId] = 0;
                 }
+                // 在定义的错误列表中，加速错误
                 if (_.indexOf(this.ignoreStatusCode, err.status) >= 0 || _.indexOf(this.ignoreStatusCode, err.code) >= 0) {
                     this.errors[queueItem.urlId] += 20;
                 } else {
                     this.errors[queueItem.urlId]++;
                 }
                 console.error(err.status, err.code, err.message, this.errors[queueItem.urlId]);
+                // 如果错误数超过200，丢弃掉消息
                 if (this.errors[queueItem.urlId] >= 200) {
                     delete this.errors[queueItem.urlId];
-                    return next(msg);
+                    return this.queue.queueStore.addCompleteQueueItem(queueItem, "", this.key, "error").then(next.bind(this, msg), next.bind(this, msg));
                 }
                 next(msg, true);
             });

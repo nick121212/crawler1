@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c76e281-1902-4941-ba07-e32ed64cc15e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/command/export.js" afterPath="$PROJECT_DIR$/tools/command/export.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/index.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/test.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/func/export.js" afterPath="$PROJECT_DIR$/tools/func/export.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/func/exports/excel/export.js" afterPath="$PROJECT_DIR$/tools/func/exports/excel/export.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/readme.md" afterPath="$PROJECT_DIR$/tools/readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/config/developer.js" afterPath="$PROJECT_DIR$/core/config/developer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" afterPath="$PROJECT_DIR$/super_crawler/libs/queue_store_es.js" />
     </list>
     <list id="9215d323-923c-4b80-bfa9-ef59850762a5" name="New changelist" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/super_crawler/libs/crawler.js" afterPath="$PROJECT_DIR$/super_crawler/libs/crawler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/angejia/index.js" afterPath="$PROJECT_DIR$/tools/config/angejia/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/config/anjuke/pages/broker.js" afterPath="$PROJECT_DIR$/tools/config/anjuke/pages/broker.js" />
     </list>
     <ignored path="crawler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -460,7 +453,7 @@
       <workItem from="1468988252548" duration="39819000" />
       <workItem from="1469513040395" duration="1392000" />
       <workItem from="1469757367000" duration="13409000" />
-      <workItem from="1469847739098" duration="50047000" />
+      <workItem from="1469847739098" duration="50728000" />
     </task>
     <task id="LOCAL-00009" summary="dfdf">
       <created>1469773919449</created>
@@ -809,11 +802,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114861000" />
+    <option name="totallyTimeSpent" value="115542000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21683876" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -821,7 +814,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26849315" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26849315" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -921,7 +914,7 @@
         <state relative-caret-position="270">
           <caret line="127" column="55" selection-start-line="127" selection-start-column="55" selection-end-line="127" selection-end-column="55" />
           <folding>
-            <marker date="1470216652000" expanded="true" signature="678:1553" ph="{...}" />
+            <marker date="1470287838000" expanded="true" signature="678:1553" ph="{...}" />
           </folding>
         </state>
       </provider>

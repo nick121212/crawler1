@@ -206,6 +206,7 @@ class DiscoverLinks extends EventEmitter {
                 if (!this.pathSUpported(URL.path())) {
                     return list;
                 }
+                // 判断是否在机器人应答的允许列表中
                 if (!this.ignoreRobots && !this.urlIsAllowed(URL)) {
                     return list;
                 }
