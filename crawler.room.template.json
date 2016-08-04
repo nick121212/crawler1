@@ -95,6 +95,9 @@
                         }
                     }
                 },
+                "no": {
+                    "type": "string"
+                },
                 "introduction": {
                     "type": "string"
                 }

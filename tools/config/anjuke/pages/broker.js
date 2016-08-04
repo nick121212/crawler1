@@ -9,7 +9,7 @@ module.exports = (core) => {
             }],
             fieldKey: "random",
             strict: true,
-            strictField: "name1",
+            strictField: "name",
             test: false,
             area: {
                 none: {

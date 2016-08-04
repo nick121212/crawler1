@@ -12,7 +12,7 @@ module.exports = exports = (core) => {
                 defer.reject(new Error("没有找到导出文件!"));
             }
         } else {
-            core.func.exports.excel.export(options.index, options.type, options.filename, options.fields).then(defer.resolve, defer.reject);
+            core.func.exports.excel.export(options.index, options.type, options.filename, options.fields, options.key).then(defer.resolve, defer.reject);
         }
 
         return defer.promise;

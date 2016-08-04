@@ -39,7 +39,7 @@ class Crawler extends EventEmitter {
         this.lastTime = Date.now();
         this.proxySettings = settings.proxySettings || {};
         this.initDomain = settings.initDomain || {};
-        this.ignoreStatusCode = settings.ignoreStatusCode || [400, 404, 500, "ENOTFOUND", "ECONNABORTED"];
+        this.ignoreStatusCode = settings.ignoreStatusCode || [302, 400, 404, 500, "ENOTFOUND", "ECONNABORTED"];
 
         // this.proxySettings.useProxy && this.doInitDownloader();
         this.deal = new Deal(settings, this.queue.queueStore.addCompleteData.bind(this.queue.queueStore), this.queue.queueStore.rollbackCompleteData.bind(this.queue.queueStore));
@@ -125,7 +125,7 @@ class Crawler extends EventEmitter {
                     this.errors[queueItem.urlId]++;
                 }
                 console.error(err.status, err.code, err.message, this.errors[queueItem.urlId]);
-                if (this.errors[queueItem.urlId] > 200) {
+                if (this.errors[queueItem.urlId] >= 200) {
                     delete this.errors[queueItem.urlId];
                     return next(msg);
                 }

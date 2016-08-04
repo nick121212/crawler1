@@ -7,7 +7,7 @@ let _ = require("lodash");
 module.exports = exports = (core) => {
     let total = 0, setHeader = false;
 
-    let search = (index, type = "all", filename = `${Date.now()}.csv`, fields = "", from = 0, size = 20) => {
+    let search = (index, type = "all", filename = `${Date.now()}.csv`, fields = "", key = "", from = 0, size = 20) => {
         let defer = Promise.defer();
 
         fields = fields.split(",");
@@ -28,7 +28,14 @@ module.exports = exports = (core) => {
             response.hits.hits.forEach(function (res) {
                 let strs = [], header = [];
 
+                strs.push(res._type);
                 res = res._source;
+                header.push("_type");
+
+                if (key && !res[key]) {
+                    return;
+                }
+
                 _.each(fields, (field)=> {
                     if (!setHeader) {
                         header.push(field);
@@ -62,15 +69,13 @@ module.exports = exports = (core) => {
         return defer.promise;
     };
 
-    return (index, type, filename, fields) => {
-        console.log(index, type, filename, fields);
+    return (index, type, filename, fields, key) => {
 
         if (fs.existsSync(filename)) {
             fs.unlinkSync(filename);
         }
         fs.writeFileSync(filename, "");
-        console.log("start export:");
 
-        return search(index, type, filename, fields, 0, 1000);
+        return search(index, type, filename, fields, key, 0, 1000);
     };
 };

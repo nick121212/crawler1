@@ -21,7 +21,9 @@ module.exports = (core) => {
                             core.utils.data_builder.normal("url", [".house-img-m"], [], {
                                 attr: ["src"]
                             })
-                        ])
+                        ]),
+                        // 地址
+                        core.utils.data_builder.normal("address", [".estate-more"])
                     ]
                 },
                 baseInfo: {

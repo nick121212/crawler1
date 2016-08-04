@@ -54,8 +54,8 @@ module.exports = (core) => {
                         // 竣工时间
                         core.utils.data_builder.normal("completeTime", ["tr:eq(0) td:eq(2)"]),
                         // 房型
-                        core.utils.data_builder.combine(core.utils.data_builder.normal("layout", ["tr:eq(1) td:eq(0)"]), {
-                            formats: [{str: []}, {
+                        core.utils.data_builder.combine(core.utils.data_builder.normal("propertyType", ["tr:eq(1) td:eq(0)"]), {
+                            formats: [{ str: [] }, {
                                 replace: {
                                     regexp: /房型：/.toString(),
                                     scope: "g"

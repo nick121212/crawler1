@@ -66,6 +66,8 @@ module.exports = (core) => {
                         core.utils.data_builder.normal("monthPayment", ["tr:eq(3) td:eq(1)"], [".title"]),
                         // 小区
                         core.utils.data_builder.normal("community", ["tr:eq(4) td:eq(0) a"]),
+                        // 版块
+                        core.utils.data_builder.normal("plate", ["tr:eq(4) td:eq(0) .areaEllipsis"]),
                         // 地址
                         core.utils.data_builder.normal("address", ["tr:eq(5) td:eq(0) .addrEllipsis"]),
                         // 房源编号
