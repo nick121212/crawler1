@@ -23,7 +23,7 @@ let regexs = {
         ]
     },
     community: {
-        regexp: /\/community\/?(?:[a-z]*(?:\/p\d+\/?|\/?)|\/view\/\d+|photos\/model\/\d+|photos2\/b\/\d+)\/?$/i,
+        regexp: /\/community\/?(?:[a-z]*(?:\/p\d+\/?|\/?)|\/view\/\d+|photos\/model\/\d+|photos2\/b\/\d+(.+Z\d+)?)\/?$/i,
         data: [
             "http://shanghai.anjuke.com/community",
             "http://shanghai.anjuke.com/community/",
@@ -34,6 +34,7 @@ let regexs = {
             "http://shanghai.anjuke.com/community/view/13235/",
             "http://shanghai.anjuke.com/community/photos/model/13235",
             "http://shanghai.anjuke.com/community/photos2/b/8",
+            "http://shanghai.anjuke.com/community/photos2/b/8W0QQpZ2",
             "http://shanghai.anjuke.com/community/photos/model/8"
         ]
     },
