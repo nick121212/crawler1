@@ -35,7 +35,7 @@ module.exports = exports = (core) => {
         };
 
         _.each(keys, (key) => {
-            key && infos.keys[key] = 0;
+            key && (infos.keys[key] = 0);
         });
 
         console.log("start at", new Date());
