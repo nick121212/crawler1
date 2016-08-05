@@ -11,6 +11,8 @@ module.exports = exports = (core, program) => {
             return process.exit(1);
         }
 
+        console.log(config.index);
+
         core.func.start(config.index, options).then(process.exit, process.exit);
     };
 
