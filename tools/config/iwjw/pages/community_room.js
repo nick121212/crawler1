@@ -6,7 +6,7 @@ module.exports = (core) => {
                 regexp: /\/sale\/([1-9]|[a-z]|[A-Z]){11}/.toString(),
                 scope: "i"
             }],
-            fieldKey: "random",
+            fieldKey: "url",
             strict: true,
             strictField: "community",
             test: false,

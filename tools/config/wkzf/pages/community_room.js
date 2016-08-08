@@ -6,7 +6,7 @@ module.exports = (core) => {
                 regexp: /\/shanghai\/esf\/detail\/.+\.html/.toString(),
                 scope: "i"
             }],
-            fieldKey: "random",
+            fieldKey: "url",
             strict: true,
             strictField: "community",
             test: false,
