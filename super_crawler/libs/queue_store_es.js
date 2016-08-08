@@ -57,7 +57,7 @@ class QueueStoreOfES {
 
         return defer.promise;
     }
-
+    
     /**
      * 根据protocol，host，post，path，depth来获取queueItem
      * @param protocol {string} 协议
