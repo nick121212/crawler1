@@ -405,7 +405,7 @@ class QueueStoreOfES {
 
         return this.indexEsData(_.extend({
             url: queueItem.url,
-            urlid: queueItem.urlId,
+            urlId: queueItem.urlId,
             createdAt: Date.now(),
             updatedAt: Date.now()
         }, data), keyField, type, index);

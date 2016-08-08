@@ -6,7 +6,7 @@ module.exports = (core) => {
                 regexp: /\/ershoufang\/(.*?).html/.toString(),
                 scope: "i"
             }],
-            fieldKey: "url",
+            fieldKey: "random",
             strict: true,
             strictField: "community",
             test: false,
