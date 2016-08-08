@@ -166,8 +166,10 @@ class QueueStoreOfES {
         };
 
         if (idField !== "randow") {
-            config["id"] = data[idField];
+            config.id = data[idField];
         }
+
+        console.log(config);
 
         core.elastic.index(config).then(() => {
             defer.resolve(data);
