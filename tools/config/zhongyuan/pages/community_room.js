@@ -65,7 +65,7 @@ module.exports = (core) => {
                         // 装修
                         core.utils.data_builder.normal("decoration", ["li:eq(4) .txt_r"], []),
                         // 小区名
-                        core.utils.data_builder.normal("community", ["tr:eq(5) .txt_r"], [])
+                        core.utils.data_builder.normal("community", ["li:eq(5) .txt_r"], [])
                     ]
                 }
             },
