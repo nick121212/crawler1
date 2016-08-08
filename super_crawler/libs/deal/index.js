@@ -42,10 +42,10 @@ class DealHtml {
         let promises = [];
 
         let save = (queueItem, result, rule) => {
-            if (rule.fieldKey && result[rule.fieldKey]) {
+            if (rule.fieldKey && (result[rule.fieldKey] || queueItem[rule.fieldKey])) {
                 promises.push(this.saveFunc(queueItem, result, this.key, rule.key, rule.fieldKey));
             } else {
-                promises.push(this.saveFunc(queueItem, result, this.key, rule.key, "url"));
+                promises.push(this.saveFunc(queueItem, result, this.key, rule.key));
             }
         };
 
