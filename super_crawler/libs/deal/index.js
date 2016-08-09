@@ -82,7 +82,7 @@ class DealHtml {
             defer = Promise.defer(),
             promises = [];
 
-        if (!rules.length) {
+        if (!rules.length || !queueItem.responseBody) {
             defer.resolve();
         } else {
             try {

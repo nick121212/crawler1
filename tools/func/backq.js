@@ -2,27 +2,31 @@
  * Created by NICK on 16/7/1.
  */
 module.exports = exports = (core) => {
-    return (key, options) => {
-        let search = (index, from = 0, size = 20) => {
-            let defer = Promise.defer(), total = 0;
+    return (key, type, queue, router, options) => {
+        let search = (index, from = 0, size = 10) => {
+            let defer = Promise.defer(),
+                total = 0;
 
-            core.q.getQueue(`crawler.urls.${key}`, {}).then((result) => {
+            core.q.getQueue(`crawler.${queue}.${key}`, {}).then((result) => {
                 core.elastic.search({
                     index: index,
-                    type: "mqurls",
-                    scroll: '10s',
-                    search_type: 'scan',
-                    from: from,
-                    size: size
+                    type: type,
+                    scroll: '50s',
+                    from: options.from,
+                    size: options.size,
+                    // search_type: 'scan',
+                    // from: from,
+                    // size: size
                 }, function getMoreUntilDone(error, response) {
                     if (error) {
                         console.log(error);
                         return defer.reject(error);
                     }
 
-                    response.hits.hits.forEach(function (res) {
+                    response.hits.hits.forEach(function(res) {
                         res = res._source;
-                        result.ch.publish("amq.topic", `${result.q.queue}.urls`, new Buffer(JSON.stringify(res)), {
+                        console.log(`${result.q.queue}`);
+                        result.ch.publish("amq.topic", `${result.q.queue}.${router}`, new Buffer(JSON.stringify(res)), {
                             persistent: true
                         });
                     });
@@ -31,7 +35,9 @@ module.exports = exports = (core) => {
                     if (response.hits.total !== total) {
                         core.elastic.scroll({
                             scrollId: response._scroll_id,
-                            scroll: '30s'
+                            from: options.from,
+                            size: options.size,
+                            scroll: '50s'
                         }, getMoreUntilDone);
                     } else {
                         console.log("done");
