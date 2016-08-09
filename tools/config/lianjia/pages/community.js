@@ -18,7 +18,7 @@ module.exports = (core) => {
                         // 小区地址
                         core.utils.data_builder.normal("address", [".adr"]),
                         //版块
-                        core.utils.data_builder.normal("plate", [".detail-block . title .t span:eq(0)"])
+                        core.utils.data_builder.normal("plate", [".detail-block .title .t span:eq(0)"])
                     ]
                 },
                 pictures: {
