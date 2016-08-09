@@ -13,6 +13,13 @@ module.exports = exports = (core, Download) => {
                 pid: process.pid
             });
         }
+
+        if (!config.key) {
+            return cb(`${process.pid}Key没有定义！`, {
+                pid: process.pid
+            });
+        }
+
         try {
             config.blackPathList = config.blackPathList.map((path) => {
                 return new RegExp(core.utils.tools.replaceRegexp(path.regexp), path.scope);
