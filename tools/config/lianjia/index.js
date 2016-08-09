@@ -13,15 +13,17 @@ module.exports = exports = (core) => {
         useProxy: false,
         charset: "utf-8",
         timeout: 5000,
-        wait: 1000,
+        // wait: 1000,
+        ipInfo: {
+            host: "10.25.254.241",
+            port: "8081"
+        }
     };
-    // 白名单
 
     // 二手房
     config.addWhitePath(/^\/ershoufang(?:\/\D+(?:\/d\d+|)|\/[a-z]{2}\d+\.html|)\/?$/);
     // 匹配小区列表，小区详情页，小区版块列表（只按照区域和版块过滤）
     config.addWhitePath(/^\/xiaoqu(?:\/[a-z]*\/?(?:d\d+\/?|\/?)|\/?|\/\d+.html)$/);
-
     // 楼盘
     // config.addWhitePath(/^\/list\/pg\d+/)
 
