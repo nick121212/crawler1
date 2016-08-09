@@ -38,6 +38,8 @@ module.exports = exports = (core) => {
             key && (infos.keys[key] = 0);
         });
 
+        console.log(infos.keys);
+
         console.log("start at", new Date());
         core.func.list({
             interval: 5000
@@ -49,8 +51,8 @@ module.exports = exports = (core) => {
                         core.func.kill(stat.pid, {});
                     } else {
                         infos.starting.push(stat);
-                        !infos.keys[stat.downloader.host] && (infos.keys[stat.downloader.host] = 0);
-                        infos.keys[stat.downloader.host]++;
+                        !infos.keys[stat.downloader.key] && (infos.keys[stat.downloader.key] = 0);
+                        infos.keys[stat.downloader.key]++;
                     }
                 } else {
                     infos.pending.push(stat);
