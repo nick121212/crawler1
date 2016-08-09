@@ -15,7 +15,7 @@
         ],
         "env": {
             "NODE_ENV": "development",
-            "ENV": "production"
+            "ENV1": "production"
         },
         "externalConsole": false,
         "sourceMaps": false,

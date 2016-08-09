@@ -17,7 +17,7 @@ module.exports = (core) => {
                         core.utils.data_builder.array("list", [".house-lst li"], [], [
                             core.utils.data_builder.normal("name", [".info-panel .col-1 > h2 a"]),
                             core.utils.data_builder.normal("plate", [".info-panel .where .region span"]),
-                            core.utils.data_builder.normal("address", [".info-panel .where .region", ["span"]])
+                            core.utils.data_builder.normal("address", [".info-panel .where .region"], ["span"])
                         ])
                     ]
                 }

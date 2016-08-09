@@ -19,10 +19,10 @@ module.exports = exports = (core) => {
     // 二手房
     config.addWhitePath(/^\/ershoufang(?:\/\D+(?:\/d\d+|)|\/[a-z]{2}\d+\.html|)\/?$/);
     // 匹配小区列表，小区详情页，小区版块列表（只按照区域和版块过滤）
-    // config.addWhitePath(/^\/xiaoqu(?:\/[a-z]*\/?(?:d\d+\/?|\/?)|\/?|\/\d+.html)$/);
+    config.addWhitePath(/^\/xiaoqu(?:\/[a-z]*\/?(?:d\d+\/?|\/?)|\/?|\/\d+.html)$/);
 
     // 楼盘
-    config.addWhitePath(/^\/list\/pg\d+/)
+    // config.addWhitePath(/^\/list\/pg\d+/)
 
     // -----------------页面配置------------------
     _.forEach(core.config.lianjia.pages, (page) => {
