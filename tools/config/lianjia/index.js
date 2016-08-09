@@ -12,7 +12,8 @@ module.exports = exports = (core) => {
     config.proxySettings = {
         useProxy: false,
         charset: "utf-8",
-        timeout: 5000
+        timeout: 5000,
+        wait: 1000,
     };
     // 白名单
 
