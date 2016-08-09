@@ -8,7 +8,7 @@ module.exports = (core) => {
             }],
             fieldKey: "name",
             strict: true,
-            strictField: "community",
+            strictField: "name",
             test: false,
             area: {
                 none: {
