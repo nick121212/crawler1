@@ -59,6 +59,7 @@ class DealHtml {
                         save(queueItem, result.result, result.rule);
                     } else {
                         console.log(`回滚:${queueItem.url},_id:${queueItem.urlId}`);
+                        // require("fs").writeFileSync(queueItem.urlId + ".html", queueItem.responseBody);
                         promises.push(this.rollbackFunc(queueItem));
                     }
                 } else {
