@@ -20,6 +20,8 @@ module.exports = exports = (core, Download) => {
             });
         }
 
+        // config.proxySettings.useProxy = false;
+
         try {
             config.blackPathList = config.blackPathList.map((path) => {
                 return new RegExp(core.utils.tools.replaceRegexp(path.regexp), path.scope);

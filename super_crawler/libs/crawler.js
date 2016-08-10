@@ -95,7 +95,7 @@ class Crawler extends EventEmitter {
                 return this.queue.queueStore.addCompleteQueueItem(queueItem, "", this.key, "error").then(next.bind(this, msg), next.bind(this, msg));
             }
 
-            if (!this.queue.queueURL(decodeURIComponent(queueItem.url), queueItem)) {
+            if (!this.discover.pathSUpported(decodeURIComponent(queueItem.path))) {
                 return next(msg);
             }
 
