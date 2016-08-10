@@ -44,7 +44,6 @@ class Downloader {
             })
             .catch(err => {
                 err.response = resources[uri.toString()] || null;
-
                 defer.reject(err);
             });
 

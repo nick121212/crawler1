@@ -94,6 +94,11 @@ class Crawler extends EventEmitter {
             if (!queueItem || typeof queueItem.url !== "string") {
                 return this.queue.queueStore.addCompleteQueueItem(queueItem, "", this.key, "error").then(next.bind(this, msg), next.bind(this, msg));
             }
+
+            if (!this.queue.queueURL(decodeURIComponent(queueItem.url), queueItem)) {
+                return next(msg);
+            }
+
             console.log(`start fetch ${queueItem.url} depth:${queueItem.depth} at ${new Date()}`);
             // 请求页面
             this.fetchQueueItem(queueItem).then((data) => {
