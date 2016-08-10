@@ -10,7 +10,7 @@ module.exports = exports = (core) => {
     config.setBaseInfo(2000, "phantom1");
     config.initDomain = "sh.lianjia.com";
     config.proxySettings = {
-        useProxy: true && process.env.ENV == "production",
+        useProxy: false && process.env.ENV == "production",
         charset: "utf-8",
         timeout: 5000,
         wait: 1000,
