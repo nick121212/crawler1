@@ -27,7 +27,7 @@ class Downloader {
 
         horseman = new Horseman(horsemanSetting);
         horseman
-            .userAgent(settings.ua)
+            .userAgent(settings.ua || "")
             .on("resourceReceived", (res) => {
                 resources[res.url] = res;
             })

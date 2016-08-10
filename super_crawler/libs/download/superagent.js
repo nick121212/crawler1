@@ -23,7 +23,7 @@ class Downloader {
             }
             // 5s超时，不允许跳转
             req
-                .set("User-Agent", settings.ua)
+                .set("User-Agent", settings.ua || "")
                 .charset(settings.charset || "gbk")
                 .timeout(settings.timeout || 5000)
                 // .redirects(0)
